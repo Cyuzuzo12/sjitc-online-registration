@@ -1,0 +1,41 @@
+.logContainer{
+    /* width: 30%; */
+    margin: 0 auto;
+    min-height: 80vh;
+    max-height: 180vh;
+    padding-top: 30px;
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-color: #1898f8;
+    border-top-style: solid; 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.link{
+    margin-top: 10px; 
+     
+}
+.logContainer span{
+    margin-top: -10px;
+    font-size:20px;
+}
+.logContainer h2{
+    font-weight: 300;
+    text-align: center;
+    font-size:35px;
+}
+
+.logContainer input{
+    font-size: 17px;
+    width: 95%;
+    margin-top:10px;
+    margin-left: 10px;
+    padding: 12px 10px;
+    /* box-sizing:border-box; */
+    font-weight: 300;
+    border-radius:100px ;
+}
+.login-button{
+    color: #fff;
+    background-color: #1898f8;
+}
