@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import SideNav, {  Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import FontAwesome from "react-fontawesome";
-import {UncontrolledCollapse} from 'reactstrap';
+import {Collapse} from 'reactstrap';
 import { Link } from "react-router-dom";
 import "./sidenav.css";
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
 
 
-const SideNavigation = () => {
+const SideNavigation = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
     return ( <div>
        
         <SideNav 
@@ -56,22 +59,24 @@ style={{
                        
                         <NavText >
                         <ul className="list-unstyled option">
-                <li  id="toggler"  >
+                <li  onClick={toggle}  >
                   <Link href="/student/registration/">
                    <span >Student Registration</span>
                       <i className="fa fa-angle-left text-muted"></i>
                    
                   </Link>
-                  <UncontrolledCollapse toggler="#toggler">
+                  <Collapse isOpen={isOpen}>
                   <ul className="list-unstyled " >
-                    <li > 
+                <li > 
                       <Link>
                         <i class="fa fa-circle-o m-2"></i>
                         General
                       </Link>
                     </li>
                   </ul>
-                  </UncontrolledCollapse>
+                  
+       
+      </Collapse>
                 </li>
                 </ul> 
                         </NavText>
@@ -88,10 +93,10 @@ style={{
                   <span>Course Management</span>
                     <i class="fa fa-angle-left "></i>
                 </Link>
-                <UncontrolledCollapse toggler="#toggler">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link>
+                {/* <Collapse toggler="#toggler"> */}
+                <ul className="list-unstyled p-5">
+                  <li >
+                    <Link to="/time-table">
                       <i class="fa fa-circle-o m-2"></i>
                       TimeTable
                     </Link>
@@ -104,7 +109,7 @@ style={{
                   </li>
                 </ul>
             
-               </UncontrolledCollapse>
+               {/* </Collapse> */}
               </li>
                         </ul>
                       </NavText>
@@ -121,7 +126,7 @@ style={{
                     <span>Marks</span>
                       <i class="fa fa-angle-left "></i>
                   </Link>
-                  <UncontrolledCollapse toggler="#toggler">
+                  <Collapse toggler="#toggler">
                   <ul className="list-unstyled">
                    
                     <li>
@@ -131,7 +136,7 @@ style={{
                       </Link>
                     </li>
                   </ul>
-                 </UncontrolledCollapse>
+                 </Collapse>
                  
                 </li>
                           </ul>

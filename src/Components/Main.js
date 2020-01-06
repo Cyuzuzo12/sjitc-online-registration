@@ -7,6 +7,8 @@ import MainFooter from "./Mainfooter";
 import Attendance from "./CourseManagement/attendance";
 import StudentRegistration from "./studentRegistration";
 import SignIn from "./siniIn";
+import AdvancedLevelForm from "./Registration/advancedLevel";
+import TimeTable from "./CourseManagement/timeTable";
 
 class Main extends Component {
   state = {
@@ -28,8 +30,10 @@ class Main extends Component {
           <Route path="/sign-up" component={() => <SignUp />} />
           <Route path="/sign-in" component={()=> <SignIn/>}/>
           <Route path="/&nc-student&nc-registration" component={()=> <StudentRegistration/>}/>
-          <Route path="/student-page" component={() => <AdvancedDiplomaForm />} />
+          <Route path="/advanced-level-registration-form" component={() => <AdvancedLevelForm />} />
+          <Route path="/advanced-diploma-registration-form" component={() => <AdvancedDiplomaForm />} />
           <Route path="/attendance" component={()=> <Attendance/>}/>
+          <Route path="/time-table" component={()=> <TimeTable/>}/>
           <Redirect to="/sign-up" />
         </Switch>
         <MainFooter />

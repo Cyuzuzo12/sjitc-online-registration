@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import {  FormGroup, Label, Input,Col,Form,Button ,Row} from 'reactstrap';
-import {Link } from 'react-router-dom';
 import logo from 'C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/logo.png';
 
-class AdvancedDiplomaForm extends Component {
+import {Link } from 'react-router-dom';
+
+class AdvancedLevelForm extends Component {
   state = {};
   render() {
     return (
       <div>
         {/* <SideNav /> */}
         <section>
-        <div className="container ">
+          <div className="container ">
           <div className="row justify-content-center ">
               <div className="col-md-8 col-sm-12 header-div m-2 ">
               <div className="row pt-5">
@@ -18,7 +19,7 @@ class AdvancedDiplomaForm extends Component {
             <ul className="list-unstyled">
               <li className=" font font-weight-bold">SJITC ADMISSIONOFFICE</li>
               <li className=" font font-weight-bold">Application form</li>
-              <li className=" font ">Advanced Diploma & Diploma</li>
+              <li className=" font ">Advanced Level(A2)</li>
             </ul>
           </div>
           <div className="col-2 " >
@@ -375,4 +376,4 @@ class AdvancedDiplomaForm extends Component {
   }
 }
 
-export default AdvancedDiplomaForm;
+export default AdvancedLevelForm;

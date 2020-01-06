@@ -69,10 +69,14 @@
   border-color: #9348e8;
   border-bottom-style: solid;
   background-color: #fff;
+  /* font: 17px Raleway; */
+  position: relative;
+  color: #9348e8;
 }
 .purple {
   color: #9348e8;
 }
+
 .main-footer{
   background-color:#fff;
   border-color: #e6e8e9;
@@ -81,4 +85,11 @@
 section{
   min-height: 540px;
   max-height: 3000px;
+}
+.timeTable-div{
+  min-height: 340px;
+  max-height: 3000px;
+  background-color:#fff;
+  margin-left: 200px;
+  margin:10px 10px 0px 100px;
 }

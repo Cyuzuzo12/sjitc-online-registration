@@ -3,8 +3,27 @@ import {  FormGroup, Label, Input,Col,Form,Button ,Row} from 'reactstrap';
 import {Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 class StudentRegistration extends Component {
-  state = {};
+  state = {
+    advancedLevel: false,
+    advancedDiploma: false
+  };
+  handleCheckAdvancedLevel =() =>{
+    this.setState({advancedLevel: !this.state.advancedLevel});
+    }
+    handleCheckAdvancedDiploma =() =>{
+      this.setState({advancedDiploma: !this.state.advancedDiploma});
+      }
   render() {
+    var msg;
+	if (this.state.advancedLevel) {
+	  msg = "advanced-level-registration-form";
+  }else if(this.state.advancedDiploma){
+    msg = "advanced-diploma-registration-form"; 
+  } 
+  
+  else {
+	  msg = "Un-checked";
+	}
     return (
       <div>
      
@@ -35,15 +54,15 @@ class StudentRegistration extends Component {
                <Col md={6}>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio2"  />{' '}
-             Advanced Diploma & Diploma
+              <Input type="radio" name="advanced-level" onChange={this.handleCheckAdvancedLevel} />{' '}
+             Advanced Level(A2)
             </Label>
           </FormGroup>
         </Col>
         <Col md={6}>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio2"  />{' '}
+              <Input type="radio" name="advanced-diploma" onChange={this.handleCheckAdvancedDiploma} />{' '}
              Advanced Diploma & Diploma
             </Label>
           </FormGroup>
@@ -62,7 +81,7 @@ class StudentRegistration extends Component {
                </Row>
       <Row className="form-group">
       <Col md={{ size: 4,offset: 8 }}>
-                  <Link to="/student-page">
+                  <Link to={msg}>
                   <Button type="submit" color="primary">
                     <span><i className="fa fa-arrow-right fa-lg m-2"/>Continue</span>
                   </Button>
