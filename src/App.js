@@ -5,6 +5,7 @@ import Main from './Components/Main';
 import {Provider} from 'react-redux';
 import { ConfigureStore } from './redux/ConfigureStore';
 import "./App.css";
+import Dashboard from './Components/Dashboard/dashboard';
 // import { from } from "rxjs";
 const store = ConfigureStore();
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <Provider store={store}>
     <BrowserRouter>
      <div >
-       <Main />
+       <Dashboard/>
+       {/* <Main /> */}
      </div>
     </BrowserRouter>
     </Provider>
