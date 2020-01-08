@@ -53,9 +53,7 @@ style={{
  </NavItem>
  <NavItem eventKey="home" style={{marginTop:'50px',minHeight:'40px'}} className="sub-option">
  <NavIcon>
- <FontAwesome name="home" className="text-dark" style={{ fontSize: '1.45em' }} />
-                            {/* <i className="fa fa-fw fa-home text-dark" style={{ fontSize: '1.75em' }} /> */}
-                        </NavIcon>
+ <FontAwesome name="home" className="text-dark" style={{ fontSize: '1.45em' }} />    </NavIcon>
                        
                         <NavText >
                         <ul className="list-unstyled option">
@@ -93,7 +91,6 @@ style={{
                   <span>Course Management</span>
                     <i class="fa fa-angle-left "></i>
                 </Link>
-                {/* <Collapse toggler="#toggler"> */}
                 <ul className="list-unstyled p-5">
                   <li >
                     <Link to="/time-table">
@@ -109,7 +106,6 @@ style={{
                   </li>
                 </ul>
             
-               {/* </Collapse> */}
               </li>
                         </ul>
                       </NavText>

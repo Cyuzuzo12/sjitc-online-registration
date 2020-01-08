@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
 import SideNav, {  Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+// import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import FontAwesome from "react-fontawesome";
 import {Collapse} from 'reactstrap';
 import { Link } from "react-router-dom";
 import "./dashboard.css";
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
 
+class SideNavigation extends React.Component {
+  state = { 
+    isOpen: false,
+    openRegi: false
+   }
+   toggle = () =>{
+    this.setState({
+      isOpen:!this.state.isOpen});
+  };
+  toggleRegi = () =>{
+    this.setState({
+      openRegi:!this.state.openRegi});
+  };
+  render() { 
+  
+ 
+  // const [isOpen, setIsOpen] = useState(false);
 
-const SideNavigation = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+  // const toggle = () => {setIsOpen(!isOpen)};
     return ( <div>
        
         <SideNav 
 
 style={{
-    background:'#f8d088',
+    background:'#faf607',
     minHeight:'400px',
     maxHeight:'1800px'
     
@@ -27,50 +41,94 @@ style={{
  <SideNav.Toggle />
  <SideNav.Nav 
  style={{
-    background:'#0804c0',
-    minHeight:'608px',
+    background:'#042354',
+    minHeight:'1008px',
     maxHeight:'1800px',
     marginTop: '-15px',
     // borderTop: '1px solid #054eaf',
     borderRight: '1px solid #e6e8e9'
  }}
  >
- <NavItem style={{marginTop:'10px'}}>
- <NavIcon >
-   
-                  <div className=" img-rounded">
-                    <img src={avatar} alt="student-photo" width="60" height="80"/>
-                  </div>
-             
-   </NavIcon>
- <NavText>
-
-                  <Link className="text-dark">
-                    <i class="fa fa-circle text-success" />
-                    cyuzuzonadd@gmail.com
-                  </Link>
- </NavText>
- </NavItem>
- <NavItem eventKey="home" style={{marginTop:'50px',minHeight:'40px'}} className="sub-option">
+ <NavItem  style={{marginTop:'50px'}} >
  <NavIcon>
  <FontAwesome name="home" className="text-warning" style={{ fontSize: '1.45em' }} />
-                            {/* <i className="fa fa-fw fa-home text-dark" style={{ fontSize: '1.75em' }} /> */}
+                         
                         </NavIcon>
-                       
-                        <NavText >
-                        <ul className="list-unstyled option">
-                <li  onClick={toggle}  >
-                  <Link href="/student/registration/">
-                   <span >Student Registration</span>
+                      
+                        <NavText>
+                        <Link to="/home">
+                   DashBoard
+                  </Link>
+                          </NavText></NavItem>
+ <NavItem   >
+<NavIcon></NavIcon>
+                      
+                        <NavText 
+                        
+                        >
+                        <ul className="list-unstyled option ">
+                        <li  onClick={this.toggle}>
+                        <FontAwesome name="users" className="text-warning" style={{ fontSize: '1.35em' }} /> 
+                  <Link >
+                   <span >Students</span>
                       <i className="fa fa-angle-left text-muted"></i>
                    
                   </Link>
-                  <Collapse isOpen={isOpen}>
+                  <Collapse isOpen={this.state.isOpen}>
                   <ul className="list-unstyled " >
                 <li > 
-                      <Link>
+                      <Link to="/all-students">
                         <i class="fa fa-circle-o m-2"></i>
-                        General
+                        All student
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-level-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Level
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-diploma-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Diploma & Diploma
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-diploma-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Short Courses
+                      </Link>
+                    </li>
+                  </ul>
+                  </Collapse>
+                  <ul className="list-unstyled option sub-option">
+                <li  id="#toggler" >
+                <FontAwesome name="edit" className="text-warning" style={{ fontSize: '1.35em' }} /> 
+                 <Link >
+                   <span >Registration</span>
+                      <i className="fa fa-angle-left text-muted"></i>
+                   
+                  </Link>
+                  <Collapse toggler="#toggler">
+                  <ul className="list-unstyled " >
+                
+                    <li > 
+                      <Link to="/advanced-level-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Level
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-diploma-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Diploma & Diploma
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/all-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Short Courses
                       </Link>
                     </li>
                   </ul>
@@ -79,73 +137,16 @@ style={{
       </Collapse>
                 </li>
                 </ul> 
-                        </NavText>
-                        </NavItem>
-                  
-                  <NavItem className="sub-option">
-                  <NavIcon>
-                  <FontAwesome name="laptop" className="text-warning" style={{ fontSize: '1.45em' }} />
-                      </NavIcon>
-                      <NavText>
-                      <ul className="list-unstyled option">
-                        <li  >
-                <Link href="/student/registration/">
-                  <span>Course Management</span>
-                    <i class="fa fa-angle-left "></i>
-                </Link>
-                {/* <Collapse toggler="#toggler"> */}
-                <ul className="list-unstyled p-5">
-                  <li >
-                    <Link to="/time-table">
-                      <i class="fa fa-circle-o m-2"></i>
-                      TimeTable
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/attendance">
-                      <i class="fa fa-circle-o m-2"></i>
-                      Attendance
-                    </Link>
-                  </li>
-                </ul>
-            
-               {/* </Collapse> */}
-              </li>
-                        </ul>
-                      </NavText>
-                  </NavItem> 
-                  
-                    <NavItem className="sub-option">
-                    <NavIcon>
-                    <FontAwesome name="file-text" className="text-warning" style={{ fontSize: '1.45em' }} />
-                        </NavIcon>
-                        <NavText>
-                        <ul className="list-unstyled option">
-                          <li  >
-                  <Link href="/student/registration/">
-                    <span>Marks</span>
-                      <i class="fa fa-angle-left "></i>
-                  </Link>
-                  <Collapse toggler="#toggler">
-                  <ul className="list-unstyled">
-                   
-                    <li>
-                      <Link to="/attendance">
-                        <i class="fa fa-circle-o m-2"></i>
-                        Transcript
-                      </Link>
-                    </li>
-                  </ul>
-                 </Collapse>
-                 
+       
+      {/* </Collapse> */}
                 </li>
-                          </ul>
-                        </NavText>
-                    </NavItem>
-                   
+                </ul>
+                </NavText>
+                </NavItem>
+               
             </SideNav.Nav>
         </SideNav>
     </div> );
 }
- 
+}
 export default SideNavigation;

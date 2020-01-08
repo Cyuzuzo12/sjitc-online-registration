@@ -3,6 +3,9 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import Header from "./header";
 import "./dashboard.css";
 import DashboardHome from "./dashboardHome";
+import AllStudents from "./allStudents";
+import RegisteredStudents from "./registeredStudents";
+import RegisteredDiploma from "./regDiploma";
 
 class Dashboard extends Component {
   state = {
@@ -20,6 +23,9 @@ class Dashboard extends Component {
         <Header/>
         <Switch>
           <Route path="/home" component={() => <DashboardHome />} />
+          <Route path="/all-students" component={() => <AllStudents/>}/>
+          <Route path="/advanced-diploma-registered-students" component={() => <RegisteredDiploma/>}/>
+          <Route path="/advanced-level-registered-students" component={() => <RegisteredStudents/>}/>
           <Redirect to="/home" />
         </Switch>
       
