@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import SideNav, {  Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-// import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import FontAwesome from "react-fontawesome";
 import {Collapse} from 'reactstrap';
 import { Link } from "react-router-dom";
 import "./dashboard.css";
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
+// import avatar from "images/avatar.jpg";
 
 class SideNavigation extends React.Component {
   state = { 
@@ -66,7 +66,7 @@ style={{
                         <NavText 
                         
                         >
-                        <ul className="list-unstyled option ">
+                        <ul className="list-unstyled opts ">
                         <li  onClick={this.toggle}>
                         <FontAwesome name="users" className="text-warning" style={{ fontSize: '1.35em' }} /> 
                   <Link >
@@ -102,7 +102,7 @@ style={{
                     </li>
                   </ul>
                   </Collapse>
-                  <ul className="list-unstyled option sub-option">
+                  <ul className="list-unstyled s sub-s">
                 <li  id="#toggler" >
                 <FontAwesome name="edit" className="text-warning" style={{ fontSize: '1.35em' }} /> 
                  <Link >

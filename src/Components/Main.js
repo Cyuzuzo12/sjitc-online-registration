@@ -9,22 +9,23 @@ import StudentRegistration from "./studentRegistration";
 import SignIn from "./siniIn";
 import AdvancedLevelForm from "./Registration/advancedLevel";
 import TimeTable from "./CourseManagement/timeTable";
-
 class Main extends Component {
   state = {
-    showNav: true
-  };
-  toogleSideNav = action => {
-    this.setState({
-      showNav: action
-    });
-  };
+    showNav:true  
+  }
+
+  toggleSidenav = (action) =>{
+      this.setState({
+          showNav:action
+      })
+  }
   render() {
     return (
       <React.Fragment>
-        {/* <SideNavbar/> */}
         <Header
-         
+        showNav={this.state.showNav}
+        onHideNav={() => this.toggleSidenav(false)}
+        onOpenNav={() => this.toggleSidenav(true)}
         />
         <Switch>
           <Route path="/sign-up" component={() => <SignUp />} />

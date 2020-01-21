@@ -2,32 +2,23 @@ import React,{ useState } from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { Collapse} from 'reactstrap';
-import "./sidenav.css";
+import "./side.css";
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
 
 class SideNavItems extends React.Component {
 
     state = {
-      isOpen: false,
-      isOpen1: false,
-      isOpen2: false
+      isOpen: false
     };
   
   toggle = () =>{
     this.setState({
       isOpen:!this.state.isOpen});
   };
-  toggle1 = () =>{
-    this.setState({
-      isOpen1:!this.state.isOpen1});
-  };
-  toggle2 = () =>{
-    this.setState({
-      isOpen2:!this.state.isOpen2});
-  };
+
   render(){
         return (
-            <section className="navItems">
+            <section className="navItems" >
               <div className="user-panel">
                 <div className="pull-left">
                   <div className=" img-rounded">
@@ -42,25 +33,55 @@ class SideNavItems extends React.Component {
                   </Link>
                 </div>
               </div>
-              <ul className="list-unstyled option">
-                <li onClick={this.toggle1} className="sub-option">
+              <ul className="list-unstyled option bg-light">
+                <li onClick={this.toggle} className="sub-option">
                   <Link href="/student/registration/">
                   <FontAwesome name="home"/> <span>Student Registration</span>
                       <i className="fa fa-angle-left "></i>
                    
                   </Link>
-                  <Collapse isOpen1={this.state.isOpen1}>
+                  <Collapse isOpen={this.state.isOpen}>
                   <ul className="list-unstyled">
-                    <li > 
+                    <li className="fa-options"> 
                       <Link>
                         <i class="fa fa-circle-o m-2"></i>
                         General
                       </Link>
                     </li>
+                    <li className="fa-options"> 
+                      <Link>
+                        <i class="fa fa-circle-o m-2"></i>
+                        Student Info
+                      </Link>
+                    </li>
+                    <li className="fa-options" > 
+                      <Link>
+                        <i class="fa fa-circle-o m-2"></i>
+                        Residance Place
+                      </Link>
+                    </li>
+                    <li className="fa-options" > 
+                      <Link>
+                        <i class="fa fa-circle-o m-2"></i>
+                        Academic Options
+                      </Link>
+                    </li>
+                    <li className="fa-options"> 
+                      <Link>
+                        <i class="fa fa-circle-o m-2"></i>
+                        Secondary Education
+                      </Link>
+                    </li>
+                    <li className="fa-options"> 
+                      <Link>
+                        <i class="fa fa-circle-o m-2"></i>
+                       More information
+                      </Link>
+                    </li>
                   </ul>
                   </Collapse>
                 </li>
-                <li onClick={this.toggle1}  className="sub-option">
+                <li onClick={this.toggle}  className="sub-option">
                   <Link href="/student/registration/">
                     <FontAwesome name="laptop"/> <span>Course Management</span>
                       <i class="fa fa-angle-left "></i>
@@ -101,38 +122,80 @@ class SideNavItems extends React.Component {
                   
                 </li>
               </ul>
-              {/* <div className="option">
-                  <ul> Student Registration
-                   <li >
-                    <Link>
-                    <FontAwesome name="home"/>
-                    Student Details
-                    </Link>
-             
-                </li>
-                   </ul>
-                   <ul>   <FontAwesome name="home"/>Course Management
-                   <li >
-                    <Link>
-                   Timetable
-                    </Link>
-             
-                </li>
-                <li >
-                    <Link>
-                   Attendance
-                    </Link>
-             
-                </li>
-                <li >
-                    <Link>
+              {/* ================= */}
+             {/* <ul className="list-unstyled option ">
+                        <li  onClick={this.toggle}>
+                        <FontAwesome name="users" className="text-warning" style={{ fontSize: '1.35em' }} /> 
+                  <Link >
+                   <span >Students</span>
+                      <i className="fa fa-angle-left text-muted"></i>
+                   
+                  </Link>
+                  <Collapse isOpen={this.state.isOpen}>
+                  <ul className="list-unstyled " >
+                <li > 
+                      <Link to="/all-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        All student
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-level-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Level
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-diploma-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Diploma & Diploma
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-diploma-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Short Courses
+                      </Link>
+                    </li>
+                  </ul>
+                  </Collapse>
+                  </li>
+                  <li>
+                <FontAwesome name="edit" className="text-warning" style={{ fontSize: '1.35em' }} /> 
+                 <Link >
+                   <span >Registration</span>
+                      <i className="fa fa-angle-left text-muted"></i>
+                   
+                  </Link>
+                  <Collapse toggler="#toggler">
+                  <ul className="list-unstyled " >
+                
+                    <li > 
+                      <Link to="/advanced-level-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Level
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/advanced-diploma-registered-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Advanced Diploma & Diploma
+                      </Link>
+                    </li>
+                    <li > 
+                      <Link to="/all-students">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Short Courses
+                      </Link>
+                    </li>
+                  </ul>
                   
-                   TimeTable
-                    </Link>
-             
+       
+      </Collapse>
+       
+     
                 </li>
-                   </ul>
-                  </div> */}
+                </ul> */}
             </section>
           );
     }

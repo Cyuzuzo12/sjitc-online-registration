@@ -6,7 +6,7 @@ class TimeTable extends Component {
         return ( 
             <section>
 <div className="timeTable-div">
-    <p className=" p-3">ADVANCED DIPLOMA & DIPLOMA</p>
+    <p className=" p-3">TIMETABLE FOR ADVANCED LEVEL</p>
     <hr/>
 </div>
             </section>

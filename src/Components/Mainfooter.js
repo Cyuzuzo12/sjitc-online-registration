@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import {  Col, Row } from "reactstrap";
 import {CURRENT_YEAR} from "./help";
 const MainFooter = () => {
     return ( 

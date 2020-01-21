@@ -1,25 +1,434 @@
 import React, { Component } from "react";
-import {  FormGroup, Label, Input,Col,Form,Button ,Row} from 'reactstrap';
-import logo from 'C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/logo.png';
-
-import {Link } from 'react-router-dom';
+import { Col,Button ,Row} from 'reactstrap';
+import FormField from "../formFild";
+import logo from '../../images/logo.png';
+import Address from "../help/address";
+import FilesUpload from "../help/fileUpload";
+import ImageUpload from "../help/uploadImage";
 
 class AdvancedLevelForm extends Component {
-  state = {};
+  state = {
+    first: true,
+    second: false,
+    third: false,
+    fourth: false,
+    dataError:"",
+    formdata:{
+      firstname: {
+        element: "input",
+        value: "",
+        config: {
+          className:"form-control",
+          type: "text",
+          name: "firstname"
+        },
+        validation: {
+          required: true
+        },
+        valid: false,
+        touched: false,
+        validationMessage: ""
+    },
+    lastname: {
+      element: "input",
+      value: "",
+      config: {
+        className:"form-control",
+        type: "text",
+        name: "lastname"
+      },
+      validation: {
+        required: true
+      },
+      valid: false,
+      touched: false,
+      validationMessage: ""
+  },
+  dob: {
+    element: "input",
+    value: "",
+    config: {
+      className:"form-control",
+      type: "date",
+      name: "dob"
+    },
+    validation: {
+      required: true
+    },
+    valid: false,
+    touched: false,
+    validationMessage: ""
+},
+female: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "radio",
+    name: "female"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+male: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "radio",
+    name: "male"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+father: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "father"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+mother: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "mother"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+guardian: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "guardian"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+id: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "id"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+nationality: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "nationality"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+insurance: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "insurance"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+whoPay: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "whoPay"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+sponsor: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    placeHolder:"Specify sponsor name",
+    type: "text",
+    name: "sponsor"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+ngo: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "ngo"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+gov: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "gov"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+specialNeed: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "specialNeed"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+agree: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "agree"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+physicalDisability: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "physicalDisability"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+parent: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "parent"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+otherPerson: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "otherPerson"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+generalCase: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "generalCase"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+  }
+  };
+  onClickFirst =()=>{
+this.setState({
+  first:!this.state.first,
+  second:!this.state.second
+})
+  }
+  onClickSecond =()=>{
+    this.setState({
+      third:!this.state.third,
+      second:!this.state.second
+    })
+      }
+      onClickThird =()=>{
+        this.setState({
+          third:!this.state.third,
+          fourth:!this.state.fourth
+        })
+          }
+  updateForm = element => {
+    const newFormdata = {
+      ...this.state.formdata
+  }
+  const newElement = {
+      ...newFormdata[element.id]
+  }
+  newElement.value = element.event.target.value;
+  if(element.blur){
+      let validData = this.validate(newElement);
+      newElement.valid = validData[0];
+      newElement.validationMessage = validData[1];   
+  }
+  newElement.touched = element.blur;
+  newFormdata[element.id] = newElement;
+  
+  this.setState({
+      formdata:newFormdata
+  })
+  };
+  validate = (element) => {
+    let error = [true,''];
+
+    // if(element.validation.email){
+    //     const valid = /\S+@\S+\.\S+/.test(element.value);
+    //     const message = `${!valid ? 'Must be a valid email':''}`;
+    //     error = !valid ? [valid,message] : error
+    // }
+
+    // if(element.validation.password){
+    //     const valid = element.value.length >= 5;
+    //     const message = `${!valid ? 'Must be greater than 5':''}`;
+    //     error = !valid ? [valid,message] : error
+    // }
+
+    if(element.validation.required){
+        const valid = element.value.trim() !=='';
+        const message = `${!valid ? 'This field is required':''}`;
+        error = !valid ? [valid,message] : error
+    }
+
+    return error;
+}
+submitForm = () => {
+
+}
+  submitButton = () => (
+    this.state.loading ? 
+        'loading...'
+    :
+    <div>
+       
+        <button type="submit" className="bg-primary form-control text-white"> Send </button>
+    </div>
+)
+
+storeFilename = (filename) => {
+  this.updateForm({id:'image'},filename)
+}
+
+showError = () => (
+  this.state.registerError !== '' ? 
+      <div className="error">{this.state.registerError}</div>
+  : ''
+)
   render() {
     return (
       <div>
         {/* <SideNav /> */}
         <section>
-          <div className="container ">
+        <div className="container ">
           <div className="row justify-content-center ">
               <div className="col-md-8 col-sm-12 header-div m-2 ">
               <div className="row pt-5">
           <div className="col-6">
             <ul className="list-unstyled">
-              <li className=" font font-weight-bold">SJITC ADMISSIONOFFICE</li>
+              <li className=" font font-weight-bold">SJITC ADMISSION OFFICE</li>
               <li className=" font font-weight-bold">Application form</li>
-              <li className=" font ">Advanced Level(A2)</li>
+              <li className=" font ">Advanced Level A2</li>
             </ul>
           </div>
           <div className="col-2 " >
@@ -40,28 +449,39 @@ class AdvancedLevelForm extends Component {
             </div>
             <div className="row justify-content-center ">
               <div className="col-md-8 col-sm-12 reg-form">
-                <h5 className="text-center p-5">
+                <form>
+                <div id="stud-name" style={{display:this.state.first ? 'block' : 'none'}}>
+                <h6 className="text-center p-5">
                   <i className="fa fa-edit fa-lg" />
                   Registration details{" "}
-                </h5>
-
-                
-                <form>
+                </h6>
                   <div class="form-row">
                     <div class="col">
-                      <label for="name ">Names </label>
-                      <input type="text" className="form-control  " id="name" />
+                      <label for="name ">First Name </label>
+                      <FormField
+                       id={"firstname"}
+                       formdata={this.state.formdata.firstname}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                     <div class="col">
-                      <label for="name ">Surnames </label>
-                      <input type="text" className="form-control  " id="name" />
+                      <label for="name ">Last Name </label>
+                      <FormField
+                       id={"lastname"}
+                       formdata={this.state.formdata.lastname}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                   </div>
                   <div className="form-row">
                     <div className="col-6 offset-3">
                       {" "}
                       <label for="name ">Date of Birth</label>
-                      <input type="date" className="form-control  " id="name" />
+                      <FormField
+                       id={"dob"}
+                       formdata={this.state.formdata.dob}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                   </div>
                   <div class="form-row">
@@ -70,60 +490,95 @@ class AdvancedLevelForm extends Component {
                     </div>
                     <div class="col-md-10">
                       <div className="form-check ">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="inlineRadioOptions"
-                          id="inlineRadio1"
-                          value="male"
-                        />
-                        <label className="form-check-label" for="inlineRadio1">
+                      <FormField
+                       id={"male"}
+                       formdata={this.state.formdata.male}
+                       change={element => this.updateForm(element)}
+                      />
+                        <label className="form-check-label" for="male">
                           Male
                         </label>
                       </div>
 
                       <div className="form-check ">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="inlineRadioOptions"
-                          id="inlineRadio2"
-                          value="option2"
-                        />
-                        <label className="form-check-label" for="inlineRadio2">
+                      <FormField
+                       id={"female"}
+                       formdata={this.state.formdata.female}
+                       change={element => this.updateForm(element)}
+                      />
+                        <label className="form-check-label" for="female">
                           Female
                         </label>
                       </div>
                     </div>
                   </div>
                   <div className="form-group">
-                    <label for="name ">Father's name & Contact</label>
-                    <input type="text" className="form-control  " id="name" />
+                    <label for="name ">Father's name</label>
+                    <FormField
+                       id={"father"}
+                       formdata={this.state.formdata.father}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div className="form-group">
-                    <label for="name ">Mother'S Name & Contact</label>
-                    <input type="text" className="form-control  " id="name" />
+                    <label for="name ">Mother'S Name </label>
+                    <FormField
+                       id={"mother"}
+                       formdata={this.state.formdata.mother}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div className="form-group">
-                    <label for="name ">Guardian's Name & Contact</label>
-                    <input type="text" className="form-control  " id="name" />
+                    <label for="name ">Guardian's Name </label>
+                    <FormField
+                       id={"guardian"}
+                       formdata={this.state.formdata.guardian}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
+                  <Row className="form-group p-5">
+                    
+      <Col md={{ size: 5,offset: 8 }}>
+                  <Button onClick={this.onClickFirst} color="primary">
+                   <span><i className="fa fa-arrow-right fa-lg m-2"/>Continue</span>
+                  </Button>
+       </Col>
+      </Row>
+                  </div>   
+<div id="residence" style={{display:this.state.second ? 'block' : 'none'}}>
+  
+<h6 className="text-center p-5">
+                  <i className="fa fa-home fa-lg" />
+                  Residence place{" "}
+                </h6>
                   <div className="form-group">
-                    <label for="name ">Residence District</label>
-                    <input type="text" className="form-control  " id="name" />
+                    
+                    <Address />
                   </div>
                   <div class="form-row">
                     <div class="col">
                       <label for="name ">Nationality</label>
-                      <input type="text" className="form-control  " id="name" />
+                      <FormField
+                       id={"nationality"}
+                       formdata={this.state.formdata.nationality}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                     <div class="col">
                       <label for="name ">ID </label>
-                      <input type="text" className="form-control  " id="name" />
+                      <FormField
+                       id={"id"}
+                       formdata={this.state.formdata.id}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                     <div class="col">
                       <label for="name ">Insurance </label>
-                      <input type="text" className="form-control  " id="name" />
+                      <FormField
+                       id={"insurance"}
+                       formdata={this.state.formdata.guardian}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                   </div>
                   <div className="form-row">
@@ -140,16 +595,34 @@ class AdvancedLevelForm extends Component {
                       </select>
                     </div>
                   </div>
-
-                  <div className="row">
+                  <Row className="form-group p-5">
+                  <Col md={{ size: 3,offset: 0 }}>
+                  <Button onClick={this.onClickFirst} color="primary">
+                  <span><i className="fa fa-arrow-left fa-lg m-2"/>Back</span>
+                  </Button>
+       </Col>
+      <Col md={{ size: 3,offset: 5 }}>
+                  <Button onClick={this.onClickSecond} color="primary">
+                   <span><i className="fa fa-arrow-right fa-lg m-2"/>Continue</span>
+                  </Button>
+                  
+       </Col>
+      </Row>
+</div>
+{/* =========================================document================== */}
+               <div id="documents" style={{display:this.state.third ? 'block' : 'none'}}>
+               <h6 className="text-center p-5">
+                  <i className="fa fa-file-text fa-lg" />
+                  Required Documents{" "}
+                </h6>
+               <div className="row">
                     <div className="col">
-                      <h5 className="text-center pt-3">
+                      <h6 className="text-center pt-3">
                         Document to be uploaded by each Candidate
-                      </h5>
+                      </h6>
                       <p className="purple text-center">
                         <em className="purple text-center">
-                          (passport photo, ID card or Passport, Ordinary Level
-                          result slip)
+                          ("A" Level certificate, Passport photo, ID card or Passport for foreigners, Progressive Report from S4 to S6, Bank Slip of registration)
                         </em>
                       </p>
                       <hr/>
@@ -158,76 +631,38 @@ class AdvancedLevelForm extends Component {
                  
                   <div class="form-row p-3">
                     <div class="col">
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          class="custom-file-input"
-                          id="validatedCustomFile"
-                          required
-                        />
-                        <label
-                          class="custom-file-label"
-                          for="validatedCustomFile"
-                        >
-                          Choose file...
-                        </label>
-                      </div>
+                      
+                      <ImageUpload filename={ (filename)=> this.storeFilename(filename) }/>
                     </div>
-                    <div class="col">
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          class="custom-file-input"
-                          id="validatedCustomFile"
-                          required
-                        />
-                        <label
-                          class="custom-file-label"
-                          for="validatedCustomFile"
-                        >
-                          Choose file...
-                        </label>
-                      </div>
-                    </div>
+                   
                   </div>
                   <div class="form-row p-2">
                     <div class="col">
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          class="custom-file-input"
-                          id="validatedCustomFile"
-                          required
-                        />
-                        <label
-                          class="custom-file-label"
-                          for="validatedCustomFile"
-                        >
-                          Choose file...
-                        </label>
-                      </div>
+                    <h6 className="purple">A Level certificate</h6>
+                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
                     </div>
                     <div class="col">
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          class="custom-file-input"
-                          id="validatedCustomFile"
-                          required
-                        />
-                        <label
-                          class="custom-file-label"
-                          for="validatedCustomFile"
-                        >
-                          Choose file...
-                        </label>
-                      </div>
+                    <h6 className="purple">ID card or Passport</h6>
+                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
                     </div>
+                  </div>
+                  <div class="form-row p-2">
+                  <div class="col">
+                    <h6 className="purple">Progressive Reports</h6>
+                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    </div>
+                    <div class="col">
+                    <h6 className="purple">Bank Slip for registration payment</h6>
+                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    </div>
+                   
                   </div>
                   <div className="form-row">
                     <div className="col-7 offset-2">
                       {" "}
-                      <label for="name ">Option to be Admitted</label>
+                      <h6 className="purple">Option to be Admitted</h6>
                       <select class="form-control">
                         <option selected>Choose...</option>
                         <option>Masonery</option>
@@ -237,7 +672,26 @@ class AdvancedLevelForm extends Component {
                       </select>
                     </div>
                   </div>
-                  <h6 className="text-center font-weight-bold pt-3">
+                  <Row className="form-group p-5">
+                  <Col md={{ size: 3,offset: 0 }}>
+                  <Button onClick={this.onClickSecond} color="primary">
+                  <span><i className="fa fa-arrow-left fa-lg m-2"/>Back</span>
+                  </Button>
+       </Col>
+      <Col md={{ size: 3,offset: 5 }}>
+                  <Button onClick={this.onClickThird} color="primary">
+                   <span><i className="fa fa-arrow-right fa-lg m-2"/>Continue</span>
+                  </Button>
+                  
+       </Col>
+      </Row>
+               </div>
+
+
+               {/* =======================================other information=========================== */}
+                 <div id="other-info" style={{display:this.state.fourth? 'block' : 'none'}}>
+                 <h6 className="text-center p-5">
+                  <i className="fa fa-info fa-lg" />
                     PARTICULAR INFORMATION
                   </h6>
                   <hr/>
@@ -247,34 +701,31 @@ class AdvancedLevelForm extends Component {
                       {" "}
                       General Case
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox1"
-                      value="option1"
-                    />
+                    <FormField
+                       id={"generalCase"}
+                       formdata={this.state.formdata.generalCase}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div class="form-check form-check-inline">
                     <label class="form-check-label" for="inlineCheckbox2">
                       Special Need
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox2"
-                      value="option2"
-                    />
+                    <FormField
+                       id={"specialNeed"}
+                       formdata={this.state.formdata.specialNeed}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div class="form-check form-check-inline">
                     <label class="form-check-label" for="inlineCheckbox3">
                       Physical Disability
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox3"
-                      value="option3"
-                    />
+                    <FormField
+                       id={"physicalDisability"}
+                       formdata={this.state.formdata.physicalDisability}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <h6 className="font-weight-bold p-2">
                     SCHOOL FEES : Sponsor:
@@ -283,53 +734,48 @@ class AdvancedLevelForm extends Component {
                     <label class="form-check-label" for="inlineCheckbox1">
                       parents
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox1"
-                      value="option1"
-                    />
+                    <FormField
+                       id={"parent"}
+                       formdata={this.state.formdata.parent}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div class="form-check form-check-inline">
                     <label class="form-check-label" for="inlineCheckbox2">
                       Another person
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox2"
-                      value="option2"
-                    />
+                    <FormField
+                       id={"otherPerson"}
+                       formdata={this.state.formdata.otherPerson}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div class="form-check form-check-inline">
                     <label class="form-check-label" for="inlineCheckbox3">
                       NGO
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox3"
-                      value="option3"
-                    />
+                    <FormField
+                       id={"ngo"}
+                       formdata={this.state.formdata.ngo}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div class="form-check form-check-inline">
                     <label class="form-check-label" for="inlineCheckbox3">
                       GOV FUNDS
                     </label>
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox3"
-                      value="option3"
-                    />
+                    <FormField
+                       id={"gov"}
+                       formdata={this.state.formdata.gov}
+                       change={element => this.updateForm(element)}
+                      />
                   </div>
                   <div class="form-row p-2">
                     <div class="col-md-7">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="specify sponsor name"
-                        id="name"
+                    <FormField
+                       id={"sponsor"}
+                       formdata={this.state.formdata.sponsor}
+                       change={element => this.updateForm(element)}
                       />
                     </div>
                   </div>
@@ -339,33 +785,37 @@ class AdvancedLevelForm extends Component {
                         Name & Contact OF Parent/Guaridian's who will pay for
                         you{" "}
                       </h6>
-                      <input type="text" className="form-control  " id="name" />
+                      <FormField
+                       id={"whoPay"}
+                       formdata={this.state.formdata.whoPay}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                   </div>
                   <h6 className="pt-5">
                     Candidate, agree that information given are true and correct
                   </h6>
                   <div class="form-check form-check-inline">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox3"
-                      value="option3"
-                    />
-                    <label class="form-check-label" for="inlineCheckbox3">
+                  <FormField
+                       id={"agree"}
+                       formdata={this.state.formdata.agree}
+                       change={element => this.updateForm(element)}
+                      />
+                    <label class="form-check-label" >
                       I agree
                     </label>
                   </div>
-                  <Row className="form-group">
-      <Col md={{ size: 4,offset: 8 }}>
-                  <Link to="/student-page">
-                  <Button type="submit" color="primary">
-                   Submit
+                  <Row className="form-group p-5">
+                  <Col md={{ size: 3,offset: 0 }}>
+                  <Button onClick={this.onClickThird} color="primary">
+                  <span><i className="fa fa-arrow-left fa-lg m-2"/>Back</span>
                   </Button>
-                  </Link>
-                  
+       </Col>
+      <Col md={{ size: 3,offset: 5 }}>
+               {this.submitButton()}
        </Col>
       </Row>
+                 </div>
                 </form>
               </div>
             </div>

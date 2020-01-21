@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import SideNav, {  Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import FontAwesome from "react-fontawesome";
-import {Collapse} from 'reactstrap';
 import { Link } from "react-router-dom";
 import "./sidenav.css";
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
@@ -19,7 +18,8 @@ const SideNavigation = (props) => {
 style={{
     background:'#1898f8',
     minHeight:'400px',
-    maxHeight:'1800px'
+    maxHeight:'1800px',
+    display:'none'
     
     
 }}
@@ -39,7 +39,7 @@ style={{
  <NavIcon>
    
                   <div className=" img-rounded">
-                    <img src={avatar} alt="student-photo" width="60" height="80"/>
+                    <img src={avatar} alt="student-pic" width="60" height="80"/>
                   </div>
              
    </NavIcon>
@@ -51,7 +51,7 @@ style={{
                   </Link>
  </NavText>
  </NavItem>
- <NavItem eventKey="home" style={{marginTop:'50px',minHeight:'40px'}} className="sub-option">
+ <NavItem eventKey="home" style={{marginTop:'50px',minHeight:'100px'}} className="sub-option">
  <NavIcon>
  <FontAwesome name="home" className="text-dark" style={{ fontSize: '1.45em' }} />    </NavIcon>
                        
@@ -59,14 +59,14 @@ style={{
                         <ul className="list-unstyled option">
                 <li  onClick={toggle}  >
                   <Link href="/student/registration/">
-                   <span >Student Registration</span>
+                   <span className="text-muted">Student Registration</span>
                       <i className="fa fa-angle-left text-muted"></i>
                    
                   </Link>
-                  <Collapse isOpen={isOpen}>
+                  {/* <Collapse isOpen={isOpen}> */}
                   <ul className="list-unstyled " >
                 <li > 
-                      <Link>
+                      <Link to="/advanced-level-registration-form" className="text-muted">
                         <i class="fa fa-circle-o m-2"></i>
                         General
                       </Link>
@@ -74,13 +74,13 @@ style={{
                   </ul>
                   
        
-      </Collapse>
+      {/* </Collapse> */}
                 </li>
                 </ul> 
                         </NavText>
                         </NavItem>
                   
-                  <NavItem className="sub-option">
+                  <NavItem style={{minHeight:'150px'}} className="sub-option">
                   <NavIcon>
                   <FontAwesome name="laptop" className="text-dark" style={{ fontSize: '1.45em' }} />
                       </NavIcon>
@@ -88,18 +88,18 @@ style={{
                       <ul className="list-unstyled option">
                         <li  >
                 <Link href="/student/registration/">
-                  <span>Course Management</span>
+                  <span className="text-muted">Course Management</span>
                     <i class="fa fa-angle-left "></i>
                 </Link>
-                <ul className="list-unstyled p-5">
+                <ul className="list-unstyled p-2">
                   <li >
-                    <Link to="/time-table">
+                    <Link to="/time-table" className="text-muted">
                       <i class="fa fa-circle-o m-2"></i>
                       TimeTable
                     </Link>
                   </li>
                   <li>
-                    <Link to="/attendance">
+                    <Link to="/attendance" className="text-muted">
                       <i class="fa fa-circle-o m-2"></i>
                       Attendance
                     </Link>
@@ -111,7 +111,7 @@ style={{
                       </NavText>
                   </NavItem> 
                   
-                    <NavItem className="sub-option">
+                    <NavItem style={{minHeight:'100px'}} className="sub-option">
                     <NavIcon>
                     <FontAwesome name="file-text" className="text-dark" style={{ fontSize: '1.45em' }} />
                         </NavIcon>
@@ -119,20 +119,20 @@ style={{
                         <ul className="list-unstyled option">
                           <li  >
                   <Link href="/student/registration/">
-                    <span>Marks</span>
+                    <span className="text-muted">Marks</span>
                       <i class="fa fa-angle-left "></i>
                   </Link>
-                  <Collapse toggler="#toggler">
+                  {/* <Collapse toggler="#toggler"> */}
                   <ul className="list-unstyled">
                    
                     <li>
-                      <Link to="/attendance">
+                      <Link to="/attendance" className="text-muted">
                         <i class="fa fa-circle-o m-2"></i>
                         Transcript
                       </Link>
                     </li>
                   </ul>
-                 </Collapse>
+                 {/* </Collapse> */}
                  
                 </li>
                           </ul>

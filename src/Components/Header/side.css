@@ -1,0 +1,49 @@
+.option {
+  font-weight: 300;
+  font-size: 15px;
+  color: #130e0e !important;
+  margin-top: 150px;
+}
+
+.option a {
+  color: inherit;
+  text-decoration: none;
+}
+.fa-options{
+    margin-left:50px;
+}
+.option span {
+  margin: 15px;
+}
+.sub-option {
+  border-top: 1px solid #e6e0e0;
+}
+.navItems {
+  margin-top: 4px;
+  background: #fff;
+  min-height: 770px;
+  max-height: 3000px;
+  border-top: 1px solid #054eaf;
+}
+.bars {
+  margin-left: 10px;
+}
+.user-panel{
+    position: relative;
+width: 100%;
+/* padding: 10px; */
+}
+.pull-left {
+    float: left!important;
+    margin-top: 10px;
+}
+.img-rounded {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+
+}

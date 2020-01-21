@@ -1,4 +1,4 @@
-import React, { useState,Component } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Progress,Table } from 'reactstrap';
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
 
@@ -39,7 +39,7 @@ const Attendance =()=> {
       <tbody>
         <tr>
           
-          <td scope="row"><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
+          <td ><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
           <td>123456545454</td>
           <td>NS-23456</td>
           <td>Cyuzuzo nadine</td>
@@ -51,7 +51,7 @@ const Attendance =()=> {
         </tr>
         <tr>
           
-          <td scope="row"><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
+          <td ><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
           <td>123456545454</td>
           <td>NS-23456</td>
           <td>Cyuzuzo nadine</td>
@@ -63,7 +63,7 @@ const Attendance =()=> {
         </tr>
         <tr>
           
-          <td scope="row"><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
+          <td ><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
           <td>123456545454</td>
           <td>NS-23456</td>
           <td>Cyuzuzo nadine</td>
@@ -73,7 +73,7 @@ const Attendance =()=> {
         </tr>
         <tr>
           
-          <td scope="row"><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
+          <td ><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
           <td>123456545454</td>
           <td>NS-23456</td>
           <td>Cyuzuzo nadine</td>
@@ -85,7 +85,7 @@ const Attendance =()=> {
         </tr>
         <tr>
           
-          <td scope="row"><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
+          <td ><img src={avatar} alt="student" className="rounded-circle" width="40" height="40"/></td>
           <td>123456545454</td>
           <td>NS-23456</td>
           <td>Cyuzuzo nadine</td>

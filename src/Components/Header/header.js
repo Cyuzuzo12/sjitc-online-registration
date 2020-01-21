@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import {UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
-
+import React from 'react';
+// import {UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
+import logo from '../../images/logo.png';
 import './header.css';
-import SideNav from './sideNavs';
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
-import logo from 'C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/logo.png';
+import SideNav from './sideNav';
+import FontAwesome from 'react-fontawesome';
 
 const Header = (props) =>{
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+ 
         return ( 
          <React.Fragment>
         <SideNav {...props}/>
-        <header className="header">
+        <header className="headers">
         <div className="headerOption">
-       <div className="logo">
+        <div className="bars ">
+        <FontAwesome name="bars"
+            onClick={props.onOpenNav}
+            style={{
+                color:'#dfdfdf',
+                padding:'10px',
+                cursor:'pointer'
+            }}
+        />
+    </div>
+       {/* <div className="logo">
        <img src={logo} alt="logo" />
        </div>
-        <div className=" stud-photo">
+       */}
+        {/* <div className=" stud-photo">
                     <img src={avatar} alt="student-photo" />
                   
-                  </div>
-                         <UncontrolledDropdown >
+                  </div> */}
+                         {/* <UncontrolledDropdown >
               <DropdownToggle nav >
               <span className="text-white">cyuzuzonadd@gmail.com</span>
               </DropdownToggle>
@@ -35,7 +42,7 @@ const Header = (props) =>{
                   Sign Out
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
        </div>
        
        </header>
