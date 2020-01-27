@@ -10,8 +10,11 @@ import SignIn from "./siniIn";
 import AdvancedLevelForm from "./Registration/advancedLevel";
 import TimeTable from "./CourseManagement/timeTable";
 class Main extends Component {
-  state = {
-    showNav:true  
+  constructor(props){
+    super(props);
+    this.state = {
+      showNav:false 
+    }
   }
 
   toggleSidenav = (action) =>{

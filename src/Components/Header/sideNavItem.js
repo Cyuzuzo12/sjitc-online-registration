@@ -18,7 +18,7 @@ class SideNavItems extends React.Component {
 
   render(){
         return (
-            <section className="navItems" >
+            <section className="navItem" >
               <div className="user-panel">
                 <div className="pull-left">
                   <div className=" img-rounded">

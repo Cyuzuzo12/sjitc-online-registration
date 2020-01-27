@@ -490,7 +490,7 @@ showError = () => (
         <section>
         <div className="container ">
           <div className="row justify-content-center ">
-              <div className="col-md-8 col-sm-12 header-div m-2 ">
+              <div className="col-md-10  header-div m-2 ">
               <div className="row pt-5">
           <div className="col-6">
             <ul className="list-unstyled">
@@ -516,7 +516,7 @@ showError = () => (
               </div>
             </div>
             <div className="row justify-content-center ">
-              <div className="col-md-8 col-sm-12 reg-form">
+              <div className="col-md-10 col-sm-12 reg-form">
                 <form>
                 <div id="stud-name" style={{display:this.state.first ? 'block' : 'none'}}>
                 <h6 className="text-center p-5">

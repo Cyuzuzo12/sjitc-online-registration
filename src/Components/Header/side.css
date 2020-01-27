@@ -18,10 +18,10 @@
 .sub-option {
   border-top: 1px solid #e6e0e0;
 }
-.navItems {
+.navItem {
   margin-top: 4px;
   background: #fff;
-  min-height: 770px;
+  min-height: 895px;
   max-height: 3000px;
   border-top: 1px solid #054eaf;
 }

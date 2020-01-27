@@ -44,7 +44,13 @@ class StudentRegistration extends Component {
              </div>
              <div className="row">
              <div className="col " >
-                <p className="text-muted ">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <p className="text-muted ">Welcome to saint joseph intergrated technical college online application form for:Advanced Level A2, Advanced diploma and diploma students. 
+               
+              <ol>
+                <strong> NB: </strong>
+                <li>The email and password used to sign up will remain used until you get approved and get Through your email the confirmation notification with admission letter.</li>
+              
+               <li>Please make sure to attach correct required documents and picture because will be verified by, the office of the registration and it may cause you application to be accepted or rejected.</li></ol> </p>
                </div>
                
              </div>

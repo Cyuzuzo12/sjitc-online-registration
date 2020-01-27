@@ -105,7 +105,7 @@ submitForm = () => {
     :
     <div>
        
-        <button type="submit"> Sign In </button>
+        <Link to="/&nc-student&nc-registration"><button type="submit"> Sign In </button></Link>
     </div>
 )
 showError = () => (
@@ -117,9 +117,11 @@ showError = () => (
     return (
         <div className="row justify-content-center ">
             
-      <div className="col-md-3 logContainer">
+      <div className="col-md-4 logContainer">
       <span className="text-muted "><i className="fa fa-user text-muted "></i>Sign In to continue</span>
-          <form onSubmit={()=>this.submitForm()}>
+          <form 
+          // onSubmit={()=>this.submitForm()}
+          >
           <div className="row">
              <div className="col logo-img" >
                   <img src={logo} alt="logo" className=" img-fluid"  height="90"

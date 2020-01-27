@@ -9,7 +9,7 @@ const MainFooter = () => {
             <div className="row justify-content-center">
           <div className="col  ">
           
-          <p className="text-center">Copyright Reserved by Saint Joseph Integrated Technical College ({CURRENT_YEAR})</p>
+          <p className="text-center">©sjitc({CURRENT_YEAR})|Powered by <a href="https://www.techenfold.com/" className="text-dark">Techenfold ltd</a></p>
      
            
           </div>

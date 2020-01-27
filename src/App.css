@@ -12,7 +12,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a {
+  /* font-family: 'Gayathri', sans-serif; */
+  font-family: 'Courier Prime', monospace;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

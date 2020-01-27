@@ -25,11 +25,44 @@ class SignUp extends Component {
         touched: false,
         validationMessage: ""
       },
+      phone: {
+        element: "input",
+        value: "",
+        config: {
+          placeholder: "Enter phone number",
+          className:"input",
+          type: "text",
+          name: "phone"
+        },
+        validation: {
+          required: true
+        },
+        valid: false,
+        touched: false,
+        validationMessage: ""
+      },
       password: {
         element: "input",
         value: "",
         config: {
           placeholder: "Enter password",
+          className:"input",
+          type: "password",
+          name: "password"
+        },
+        validation: {
+          required: true,
+          password: true
+        },
+        valid: false,
+        touched: false,
+        validationMessage: ""
+      },
+      password1: {
+        element: "input",
+        value: "",
+        config: {
+          placeholder: "Confirm password",
           className:"input",
           type: "password",
           name: "password"
@@ -148,7 +181,7 @@ submitForm = () => {
     :
     <div>
        
-        <button type="submit"> Sign Up </button>
+       <Link to="/&nc-student&nc-registration"><button type="submit"> Sign Up </button></Link>
     </div>
 )
 showError = () => (
@@ -162,7 +195,9 @@ showError = () => (
             
       <div className="col-md-4 logContainer">
       <span className="text-muted "><i className="fa fa-user-plus text-muted "></i>Sign Up to continue</span>
-          <form onSubmit={()=>this.submitForm()}>
+          <form
+          //  onSubmit={()=>this.submitForm()}
+           >
           <div className="row">
              <div className="col logo-img" >
                   <img src={logo} alt="logo" className=" img-fluid"  height="90"
@@ -172,6 +207,7 @@ showError = () => (
                 </div>
              </div>
              <div className="user-type bg-light">
+               <h6>Sign as:</h6>
           <div className="form-check form-check-inline">
 
           <FormField
@@ -181,14 +217,14 @@ showError = () => (
           />
           <label className="form-check-label">Student</label>
           </div>
-          <div className="form-check form-check-inline">
+          {/* <div className="form-check form-check-inline">
            <FormField
             id={"teacher"}
             formdata={this.state.formdata.teacher}
             change={element => this.updateForm(element)}
           />
           <label className="form-check-label">Teacher</label>
-          </div>
+          </div> */}
           <div className=" form-check form-check-inline">
           <FormField
             id={"staff"}
@@ -209,8 +245,8 @@ showError = () => (
            <div className="log-fa">
            <span> <i className="fa fa-envelope fa-lg"/></span>
           <FormField
-            id={"email"}
-            formdata={this.state.formdata.email}
+            id={"phone"}
+            formdata={this.state.formdata.phone}
             change={element => this.updateForm(element)}
           />
            </div>
@@ -225,8 +261,8 @@ showError = () => (
           <div className="log-fa">
            <span> <i className="fa fa-lock fa-lg"/></span>
           <FormField
-            id={"password"}
-            formdata={this.state.formdata.password}
+            id={"password1"}
+            formdata={this.state.formdata.password1}
             change={element => this.updateForm(element)}
           />
           </div>
