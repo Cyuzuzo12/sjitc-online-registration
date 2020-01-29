@@ -29,8 +29,8 @@ class StudentRegistration extends Component {
      
         <section >
           <div className="container ">
-            <div className="row justify-content-center m-4">
-              <div className="col-md-8 col-sm-12 reg-form">
+            <div className="row justify-content-center ">
+              <div className="col-md-11 col-sm-12 reg-form m-4">
                 <h5 className="">
                   Start your application
                 </h5>

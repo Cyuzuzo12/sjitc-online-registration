@@ -1,3 +1,55 @@
+.option {
+    font-weight: 300;
+    font-size: 15px;
+    color: #d4d3d3 !important;
+    margin-top: 1px;
+  }
+  
+  .option a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .fa-options{
+      margin-left:10px;
+  }
+  .option span {
+    margin: 15px;
+  }
+  .sub-option {
+    border-top: 1px solid #979595;
+  }
+  .navItem {
+    margin-top: 9px;
+    background: #042354;
+    min-height: 840px;
+    max-height: 6000px;
+    border-top: 1px solid #faf607;
+  }
+  .fa-bars {
+    margin-left: -200px;
+    color: #042354;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .user-panel{
+      position: relative;
+  width: 100%;
+  /* padding: 10px; */
+  }
+  .pull-left {
+      float: left!important;
+      margin-top: 10px;
+  }
+  .img-rounded {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 50%;
+      overflow: hidden;
+  
+  }
 .containers{
     width: 92%;
     padding-left: 35px;
@@ -16,38 +68,16 @@
     border-radius: 15px 15px 15px 15px;
     height: 30px;
 }
-.opts{
-    font-weight: 300;
-    font-size: 15px;
-    color: #fafafa!important;
-}
-.sub-option{
-border-top: 1px solid #e6e0e0;
-}
-.opts a{
-    color: inherit;
-    text-decoration: none;
-}
-.opts span{
-   
-    margin-right: 20px;
-} 
-.navItems{
-    margin-top: 35px;
-    background:#fff;
-    max-height: 1400px;
-    min-height: 1400px;
-    
-} 
-.user-panel{
+
+
+ .user-panel{
     position: relative;
 width: 100%;
 padding: 10px;
 }
 .pull-left {
     float: left!important;
-}
-.img-rounded {
+}  .img-rounded {
     position: relative;
     width: 60px;
     height: 60px;
@@ -56,17 +86,11 @@ padding: 10px;
     border-radius: 50%;
     overflow: hidden;
 
-}
-.user-panel > .info {
-line-height: 1;
-position: absolute;
-left: 55px;
-padding: 5px 5px 5px 15px;
-}
-.header {
+} 
+.headerDash {
     background: #fff;
     border-bottom: 1px solid #fff;
-    min-height: 50px;
+    /* height: 20px; */
 }
 
 /* .headerOption {
@@ -83,21 +107,21 @@ padding: 5px 5px 5px 15px;
     width:35px;
 }
 .margin{
-    margin-top: 30px;
+    padding-top: 15px;
 }
-.options{
+ .options{
     min-width:15px;
     min-height: 75px;
     max-height: 705px;
     background: #fbfbfb;
-}
-.options span{
+} 
+ .options span{
     font-size: 30px;
     border-left: 1px solid #e6e0e0;
     font-weight: 300;
     padding: 0px 7px 7px 0px;
     margin-left: 10px;
-}
+} 
 .stud-photo img {
     padding-top: 8px;
     width:25px;
@@ -120,7 +144,6 @@ padding: 5px 5px 5px 15px;
     padding: 5px;
     background:#fafafa;
     border-radius: 50px 50px 50px 50px; 
-  /* outline:none */
   }
   .search .fa-search { 
     position: absolute;

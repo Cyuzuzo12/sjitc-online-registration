@@ -10,7 +10,7 @@ const RegisteredDiploma = (props) => {
         <BreadcrumbItem tag="a" href="#">Home</BreadcrumbItem>
         <BreadcrumbItem active tag="span">Advanced Diploma & Diploma</BreadcrumbItem>
       </Breadcrumb> 
-        <div className="containers ">
+        <div className="containers">
         <Form>
       <Row form>
       <Col md={7}>
@@ -26,7 +26,9 @@ const RegisteredDiploma = (props) => {
         </Col>
       </Row>
       </Form>
-        <Table striped style={{background:'#fff'}}>
+       <Row>
+         <Col>
+         <Table  style={{background:'#fff'}}>
       <thead>
         <tr>
           <th>#</th>
@@ -192,6 +194,8 @@ const RegisteredDiploma = (props) => {
         </tr>
       </tbody>
     </Table>
+         </Col>
+       </Row>
         </div>
     </section>
   );

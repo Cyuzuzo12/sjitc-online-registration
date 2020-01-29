@@ -12,7 +12,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a {
+div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a ,form{
   /* font-family: 'Gayathri', sans-serif; */
   font-family: 'Courier Prime', monospace;
 }
@@ -86,8 +86,9 @@ div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a {
   border-top-style: solid;
 }
 section{
-  min-height: 540px;
+  min-height: 830px;
   max-height: 3000px;
+  background: #e7e6e6;
 }
 .timeTable-div{
   min-height: 340px;
@@ -125,4 +126,12 @@ section{
   }
 .user-type{
   padding:30px;
+}
+.required{
+  color: red;
+  font-weight: 900;
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 17px;
+  font-style: normal;
 }

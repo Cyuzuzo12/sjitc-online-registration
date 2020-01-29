@@ -26,7 +26,9 @@ const RegisteredStudents = (props) => {
         </Col>
       </Row>
       </Form>
-        <Table striped style={{background:'#fff'}}>
+       <Row>
+         <Col>
+         <Table striped style={{background:'#fff'}}>
       <thead>
         <tr>
           <th>#</th>
@@ -181,7 +183,8 @@ const RegisteredStudents = (props) => {
           <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
         </tr>
       </tbody>
-    </Table>
+    </Table></Col>
+       </Row>
         </div>
     </section>
   );

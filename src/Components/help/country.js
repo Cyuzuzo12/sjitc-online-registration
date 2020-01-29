@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import { CountryDropdown } from 'react-country-region-selector';
  
  
 class Country extends Component {
   constructor (props) {
     super(props);
-    this.state = { country: '', region: '' };
+    this.state = { country: '' };
   }
  
   selectCountry (val) {
@@ -17,16 +17,13 @@ class Country extends Component {
   }
  
   render () {
-    const { country, region } = this.state;
+    const { country } = this.state;
     return (
       <div>
         <CountryDropdown
           value={country}
           onChange={(val) => this.selectCountry(val)} className="form-control"/>
-        <RegionDropdown
-          country={country}
-          value={region}
-          onChange={(val) => this.selectRegion(val)} className="form-control"/>
+        
       </div>
     );
   }

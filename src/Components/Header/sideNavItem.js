@@ -6,10 +6,12 @@ import "./side.css";
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
 
 class SideNavItems extends React.Component {
-
-    state = {
+  constructor(props){
+    super(props);
+    this.state = {
       isOpen: false
-    };
+    }
+  }
   
   toggle = () =>{
     this.setState({
@@ -18,7 +20,9 @@ class SideNavItems extends React.Component {
 
   render(){
         return (
-            <section className="navItem" >
+            <section className="navItem-stud" 
+            
+            >
               <div className="user-panel">
                 <div className="pull-left">
                   <div className=" img-rounded">
@@ -33,35 +37,35 @@ class SideNavItems extends React.Component {
                   </Link>
                 </div>
               </div>
-              <ul className="list-unstyled option bg-light">
+              <ul className="list-unstyled sideOption bg-light">
                 <li onClick={this.toggle} className="sub-option">
-                  <Link href="/student/registration/">
+                  <Link href="">
                   <FontAwesome name="home"/> <span>Student Registration</span>
                       <i className="fa fa-angle-left "></i>
                    
                   </Link>
                   <Collapse isOpen={this.state.isOpen}>
                   <ul className="list-unstyled">
-                    <li className="fa-options"> 
-                      <Link>
+                    <li className="fa-options" > 
+                      <Link to="/student-page">
                         <i class="fa fa-circle-o m-2"></i>
                         General
                       </Link>
                     </li>
-                    <li className="fa-options"> 
-                      <Link>
+                    <li className="fa-options" > 
+                      <Link onClick={this.props.openFirst}>
                         <i class="fa fa-circle-o m-2"></i>
                         Student Info
                       </Link>
                     </li>
                     <li className="fa-options" > 
-                      <Link>
+                      <Link onClick={this.props.openSecond}>
                         <i class="fa fa-circle-o m-2"></i>
                         Residance Place
                       </Link>
                     </li>
                     <li className="fa-options" > 
-                      <Link>
+                      <Link onClick={this.props.openThird}>
                         <i class="fa fa-circle-o m-2"></i>
                         Academic Options
                       </Link>

@@ -31,7 +31,7 @@ class SideNavigation extends React.Component {
         <SideNav 
 
 style={{
-    background:'#faf607',
+   background:'#faf607', 
     minHeight:'400px',
     maxHeight:'1800px'
     
@@ -77,6 +77,12 @@ style={{
                   <Collapse isOpen={this.state.isOpen}>
                   <ul className="list-unstyled " >
                 <li > 
+                      <Link to="/student">
+                        <i class="fa fa-circle-o m-2"></i>
+                        Student details
+                      </Link>
+                    </li>
+                    <li > 
                       <Link to="/all-students">
                         <i class="fa fa-circle-o m-2"></i>
                         All student

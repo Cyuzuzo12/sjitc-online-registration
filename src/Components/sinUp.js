@@ -191,91 +191,93 @@ showError = () => (
 )
   render() {
     return (
-        <div className="row">
-            
-      <div className="col-md-4 logContainer">
-      <span className="text-muted "><i className="fa fa-user-plus text-muted "></i>Sign Up to continue</span>
-          <form
-          //  onSubmit={()=>this.submitForm()}
-           >
+       <section>
           <div className="row">
-             <div className="col logo-img" >
-                  <img src={logo} alt="logo" className=" img-fluid"  height="90"
-                width="101"/>
-              
-                <p className="logo-text font-weight-bold"> Saint Joseph Integrated Technical College</p>   
-                </div>
-             </div>
-             <div className="user-type bg-light">
-               <h6>Sign as:</h6>
-          <div className="form-check form-check-inline">
-
-          <FormField
-            id={"student"}
-            formdata={this.state.formdata.student}
-            change={element => this.updateForm(element)}
-          />
-          <label className="form-check-label">Student</label>
-          </div>
-          {/* <div className="form-check form-check-inline">
-           <FormField
-            id={"teacher"}
-            formdata={this.state.formdata.teacher}
-            change={element => this.updateForm(element)}
-          />
-          <label className="form-check-label">Teacher</label>
-          </div> */}
-          <div className=" form-check form-check-inline">
-          <FormField
-            id={"staff"}
-            formdata={this.state.formdata.staff}
-            change={element => this.updateForm(element)}
-          />
-          <label className="form-check-label">Staff</label>
-          </div>
-             </div>
-           <div className="log-fa">
-           <span> <i className="fa fa-envelope fa-lg"/></span>
-          <FormField
-            id={"email"}
-            formdata={this.state.formdata.email}
-            change={element => this.updateForm(element)}
-          />
-           </div>
-           <div className="log-fa">
-           <span> <i className="fa fa-envelope fa-lg"/></span>
-          <FormField
-            id={"phone"}
-            formdata={this.state.formdata.phone}
-            change={element => this.updateForm(element)}
-          />
-           </div>
-           <div className="log-fa">
-           <span> <i className="fa fa-lock fa-lg"/></span>
-          <FormField
-            id={"password"}
-            formdata={this.state.formdata.password}
-            change={element => this.updateForm(element)}
-          />
-          </div>
-          <div className="log-fa">
-           <span> <i className="fa fa-lock fa-lg"/></span>
-          <FormField
-            id={"password1"}
-            formdata={this.state.formdata.password1}
-            change={element => this.updateForm(element)}
-          />
-          </div>
-          <div className="log-fa">
-           <span> <i className="fa fa-arrow-right fa-lg text-white"/></span>
-           { this.submitButton() }
+            
+            <div className="col-md-4 logContainer">
+            <span className="text-muted "><i className="fa fa-user-plus text-muted "></i>Sign Up to continue</span>
+                <form
+                //  onSubmit={()=>this.submitForm()}
+                 >
+                <div className="row">
+                   <div className="col logo-img" >
+                        <img src={logo} alt="logo" className=" img-fluid"  height="90"
+                      width="101"/>
                     
-          </div>
-          {this.showError()}
-          <p  className="link"><Link to="/sign-in" className="font-weight-bold ">Already have account</Link></p>
-        </form>
-      </div>
-      </div>
+                      <p className="logo-text font-weight-bold"> Saint Joseph Integrated Technical College</p>   
+                      </div>
+                   </div>
+                   <div className="user-type bg-light">
+                     <h6>Sign as:</h6>
+                <div className="form-check form-check-inline">
+      
+                <FormField
+                  id={"student"}
+                  formdata={this.state.formdata.student}
+                  change={element => this.updateForm(element)}
+                />
+                <label className="form-check-label">Student</label>
+                </div>
+                {/* <div className="form-check form-check-inline">
+                 <FormField
+                  id={"teacher"}
+                  formdata={this.state.formdata.teacher}
+                  change={element => this.updateForm(element)}
+                />
+                <label className="form-check-label">Teacher</label>
+                </div> */}
+                <div className=" form-check form-check-inline">
+                <FormField
+                  id={"staff"}
+                  formdata={this.state.formdata.staff}
+                  change={element => this.updateForm(element)}
+                />
+                <label className="form-check-label">Staff</label>
+                </div>
+                   </div>
+                 <div className="log-fa">
+                 <span> <i className="fa fa-envelope fa-lg"/></span>
+                <FormField
+                  id={"email"}
+                  formdata={this.state.formdata.email}
+                  change={element => this.updateForm(element)}
+                />
+                 </div>
+                 <div className="log-fa">
+                 <span> <i className="fa fa-envelope fa-lg"/></span>
+                <FormField
+                  id={"phone"}
+                  formdata={this.state.formdata.phone}
+                  change={element => this.updateForm(element)}
+                />
+                 </div>
+                 <div className="log-fa">
+                 <span> <i className="fa fa-lock fa-lg"/></span>
+                <FormField
+                  id={"password"}
+                  formdata={this.state.formdata.password}
+                  change={element => this.updateForm(element)}
+                />
+                </div>
+                <div className="log-fa">
+                 <span> <i className="fa fa-lock fa-lg"/></span>
+                <FormField
+                  id={"password1"}
+                  formdata={this.state.formdata.password1}
+                  change={element => this.updateForm(element)}
+                />
+                </div>
+                <div className="log-fa">
+                 <span> <i className="fa fa-arrow-right fa-lg text-white"/></span>
+                 { this.submitButton() }
+                          
+                </div>
+                {this.showError()}
+                <p  className="link"><Link to="/sign-in" className="font-weight-bold ">Already have account</Link></p>
+              </form>
+            </div>
+            </div>
+       </section>
     );
   }
 }

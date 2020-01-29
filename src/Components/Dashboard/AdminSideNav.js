@@ -1,25 +1,25 @@
 import React from 'react';
 import SideNav from 'react-simple-sidenav';
 import FontAwesome from 'react-fontawesome';
-import SideNavItems from './sideNavItem'
+import SideNavItems from './AdminSideNavItem'
 
-const SideNavigation = (props) => {
+const AdminSideNav = (props) => {
     return (
         <div>
             <SideNav
                 showNav={props.showNav}
                 onHideNav={props.onHideNav}
                 navStyle={{
-                    background:'#1898f8',
-                    maxWidth:'260px'
+                    background:'#faf607',
+                    maxWidth:'200px'
                 }}
             >
                  <div className="bars">
-        <FontAwesome name="times"
+        <i className="fa fa-times fa-lg"
         onClick={props.onOpenNav}
-            onClick={props.onHideNav}
+            onClick={props. onHideNav}
             style={{
-                color:'#dfdfdf',
+                color:'#fff',
                 padding:'10px',
                 cursor:'pointer',
                 fontSize:'25px'
@@ -33,4 +33,4 @@ const SideNavigation = (props) => {
     )
 }
 
-export default SideNavigation;
+export default AdminSideNav;

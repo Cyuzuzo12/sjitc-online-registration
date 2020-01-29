@@ -23,7 +23,7 @@ class DashboardHome extends Component {
     const options = { fillColor: "#cf8e34", strokeColor: "#fafafa" };
     return (
       <div>
-        <section>
+        <section >
           <div className="container ">
           <div className="row margin">
           <div className="col-md-6 ">

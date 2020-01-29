@@ -115,49 +115,51 @@ showError = () => (
 )
   render() {
     return (
-        <div className="row justify-content-center ">
+       <section>
+          <div className="row ">
             
-      <div className="col-md-4 logContainer">
-      <span className="text-muted "><i className="fa fa-user text-muted "></i>Sign In to continue</span>
-          <form 
-          // onSubmit={()=>this.submitForm()}
-          >
-          <div className="row">
-             <div className="col logo-img" >
-                  <img src={logo} alt="logo" className=" img-fluid"  height="90"
-                width="101"/>
-              
-                <p className="logo-text font-weight-bold"> Saint Joseph Integrated Technical College</p>   
-                </div>
-             </div>
-            
-           <div className="log-fa">
-           <span> <i className="fa fa-envelope fa-lg"/></span>
-          <FormField
-            id={"email"}
-            formdata={this.state.formdata.email}
-            change={element => this.updateForm(element)}
-          />
-           </div>
-           <div className="log-fa">
-           <span> <i className="fa fa-lock fa-lg"/></span>
-          <FormField
-            id={"password"}
-            formdata={this.state.formdata.password}
-            change={element => this.updateForm(element)}
-          />
-          </div>
-          <div className="log-fa">
-           <span> <i className="fa fa-arrow-right fa-lg text-white"/></span>
-           { this.submitButton() }
+            <div className="col-md-4 logContainer">
+            <span className="text-muted "><i className="fa fa-user text-muted "></i>Sign In to continue</span>
+                <form 
+                // onSubmit={()=>this.submitForm()}
+                >
+                <div className="row">
+                   <div className="col logo-img" >
+                        <img src={logo} alt="logo" className=" img-fluid"  height="90"
+                      width="101"/>
                     
-          </div>
-          {this.showError()}
-          <p className="link"><Link to="/sign-up" className="font-weight-bold ">Forgot password?</Link></p>
-          <p  className="link"><Link to="/sign-up " className="font-weight-bold ">New Applicant</Link></p>
-        </form>
-      </div>
-      </div>
+                      <p className="logo-text font-weight-bold"> Saint Joseph Integrated Technical College</p>   
+                      </div>
+                   </div>
+                  
+                 <div className="log-fa">
+                 <span> <i className="fa fa-envelope fa-lg"/></span>
+                <FormField
+                  id={"email"}
+                  formdata={this.state.formdata.email}
+                  change={element => this.updateForm(element)}
+                />
+                 </div>
+                 <div className="log-fa">
+                 <span> <i className="fa fa-lock fa-lg"/></span>
+                <FormField
+                  id={"password"}
+                  formdata={this.state.formdata.password}
+                  change={element => this.updateForm(element)}
+                />
+                </div>
+                <div className="log-fa">
+                 <span> <i className="fa fa-arrow-right fa-lg text-white"/></span>
+                 { this.submitButton() }
+                          
+                </div>
+                {this.showError()}
+                <p className="link"><Link to="/sign-up" className="font-weight-bold ">Forgot password?</Link></p>
+                <p  className="link"><Link to="/sign-up " className="font-weight-bold ">New Applicant</Link></p>
+              </form>
+            </div>
+            </div>
+       </section>
     );
   }
 }

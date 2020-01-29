@@ -5,6 +5,7 @@ import logo from '../../images/logo.png';
 import Address from "../help/address";
 import FilesUpload from "../help/fileUpload";
 import ImageUpload from "../help/uploadImage";
+import Country from "../help/country";
 
 class AdvancedDiplomaForm extends Component {
   state = {
@@ -316,6 +317,21 @@ otherPerson: {
   touched: false,
   validationMessage: ""
 },
+farg: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-check-input",
+    type: "checkbox",
+    name: "farg"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
 partTime: {
   element: "input",
   value: "",
@@ -366,7 +382,7 @@ department: {
   value: "",
   config: {
     className:"form-control",
-    placeHolder:"Specify sponsor contact",
+    placeHolder:"Specify department",
     type: "text",
     name: "department"
   },
@@ -626,11 +642,7 @@ showError = () => (
                   <div class="form-row">
                     <div class="col">
                       <label for="name ">Nationality</label>
-                      <FormField
-                       id={"nationality"}
-                       formdata={this.state.formdata.nationality}
-                       change={element => this.updateForm(element)}
-                      />
+                      <Country/>
                     </div>
                     <div class="col">
                       <label for="name ">ID </label>
@@ -644,7 +656,7 @@ showError = () => (
                       <label for="name ">Insurance </label>
                       <FormField
                        id={"insurance"}
-                       formdata={this.state.formdata.guardian}
+                       formdata={this.state.formdata.insurance}
                        change={element => this.updateForm(element)}
                       />
                     </div>
@@ -684,10 +696,7 @@ showError = () => (
                   <i className="fa fa-home fa-lg" />
                   Choose academic options
                 </h6>
-                  <div className="form-group">
-                    
-                    <Address />
-                  </div>
+               
                   <div className="form-group">
                   <div class="col">
                       <label for="name ">Previous Institution </label>
@@ -983,6 +992,16 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="inlineCheckbox3">
+                      FARG
+                    </label>
+                    <FormField
+                       id={"farg"}
+                       formdata={this.state.formdata.farg}
+                       change={element => this.updateForm(element)}
+                      />
+                  </div>
                   <div class="form-row p-2">
                     <div class="col-md-7">
                     <FormField
@@ -992,18 +1011,7 @@ showError = () => (
                       />
                     </div>
                   </div>
-                  <div class="form-row p-2">
-                    <div class="col-md-7">
-                      <h6>
-                        Pin code for FARG STUDENTS
-                      </h6>
-                      <FormField
-                       id={"FARGpinCode"}
-                       formdata={this.state.formdata.FARGpinCode}
-                       change={element => this.updateForm(element)}
-                      />
-                    </div>
-                  </div>
+                 
                   <h6 className="pt-5">
                     Candidate, agree that information given are true and correct
                   </h6>

@@ -1,27 +1,27 @@
-.option {
+.sideOption {
   font-weight: 300;
   font-size: 15px;
   color: #130e0e !important;
   margin-top: 150px;
 }
 
-.option a {
+.sideOption a {
   color: inherit;
   text-decoration: none;
 }
 .fa-options{
     margin-left:50px;
 }
-.option span {
+.sideOption span {
   margin: 15px;
 }
 .sub-option {
   border-top: 1px solid #e6e0e0;
 }
-.navItem {
+.navItem-stud {
   margin-top: 4px;
   background: #fff;
-  min-height: 895px;
+  min-height: 900px;
   max-height: 3000px;
   border-top: 1px solid #054eaf;
 }

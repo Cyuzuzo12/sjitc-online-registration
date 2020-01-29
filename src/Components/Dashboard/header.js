@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import {UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import "./dashboard.css";
-import SideNavigation  from './sidnav';
+import SideNavigation  from './AdminSideNav';
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
-import logo from 'C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/logo.png';
+import FontAwesome from 'react-fontawesome';
 
 const DashHeader = (props) =>{
   const [isOpen, setIsOpen] = useState(false);
@@ -12,24 +10,28 @@ const DashHeader = (props) =>{
   const toggle = () => setIsOpen(!isOpen);
         return ( 
          <React.Fragment>
-        <SideNavigation  />
-        <header className="header">
-        {/* <div className="headerOption"> */}
+        <SideNavigation  {...props}/>
+        <header className="headerDash">
       <div className="container">
+     
       <div className="row">
-        <div className="col-4">
+        <div> <i className="fa fa-bars fa-lg"
+            onClick={props.onOpenNav}
+           
+        /></div>
+        <div className="col-6">
         <span className="text-muted"><i className="fa fa-graduation-cap fa-lg m-2 text-muted"/>Welcome To Sjitc School Management System</span>
         </div>
-        <div className="col-8">
+        <div className="col-6">
         <form>
        <div className="form-row">
-       <div className="col-6">
+       <div className="col-8">
                       <div className="search">
   <span> <i className="fa fa-search"/></span>
   <input placeholder="Search Here..." className="form-control"/>
 </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-4">
                     <div className=" stud-photo">
                     <img src={avatar} alt="student-photo" />
                     {/* <Link>Admin</Link> */}
@@ -51,7 +53,6 @@ const DashHeader = (props) =>{
       </div>
       </div>
        
-       {/* </div> */}
        
        </header>
       
