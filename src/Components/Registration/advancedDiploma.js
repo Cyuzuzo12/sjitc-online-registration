@@ -25,7 +25,8 @@ class AdvancedDiplomaForm extends Component {
           name: "firstname"
         },
         validation: {
-          required: true
+          required: true,
+          name:true
         },
         valid: false,
         touched: false,
@@ -40,7 +41,8 @@ class AdvancedDiplomaForm extends Component {
         name: "lastname"
       },
       validation: {
-        required: true
+        required: true,
+        name:true
       },
       valid: false,
       touched: false,
@@ -100,7 +102,8 @@ father: {
     name: "father"
   },
   validation: {
-    required: true
+    required: true,
+    name:true
   },
   valid: false,
   touched: false,
@@ -115,7 +118,8 @@ mother: {
     name: "mother"
   },
   validation: {
-    required: true
+    required: true,
+    name:true
   },
   valid: false,
   touched: false,
@@ -130,7 +134,8 @@ guardian: {
     name: "guardian"
   },
   validation: {
-    required: true
+    required: true,
+    name:true
   },
   valid: false,
   touched: false,
@@ -145,7 +150,8 @@ id: {
     name: "id"
   },
   validation: {
-    required: true
+    required: true,
+    id:true
   },
   valid: false,
   touched: false,
@@ -377,14 +383,14 @@ generalCase: {
   touched: false,
   validationMessage: ""
 },
-department: {
+subject: {
   element: "input",
   value: "",
   config: {
     className:"form-control",
-    placeHolder:"Specify department",
+    placeHolder:"Specify subject",
     type: "text",
-    name: "department"
+    name: "subject"
   },
   validation: {
     required: true
@@ -468,10 +474,19 @@ this.setState({
     //     const message = `${!valid ? 'Must be greater than 5':''}`;
     //     error = !valid ? [valid,message] : error
     // }
-
+    if(element.validation.id){
+        const valid = !isNaN(element.value)&& element.value.length >= 16;
+        const message = `${!valid ? 'must be 16 digits or greater   ':''}`;
+        error = !valid ? [valid,message] : error
+    }
+if(element.validation.name){
+        const valid = element.value.length >= 3;
+        const message = `${!valid ? 'must be atleast 3 letters':''}`;
+        error = !valid ? [valid,message] : error
+    }
     if(element.validation.required){
         const valid = element.value.trim() !=='';
-        const message = `${!valid ? 'This field is required':''}`;
+        const message = `${!valid ? 'this field is required *':''}`;
         error = !valid ? [valid,message] : error
     }
 
@@ -533,7 +548,7 @@ showError = () => (
             </div>
             <div className="row justify-content-center ">
               <div className="col-md-10 col-sm-12 reg-form">
-                <form>
+                <form onSubmit={()=>this.submitForm()}>
                 <div id="stud-name" style={{display:this.state.first ? 'block' : 'none'}}>
                 <h6 className="text-center p-5">
                   <i className="fa fa-edit fa-lg" />
@@ -645,7 +660,7 @@ showError = () => (
                       <Country/>
                     </div>
                     <div class="col">
-                      <label for="name ">ID </label>
+                      <label for="name ">National ID/Passport</label>
                       <FormField
                        id={"id"}
                        formdata={this.state.formdata.id}
@@ -697,7 +712,7 @@ showError = () => (
                   Choose academic options
                 </h6>
                
-                  <div className="form-group">
+                  <div className="form-row form-group">
                   <div class="col">
                       <label for="name ">Previous Institution </label>
                       <FormField
@@ -706,17 +721,36 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                     </div>
-                  </div>
-                  <div class="form-row">
                     <div class="col">
-                      <label for="name ">Department </label>
+                      <label for="name ">Subject </label>
                       <FormField
-                       id={"department"}
-                       formdata={this.state.formdata.department}
+                       id={"subject"}
+                       formdata={this.state.formdata.subject}
                        change={element => this.updateForm(element)}
                       />
                     </div>
-                   
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <label for="name ">Year of Completion(A Level)</label>
+                      <FormField
+                       id={"subject"}
+                       formdata={this.state.formdata.subject}
+                       change={element => this.updateForm(element)}
+                      />
+                    </div>
+                  
+                    <div className="col">
+                      {" "}
+                      <label>Option to be Admitted</label>
+                      <select class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Masonery</option>
+                        <option>Computer Application</option>
+                        <option>surveying</option>
+                        <option>Road Contruction</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="form-row mt-3">
                   <div className="col-12">
@@ -881,19 +915,7 @@ showError = () => (
                     </div>
                    
                   </div>
-                  <div className="form-row">
-                    <div className="col-7 offset-2">
-                      {" "}
-                      <h6 className="purple">Option to be Admitted</h6>
-                      <select class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Masonery</option>
-                        <option>Computer Application</option>
-                        <option>surveying</option>
-                        <option>Road Contruction</option>
-                      </select>
-                    </div>
-                  </div>
+                 
                   <Row className="form-group p-5">
                   <Col md={{ size: 3,offset: 0 }}>
                   <Button onClick={this.onClickThird} color="primary">

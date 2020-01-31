@@ -42,13 +42,13 @@ class AdminSideNavItem extends React.Component {
                   <ul className="list-unstyled" >
                   <li className="fa-options"> 
                       <Link  to="/home">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Admin
                       </Link>
                     </li>
                   <li className="fa-options"> 
                       <Link to="student">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                       Student
                       </Link>
                     </li>
@@ -66,31 +66,31 @@ class AdminSideNavItem extends React.Component {
                   <ul className="list-unstyled" >
                   <li className="fa-options"> 
                       <Link to="/student-details">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Student details
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/admin-form">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                        Admin Form
                       </Link>
                     </li>
                   <li className="fa-options"> 
                       <Link to="/advanced-level-registered-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                        Advanced Level 
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/advanced-diploma-registered-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Advanced Diploma
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/all-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Short Courses
                       </Link>
                     </li>
@@ -108,25 +108,25 @@ class AdminSideNavItem extends React.Component {
                   <ul className="list-unstyled" >
                   <li className="fa-options"> 
                       <Link to="/student">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Student details
                       </Link>
                     </li>
                   <li className="fa-options"> 
                       <Link to="/advanced-level-registered-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         All Advanced Level Student
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/advanced-diploma-registered-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Advanced Diploma & Diploma
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/all-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Short Courses
                       </Link>
                     </li>
@@ -144,25 +144,25 @@ class AdminSideNavItem extends React.Component {
                   <ul className="list-unstyled">
                   <li className="fa-options"> 
                       <Link to="/student">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Student details
                       </Link>
                     </li>
                   <li className="fa-options"> 
                       <Link to="/advanced-level-registered-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         All Advanced Level Student
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/advanced-diploma-registered-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Advanced Diploma & Diploma
                       </Link>
                     </li>
                     <li className="fa-options"> 
                       <Link to="/all-students">
-                        <i class="fa fa-circle-o m-2"></i>
+                        <i className="fa fa-circle-o m-2"></i>
                         Short Courses
                       </Link>
                     </li>

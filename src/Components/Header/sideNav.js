@@ -16,8 +16,7 @@ const SideNavigation = (props) => {
             >
                  <div className="bars">
         <FontAwesome name="times"
-        onClick={props.onOpenNav}
-            onClick={props.onHideNav}
+        onClick={props.onHideNav}
             style={{
                 color:'#dfdfdf',
                 padding:'10px',

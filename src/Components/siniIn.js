@@ -66,13 +66,18 @@ class SignIn extends Component {
       newElement.valid = validData[0];
       newElement.validationMessage = validData[1];   
   }
-  newElement.touched = element.blur;
-  newFormdata[element.id] = newElement;
-  
-  this.setState({
-      formdata:newFormdata
-  })
-  };
+  if(element.blur){
+    let validData = this.validate(newElement);
+    newElement.valid = validData[0];
+    newElement.validationMessage = validData[1];   
+}
+newElement.touched = element.blur;
+newFormdata[element.id] = newElement;
+
+this.setState({
+    formdata:newFormdata
+})
+}
   validate = (element) => {
     let error = [true,''];
 
@@ -96,8 +101,26 @@ class SignIn extends Component {
 
     return error;
 }
-submitForm = () => {
+submitForm = (event,type) => {
+  event.preventDefault()
+  if(type !== null){
 
+    let dataToSubmit = {};
+    // let formIsValid = true;
+    for(let key in this.state.formdata){
+dataToSubmit[key]=this.state.formdata.value;
+    }
+//     for(let key in this.state.formdata){
+//       formIsValid = this.state.formdata[key].valid && formIsValid;
+//   }
+//   if(formIsValid){
+//     this.setState({
+//         loading:true,
+//         registerError:''
+//     })
+   console.log(dataToSubmit)
+  // }
+} 
 }
   submitButton = () => (
     this.state.loading ? 
@@ -105,7 +128,7 @@ submitForm = () => {
     :
     <div>
        
-        <Link to="/&nc-student&nc-registration"><button type="submit"> Sign In </button></Link>
+        <button  onClick={(event)=>this.submitForm(event,true)}> Sign In </button>
     </div>
 )
 showError = () => (
@@ -121,7 +144,7 @@ showError = () => (
             <div className="col-md-4 logContainer">
             <span className="text-muted "><i className="fa fa-user text-muted "></i>Sign In to continue</span>
                 <form 
-                // onSubmit={()=>this.submitForm()}
+                onSubmit={(event)=>this.submitForm(event,null)}
                 >
                 <div className="row">
                    <div className="col logo-img" >

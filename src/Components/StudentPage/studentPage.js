@@ -1,12 +1,7 @@
-import React, { Component } from "react";
-import { Col,Button ,Row} from 'reactstrap';
-import FormField from "../formFild";
+import React from "react";
 import logo from '../../images/logo.png';
-import Address from "../help/address";
-import FilesUpload from "../help/fileUpload";
-import ImageUpload from "../help/uploadImage";
-import Country from "../help/country";
-
+// import avatar from '../../images/avatar.jpg';
+import UpdateProfie from "../help/updateProfile";
 const StudentPage =(props)=>{
  
     return (
@@ -44,18 +39,26 @@ const StudentPage =(props)=>{
               <div className="col-md-10 col-sm-12 reg-form">
                 <form>
                 <div id="stud-name" style={{display:props.first ? 'block' : 'none'}}>
-                <h6 className="text-center p-5">
+               
+               <div className="row ">
+               <div className="col-7 "> <h6 className="p-5">
                   <i className="fa fa-edit fa-lg" />
                   Student Details{" "}
-                </h6>
-                  <div class="form-row form-group">
-                    <div class="col">
+                </h6></div>
+               <div className="col-4 offset-1 p-3">
+                  {/* <img src={avatar} alt="studPhoto"/> */}
+                  <UpdateProfie/>
+                </div>
+               </div>
+                  <div className="form-row form-group">
+                    <div className="col">
                       <h6 className="font-weight-bold">First Name <em className="required">*</em></h6>
                       <p>Cyuzuzo</p>
                     </div>
+                   
                     </div>
-                    <div class="form-row form-group">
-                    <div class="col">
+                    <div className="form-row form-group">
+                    <div className="col">
                       <h6 className="font-weight-bold">Last Name <em className="required">*</em></h6>
                       <p>Nadine</p>
                     </div>
@@ -67,8 +70,8 @@ const StudentPage =(props)=>{
                       <p>09/11/2009</p>
                     </div>
                   </div>
-                  <div class="form-row form-group">
-                    <div class="col">
+                  <div className="form-row form-group">
+                    <div className="col">
                       <h6 className="font-weight-bold">Gender <em className="required">*</em></h6>
                       <p >Female</p>
                     </div>

@@ -43,3 +43,10 @@
     color: #fff;
     background: #1898f8;
 }
+
+.labelError {
+    color:#ee724c;
+    font-weight: 500;
+    margin-top: 5px;
+    padding:5px;
+}

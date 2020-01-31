@@ -1,6 +1,6 @@
 import React from 'react';
 // import {UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
-import logo from '../../images/logo.png';
+// import logo from '../../images/logo.png';
 import './header.css';
 import SideNav from './sideNav';
 import FontAwesome from 'react-fontawesome';
@@ -13,13 +13,8 @@ const Header = (props) =>{
         <header className="headers">
         <div className="headerOption">
         <div className="bars ">
-        <FontAwesome name="bars"
+        <i className="fa fa-bars fa-lg"
             onClick={props.onOpenNav}
-            style={{
-                color:'#dfdfdf',
-                padding:'10px',
-                cursor:'pointer'
-            }}
         />
     </div>
        {/* <div className="logo">
