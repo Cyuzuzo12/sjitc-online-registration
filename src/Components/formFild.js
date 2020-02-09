@@ -17,7 +17,7 @@ const FormFields = ({ formdata, change, id }) => {
 }
   let formtemplate = null;
   switch (formdata.element) {
-    case "input":
+    case('input'):
       formtemplate = (
         <div>
           <input
@@ -31,24 +31,23 @@ const FormFields = ({ formdata, change, id }) => {
       );
 
       break;
-      case "label":
-        formtemplate = (
-          <div>
-            <label
-            {...formdata.config}
-            >{formdata.value}</label>
-          </div>
-        );
-        break;
-    case "button":
+      case('select'):
       formtemplate = (
-        <div>
-          
-          <button
-          {...formdata.config}
-          >{formdata.value}</button>
-        </div>
-      );
+          <div>
+              <select
+                  value={formdata.value}
+                  name={formdata.config.name}
+                  class={formdata.config.className}
+                  onBlur={(event) => change({event,id,blur:true})}
+                  onChange={(event) => change({event,id,blur:false})}
+              >
+                  { formdata.config.options.map((item,i)=>(
+                      <option key={i} value={item.name}>{item.name}</option>
+                  ))}
+
+              </select>
+          </div>
+      )
       break;
       
     default:

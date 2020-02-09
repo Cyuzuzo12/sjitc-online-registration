@@ -9,9 +9,7 @@
 }
 .fa-bars {
     margin-left: -200px;
-    color: #dfdfdf;
-    padding: 10px;
-    cursor: pointer;
+    
   }
 .logo {
     flex-grow: 1;

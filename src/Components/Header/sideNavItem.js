@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Collapse} from 'reactstrap';
 import "./side.css";
 import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
-
+import Auth from '../Auth';
 class SideNavItems extends React.Component {
   constructor(props){
     super(props);
@@ -28,6 +28,9 @@ class SideNavItems extends React.Component {
     this.setState({
       isOpen:!this.state.isOpen});
   };
+  logout = ()=>{
+    Auth.signout();
+    }
 
   render(){
         return (
@@ -50,11 +53,10 @@ class SideNavItems extends React.Component {
               </div>
               <ul className="list-unstyled sideOption bg-light">
                 <li onClick={this.toggle} className="sub-option">
-                  <Link to="">
-                  <FontAwesome name="home"/> <span>Student Registration</span>
+                  
+                  <FontAwesome name="home"/> <span style={{cursor:'pointer'}}>Student Registration</span>
                       <i className="fa fa-angle-left "></i>
                    
-                  </Link>
                   <Collapse isOpen={this.state.isOpen}>
                   <ul className="list-unstyled">
                     <li className="fa-options" > 
@@ -64,13 +66,13 @@ class SideNavItems extends React.Component {
                       </Link>
                     </li>
                     <li className="fa-options" > 
-                      <Link to="" onClick={this.props.openFirst}>
+                      <Link to="#" onClick={this.props.openFirst}>
                         <i className="fa fa-circle-o m-2"></i>
                         Student Info
                       </Link>
                     </li>
                     <li className="fa-options" > 
-                      <Link to="" onClick={this.props.openSecond}>
+                      <Link to="#" onClick={this.props.openSecond}>
                         <i className="fa fa-circle-o m-2"></i>
                         Residance Place
                       </Link>
@@ -97,13 +99,13 @@ class SideNavItems extends React.Component {
                   </Collapse>
                 </li>
                 <li  className="sub-option" onClick={this.openCourse}>
-                  <Link to="">
-                    <FontAwesome name="laptop"/> <span>Course Management</span>
+                 
+                    <FontAwesome name="laptop"/> <span style={{cursor:'pointer'}}>Course Management</span>
                       <i className="fa fa-angle-left "></i>
-                  </Link>
+                 
                   <ul className="list-unstyled " style={{display:this.state.course ? 'block':'none'}}>
                     <li>
-                    <Link to="">
+                    <Link to="/">
                         <i className="fa fa-circle-o m-2"></i>
                         TimeTable
                       </Link>
@@ -118,10 +120,10 @@ class SideNavItems extends React.Component {
                  
                 </li>
                 <li onClick={this.openMark}  className="sub-option">
-                  <Link to="/student/registration/">
-                  <FontAwesome name="file-text"/> <span>Marks</span>
+                  
+                  <FontAwesome name="file-text"/> <span style={{cursor:'pointer'}}>Marks</span>
                       <i className="fa fa-angle-left "></i>
-                  </Link>
+                 
                     <ul className="list-unstyled" style={{display:this.state.mark ? 'block':'none'}}>
                     <li>
                     <Link to="">
@@ -132,6 +134,7 @@ class SideNavItems extends React.Component {
                   </ul>
                   
                 </li>
+                <li onClick={this.logout} style={{cursor:'pointer'}}>logout</li>
               </ul>
             
             </section>

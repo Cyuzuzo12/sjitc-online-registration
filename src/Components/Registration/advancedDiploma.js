@@ -6,7 +6,8 @@ import Address from "../help/address";
 import FilesUpload from "../help/fileUpload";
 import ImageUpload from "../help/uploadImage";
 import Country from "../help/country";
-
+import Province from "../help/province";
+import {diplomaDep} from "../help/data";
 class AdvancedDiplomaForm extends Component {
   state = {
     first: true,
@@ -16,6 +17,7 @@ class AdvancedDiplomaForm extends Component {
     fifth:false,
     dataError:"",
     formdata:{
+      
       firstname: {
         element: "input",
         value: "",
@@ -62,14 +64,18 @@ class AdvancedDiplomaForm extends Component {
     valid: false,
     touched: false,
     validationMessage: ""
-},
-female: {
-  element: "input",
+},department: {
+  element: "select",
   value: "",
   config: {
-    className:"form-check-input",
-    type: "radio",
-    name: "female"
+    className:"form-control",
+    options:[  { id: 1, name:'High Way' },
+        { id: 2, name:'Building Contruction' },
+        { id: 3, name: 'Land Surveying' },
+        { id: 4, name: 'Information Technology' }
+  ],
+    // type: "",
+    name: "department"
   },
   validation: {
     required: true
@@ -78,16 +84,55 @@ female: {
   touched: false,
   validationMessage: ""
 },
-male: {
-  element: "input",
+ubudehe: {
+  element: "select",
   value: "",
   config: {
-    className:"form-check-input",
-    type: "radio",
-    name: "male"
+    className:"form-control",
+    options:[  { id: 1, name:'icyiciro 1' },
+        { id: 2, name:'icyiciro 2' },
+        { id: 3, name:'icyiciro 3' },
+        { id: 4, name:'icyiciro 4' },
+        { id: 5, name:'icyiciro 5' },
+  ],
+    // type: "",
+    name: "ubudehe"
   },
   validation: {
     required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+gender: {
+  element: "select",
+  value: "",
+  config: {
+    className:"form-control",
+    options:[ { id: 1, name: 'Female' },
+    { id:2, name: 'Male' }
+  ],
+    // type: "",
+    name: "gender"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+completionYear: {
+  element: "input",
+  value: "",
+  config: {
+    className:"form-control",
+    type: "text",
+    name: "completion"
+  },
+  validation: {
+    name:true
   },
   valid: false,
   touched: false,
@@ -102,7 +147,6 @@ father: {
     name: "father"
   },
   validation: {
-    required: true,
     name:true
   },
   valid: false,
@@ -118,13 +162,13 @@ mother: {
     name: "mother"
   },
   validation: {
-    required: true,
     name:true
   },
   valid: false,
   touched: false,
   validationMessage: ""
 },
+
 guardian: {
   element: "input",
   value: "",
@@ -134,14 +178,13 @@ guardian: {
     name: "guardian"
   },
   validation: {
-    required: true,
     name:true
   },
   valid: false,
   touched: false,
   validationMessage: ""
 },
-id: {
+nationalID: {
   element: "input",
   value: "",
   config: {
@@ -152,21 +195,6 @@ id: {
   validation: {
     required: true,
     id:true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-nationality: {
-  element: "input",
-  value: "",
-  config: {
-    className:"form-control",
-    type: "text",
-    name: "nationality"
-  },
-  validation: {
-    required: true
   },
   valid: false,
   touched: false,
@@ -187,27 +215,11 @@ insurance: {
   touched: false,
   validationMessage: ""
 },
-FARGpinCode: {
-  element: "input",
-  value: "",
-  config: {
-    className:"form-control",
-    type: "text",
-    name: "FARGpinCode"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
 sponsor: {
   element: "input",
   value: "",
   config: {
     className:"form-control",
-    placeHolder:"Specify sponsor contact",
     type: "text",
     name: "sponsor"
   },
@@ -220,7 +232,7 @@ sponsor: {
 },
 ngo: {
   element: "input",
-  value: "",
+  value: "NGO",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -235,7 +247,7 @@ ngo: {
 },
 gov: {
   element: "input",
-  value: "",
+  value: "GOV",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -250,7 +262,7 @@ gov: {
 },
 specialNeed: {
   element: "input",
-  value: "",
+  value: "Special Need",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -265,7 +277,7 @@ specialNeed: {
 },
 agree: {
   element: "input",
-  value: "",
+  value: "agree",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -280,7 +292,7 @@ agree: {
 },
 physicalDisability: {
   element: "input",
-  value: "",
+  value: "Physical Disability",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -295,7 +307,7 @@ physicalDisability: {
 },
 parent: {
   element: "input",
-  value: "",
+  value: "Parent",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -310,7 +322,7 @@ parent: {
 },
 otherPerson: {
   element: "input",
-  value: "",
+  value: "other person",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -325,7 +337,7 @@ otherPerson: {
 },
 farg: {
   element: "input",
-  value: "",
+  value: "FARG",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -340,7 +352,7 @@ farg: {
 },
 partTime: {
   element: "input",
-  value: "",
+  value: "Part Time",
   config: {
     className:"form-check-input",
     type: "radio",
@@ -355,7 +367,7 @@ partTime: {
 },
 fullTime: {
   element: "input",
-  value: "",
+  value: "Full Time",
   config: {
     className:"form-check-input",
     type: "radio",
@@ -370,7 +382,7 @@ fullTime: {
 },
 generalCase: {
   element: "input",
-  value: "",
+  value: "General Case",
   config: {
     className:"form-check-input",
     type: "checkbox",
@@ -388,7 +400,6 @@ subject: {
   value: "",
   config: {
     className:"form-control",
-    placeHolder:"Specify subject",
     type: "text",
     name: "subject"
   },
@@ -413,6 +424,46 @@ previousSchool: {
   valid: false,
   touched: false,
   validationMessage: ""
+}, 
+image:{
+  element:'image',
+  value:'',
+  valid:true
+},
+resultSlip:{
+  element:'image',
+  value:'',
+  valid:true
+},
+report1:{
+  element:'image',
+  value:'',
+  valid:true
+},
+report2:{
+  element:'image',
+  value:'',
+  valid:true
+},
+report3:{
+  element:'image',
+  value:'',
+  valid:true
+},
+id:{
+  element:'image',
+  value:'',
+  valid:true
+},
+address:{
+  element:'address',
+  value:'',
+  valid:true
+},
+nationality:{
+  element:'nationality',
+  value:'',
+  valid:true
 }
   }
   };
@@ -492,7 +543,61 @@ if(element.validation.name){
 
     return error;
 }
-submitForm = () => {
+submitForm = (event,type) => {
+  event.preventDefault();
+
+  if(type !== null){
+
+      let dataToSubmit = {};
+      let formIsValid = true;
+
+      for(let key in this.state.formdata){
+          dataToSubmit[key] = this.state.formdata[key].value
+      }
+      for(let key in this.state.formdata){
+          formIsValid = this.state.formdata[key].valid && formIsValid;
+      }
+      alert(dataToSubmit);
+      console.log(dataToSubmit);
+      // if(formIsValid){
+      //     this.setState({
+      //         loading:true,
+      //         registerError:''
+      //     })
+          
+          // if(type){
+          //     firebase.auth()
+          //     .signInWithEmailAndPassword(
+          //         dataToSubmit.email,
+          //         dataToSubmit.password
+          //     ).then(()=>{
+          //         this.props.history.push('/home')
+          //     }).catch( error =>{
+          //         this.setState({
+          //             loading:false,
+          //             registerError: error.message
+          //         })
+          //     })
+
+          // } 
+          // else {
+          //     firebase.auth()
+          //     .createUserWithEmailAndPassword(
+          //         dataToSubmit.email,
+          //         dataToSubmit.password
+          //     ).then(()=>{
+          //         this.props.history.push('/home')
+          //     }).catch( error =>{
+          //         this.setState({
+          //             loading:false,
+          //             registerError: error.message
+          //         })
+          //     })
+          // }
+      // }
+      
+  }
+
 
 }
   submitButton = () => (
@@ -501,13 +606,18 @@ submitForm = () => {
     :
     <div>
        
-        <button type="submit" className="bg-primary form-control text-white"> Send </button>
+        <button onClick={(event)=>this.submitForm(event,true)} className="bg-primary form-control text-white"> Send </button>
     </div>
 )
-
+storeAddress = (address) => {
+  this.updateForm({id:'address'},address)
+} 
+storeNationality = (nationality) => {
+  this.updateForm({id:'nationality'},nationality)
+} 
 storeFilename = (filename) => {
   this.updateForm({id:'image'},filename)
-}
+} 
 
 showError = () => (
   this.state.registerError !== '' ? 
@@ -548,22 +658,22 @@ showError = () => (
             </div>
             <div className="row justify-content-center ">
               <div className="col-md-10 col-sm-12 reg-form">
-                <form onSubmit={()=>this.submitForm()}>
+                <form onSubmit={(event)=>this.submitForm(event,null)}>
                 <div id="stud-name" style={{display:this.state.first ? 'block' : 'none'}}>
                 <h6 className="text-center p-5">
                   <i className="fa fa-edit fa-lg" />
                   Registration details{" "}
                 </h6>
-                  <div class="form-row">
-                    <div class="col">
-                      <label for="name ">First Name </label>
+                  <div className="form-row">
+                    <div className="col">
+                      <label >First Name </label>
                       <FormField
                        id={"firstname"}
                        formdata={this.state.formdata.firstname}
                        change={element => this.updateForm(element)}
                       />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label for="name ">Last Name </label>
                       <FormField
                        id={"lastname"}
@@ -583,32 +693,17 @@ showError = () => (
                       />
                     </div>
                   </div>
-                  <div class="form-row">
-                    <div class="col-md-2">
+                  <div className="form-row">
+                    <div className="col-md-2">
                       <label for="name ">Gender</label>
                     </div>
-                    <div class="col-md-10">
-                      <div className="form-check ">
-                      <FormField
-                       id={"male"}
-                       formdata={this.state.formdata.male}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" for="male">
-                          Male
-                        </label>
-                      </div>
-
-                      <div className="form-check ">
-                      <FormField
-                       id={"female"}
-                       formdata={this.state.formdata.female}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" for="female">
-                          Female
-                        </label>
-                      </div>
+                    <div className="col-md-10">
+                   <FormField
+                   id={"gender"}
+                   formdata={this.state.formdata.gender}
+                   change={element => this.updateForm(element)}
+                   />
+                    
                     </div>
                   </div>
                   <div className="form-group">
@@ -652,22 +747,26 @@ showError = () => (
                 </h6>
                   <div className="form-group">
                     
-                    <Address />
+                    <Address 
+                    address={ (address)=> this.storeAddress(address) }
+                    />
                   </div>
-                  <div class="form-row">
-                    <div class="col">
+                  <div className="form-row">
+                    <div className="col">
                       <label for="name ">Nationality</label>
-                      <Country/>
+                      <Country
+                      nationality={ (nationality)=> this.storeAddress(nationality) }
+                      />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label for="name ">National ID/Passport</label>
                       <FormField
-                       id={"id"}
-                       formdata={this.state.formdata.id}
+                       id={"nationalID"}
+                       formdata={this.state.formdata.nationalID}
                        change={element => this.updateForm(element)}
                       />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label for="name ">Insurance </label>
                       <FormField
                        id={"insurance"}
@@ -680,14 +779,11 @@ showError = () => (
                     <div className="col-7 offset-2">
                       {" "}
                       <label for="name ">Ubudehe</label>
-                      <select class="form-control">
-                        <option selected>Choose...</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
+                      <FormField
+                   id={"ubudehe"}
+                   formdata={this.state.formdata.ubudehe}
+                   change={element => this.updateForm(element)}
+                   />
                     </div>
                   </div>
                   <Row className="form-group p-5">
@@ -700,12 +796,11 @@ showError = () => (
                   <Button onClick={this.onClickSecond} color="primary">
                    <span><i className="fa fa-arrow-right fa-lg m-2"/>Continue</span>
                   </Button>
-                  
        </Col>
       </Row>
 </div>
 {/* ======================================academics info=============================== */}
-<div id="residence" style={{display:this.state.third ? 'block' : 'none'}}>
+<div id="academic-options" style={{display:this.state.third ? 'block' : 'none'}}>
   
 <h6 className="text-center p-5">
                   <i className="fa fa-home fa-lg" />
@@ -713,7 +808,7 @@ showError = () => (
                 </h6>
                
                   <div className="form-row form-group">
-                  <div class="col">
+                  <div className="col">
                       <label for="name ">Previous Institution </label>
                       <FormField
                        id={"previousSchool"}
@@ -721,7 +816,7 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label for="name ">Subject </label>
                       <FormField
                        id={"subject"}
@@ -730,12 +825,12 @@ showError = () => (
                       />
                     </div>
                   </div>
-                  <div class="form-row">
-                    <div class="col">
+                  <div className="form-row">
+                    <div className="col">
                       <label for="name ">Year of Completion(A Level)</label>
                       <FormField
-                       id={"subject"}
-                       formdata={this.state.formdata.subject}
+                       id={"completionYear"}
+                       formdata={this.state.formdata.completionYear}
                        change={element => this.updateForm(element)}
                       />
                     </div>
@@ -743,20 +838,18 @@ showError = () => (
                     <div className="col">
                       {" "}
                       <label>Option to be Admitted</label>
-                      <select class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Masonery</option>
-                        <option>Computer Application</option>
-                        <option>surveying</option>
-                        <option>Road Contruction</option>
-                      </select>
+                      <FormField
+                   id={"department"}
+                   formdata={this.state.formdata.department}
+                   change={element => this.updateForm(element)}
+                   />
                     </div>
                   </div>
-                  <div class="form-row mt-3">
+                  <div className="form-row mt-3">
                   <div className="col-12">
                   <label for="name ">Year Admitted in</label>
                   </div>
-                    <div class="col">
+                    <div className="col">
                     
                     <div className="form-check ">
                       <FormField
@@ -770,7 +863,7 @@ showError = () => (
                       </div>
 
                     </div>
-                    <div class="col">
+                    <div className="col">
                       
                       <div className="form-check ">
                       <FormField
@@ -783,7 +876,7 @@ showError = () => (
                         </label>
                       </div>
                     </div>
-                    <div class="col">
+                    <div className="col">
                       
                       <div className="form-check ">
                       <FormField
@@ -796,7 +889,7 @@ showError = () => (
                         </label>
                       </div>
                     </div>
-                    <div class="col">
+                    <div className="col">
                       
                       <div className="form-check ">
                       <FormField
@@ -809,7 +902,7 @@ showError = () => (
                         </label>
                       </div>
                     </div>
-                    <div class="col">
+                    <div className="col">
                       
                       <div className="form-check ">
                       <FormField
@@ -823,11 +916,11 @@ showError = () => (
                       </div>
                     </div>
                   </div>
-                  <div class="form-row mt-3">
-                    <div class="col-md-2">
+                  <div className="form-row mt-3">
+                    <div className="col-md-2">
                       <label for="name ">Program</label>
                     </div>
-                    <div class="col-md-10">
+                    <div className="col-md-10">
                       <div className="form-check ">
                       <FormField
                        id={"partTime"}
@@ -885,33 +978,46 @@ showError = () => (
                     </div>
                   </div>
                  
-                  <div class="form-row p-3">
-                    <div class="col">
+                  <div className="form-row p-3">
+                    <div className="col">
                       
                       <ImageUpload filename={ (filename)=> this.storeFilename(filename) }/>
                     </div>
                    
                   </div>
-                  <div class="form-row p-2">
-                    <div class="col">
+                  <div className="form-row p-2">
+                    <div className="col">
                     <h6 className="purple">A Level certificate</h6>
                     <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <hr/>
                     </div>
-                    <div class="col">
+
+                    <div className="col">
                     <h6 className="purple">ID card or Passport</h6>
                     <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <hr/>
                     </div>
                   </div>
-                  <div class="form-row p-2">
-                  <div class="col">
+                  <div className="form-row p-2">
+                  <div className="col">
                     <h6 className="purple">Progressive Reports</h6>
                     <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
                     <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
                     <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <hr/>
                     </div>
-                    <div class="col">
+                    <div className="col">
                     <h6 className="purple">Bank Slip for registration payment</h6>
                     <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    
+                    <div className="form-group">
+                    <FormField
+                       id={"father"}
+                       formdata={this.state.formdata.father}
+                       change={element => this.updateForm(element)}
+                      />
+                  </div>
+                  <hr/>
                     </div>
                    
                   </div>
@@ -940,8 +1046,8 @@ showError = () => (
                   </h6>
                   <hr/>
                   <h6 className="font-weight-bold p-2">HEALTH STATE:</h6>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox1">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox1">
                       {" "}
                       General Case
                     </label>
@@ -951,8 +1057,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox2">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox2">
                       Special Need
                     </label>
                     <FormField
@@ -961,8 +1067,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox3">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox3">
                       Physical Disability
                     </label>
                     <FormField
@@ -974,8 +1080,8 @@ showError = () => (
                   <h6 className="font-weight-bold p-2">
                     SCHOOL FEES : Sponsor:
                   </h6>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox1">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox1">
                       parents
                     </label>
                     <FormField
@@ -984,8 +1090,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox2">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox2">
                       Another person
                     </label>
                     <FormField
@@ -994,8 +1100,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox3">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox3">
                       NGO
                     </label>
                     <FormField
@@ -1004,8 +1110,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox3">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox3">
                       GOV FUNDS
                     </label>
                     <FormField
@@ -1014,8 +1120,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="inlineCheckbox3">
+                  <div className="form-check form-check-inline">
+                    <label className="form-check-label" for="inlineCheckbox3">
                       FARG
                     </label>
                     <FormField
@@ -1024,8 +1130,8 @@ showError = () => (
                        change={element => this.updateForm(element)}
                       />
                   </div>
-                  <div class="form-row p-2">
-                    <div class="col-md-7">
+                  <div className="form-row p-2">
+                    <div className="col-md-7">
                     <FormField
                        id={"sponsor"}
                        formdata={this.state.formdata.sponsor}
@@ -1037,13 +1143,13 @@ showError = () => (
                   <h6 className="pt-5">
                     Candidate, agree that information given are true and correct
                   </h6>
-                  <div class="form-check form-check-inline">
+                  <div className="form-check form-check-inline">
                   <FormField
                        id={"agree"}
                        formdata={this.state.formdata.agree}
                        change={element => this.updateForm(element)}
                       />
-                    <label class="form-check-label" >
+                    <label className="form-check-label" >
                       I agree
                     </label>
                   </div>

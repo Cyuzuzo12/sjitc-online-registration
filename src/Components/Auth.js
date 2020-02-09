@@ -1,7 +1,7 @@
 const Auth = {
-    isAuthenticated: false,
+    isAuthenticated: 'student',
     authenticate() {
-    this.isAuthenticated = true;
+    this.isAuthenticated = 'student';
     },
     signout() {
     this.isAuthenticated = false;

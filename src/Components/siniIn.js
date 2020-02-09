@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FormField from "./formFild";
 import logo from '../images/logo.png';
 import { Link } from "react-router-dom";
+import Auth from './Auth';
 class SignIn extends Component {
   state = {
     registerError: "",
@@ -52,7 +53,12 @@ class SignIn extends Component {
       }
     }
   };
-
+  login = ()=>{
+    Auth.authenticate();
+    }
+    logout = ()=>{
+    Auth.signout();
+    }
   updateForm = element => {
     const newFormdata = {
       ...this.state.formdata
@@ -128,7 +134,8 @@ dataToSubmit[key]=this.state.formdata.value;
     :
     <div>
        
-        <button  onClick={(event)=>this.submitForm(event,true)}> Sign In </button>
+        {/* <button  onClick={(event)=>this.submitForm(event,true)}> Sign In </button> */}
+        <Link to="&nc-student&nc-registration"><button  onClick={this.login}> Sign In </button></Link>
     </div>
 )
 showError = () => (
@@ -177,8 +184,8 @@ showError = () => (
                           
                 </div>
                 {this.showError()}
-                <p className="link"><Link to="/sign-up" className="font-weight-bold ">Forgot password?</Link></p>
-                <p  className="link"><Link to="/sign-up " className="font-weight-bold ">New Applicant</Link></p>
+                {/* <p className="link"><Link to="/sign-up" className="font-weight-bold ">Forgot password?</Link></p> */}
+                <p  className="link offset-1"><Link to="/sign-up " className="font-weight-bold ">New Applicant</Link></p>
               </form>
             </div>
             </div>
