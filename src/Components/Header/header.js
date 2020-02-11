@@ -5,8 +5,9 @@ import SideNav from "./sideNav";
 const Header = props => {
   return (
     <React.Fragment>
-      <SideNav {...props} />
+      
       <header className="headers">
+      <SideNav {...props} />
         <div className="headerOption">
           <div className="bars ">
             <i

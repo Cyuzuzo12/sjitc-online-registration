@@ -6,7 +6,7 @@ import Address from "../help/address";
 import FilesUpload from "../help/fileUpload";
 import ImageUpload from "../help/uploadImage";
 import Country from "../help/country";
-// import Province from "../help/province";
+import {diplomaReg} from "../DAO/UserFunctions";
 // import {diplomaDep} from "../help/data";
 class AdvancedDiplomaForm extends Component {
   state = {
@@ -81,7 +81,8 @@ class AdvancedDiplomaForm extends Component {
     valid: false,
     touched: false,
     validationMessage: ""
-},department: {
+},
+department: {
   element: "select",
   value: "",
   config: {
@@ -232,12 +233,86 @@ insurance: {
   touched: false,
   validationMessage: ""
 },
+program: {
+  element: "select",
+  value: "",
+  config: {
+    className:"form-control",
+    options:[ { id: 1, name: 'Full Time' },
+    { id: 2, name: 'Part Time' },
+  ],
+    // type: "",
+    name: "program"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+yearAdmittedIn: {
+  element: "select",
+  value: "",
+  config: {
+    className:"form-control",
+    options:[ { id: 1, name: 'Year1' },
+    { id: 2, name: 'Year2' },
+    { id: 3, name: 'Year3' },
+    { id: 4, name: 'Year4' },
+    { id: 5, name: 'Short Courses' },
+  ],
+    // type: "",
+    name: "yearAdmittedIn"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
+healthState: {
+  element: "select",
+  value: "",
+  config: {
+    className:"form-control",
+    options:[ { id: 1, name: 'General Case' },
+    { id: 2, name: 'Physical Disability' },
+    { id: 3, name: 'Special Need' }
+  ],
+    // type: "",
+    name: "healthState"
+  },
+  touched: false
+},
+schoolFeesSponsor: {
+  element: "select",
+  value: "",
+  config: {
+    className:"form-control",
+    options:[ { id: 1, name: 'Parents' },
+    { id: 2, name: 'GOV Funds' },
+    { id: 3, name: 'NGO' },
+    { id: 4, name: 'FARG' },
+    { id: 5, name: 'Other' },
+  ],
+    // type: "",
+    name: "schoolFeesSponsor"
+  },
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
 sponsor: {
   element: "input",
   value: "",
   config: {
     className:"form-control",
-    placeholder:"Sponsor Contact",
+    placeholder:"Please Enter Sponsor Contacts",
     type: "text",
     name: "sponsor"
   },
@@ -248,166 +323,17 @@ sponsor: {
   touched: false,
   validationMessage: ""
 },
-ngo: {
-  element: "input",
-  value: "NGO",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "ngo"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-gov: {
-  element: "input",
-  value: "GOV",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "gov"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-specialNeed: {
-  element: "input",
-  value: "Special Need",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "specialNeed"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
+
 agree: {
   element: "input",
-  value: "agree",
+  value: "",
   config: {
     className:"form-check-input",
     type: "checkbox",
     name: "agree"
   },
   validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-physicalDisability: {
-  element: "input",
-  value: "Physical Disability",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "physicalDisability"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-parent: {
-  element: "input",
-  value: "Parent",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "parent"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-otherPerson: {
-  element: "input",
-  value: "other person",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "otherPerson"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-farg: {
-  element: "input",
-  value: "FARG",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "farg"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-partTime: {
-  element: "input",
-  value: "Part Time",
-  config: {
-    className:"form-check-input",
-    type: "radio",
-    name: "partTime"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-fullTime: {
-  element: "input",
-  value: "Full Time",
-  config: {
-    className:"form-check-input",
-    type: "radio",
-    name: "fullTime"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-generalCase: {
-  element: "input",
-  value: "General Case",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "generalCase"
-  },
-  validation: {
-    required: true
+    agree:true
   },
   valid: false,
   touched: false,
@@ -553,6 +479,11 @@ this.setState({
       const message = `${!valid ? 'must be greater than 3  ':''}`;
       error = !valid ? [valid,message] : error
   }
+  if(element.validation.agree){
+    const valid = element.value.trim() !=='';
+    const message = `${!valid ? 'To Confirm your Registration request please agree terms and conditions':''}`;
+    error = !valid ? [valid,message] : error
+}
 if(element.validation.name){
         const valid = element.value.length >= 3;
         const message = `${!valid ? 'must be atleast 3 letters':''}`;
@@ -580,25 +511,25 @@ submitForm = (event,type) => {
       for(let key in this.state.formdata){
           formIsValid = this.state.formdata[key].valid && formIsValid;
       }
-
+     
       if(formIsValid){
+        this.setState({
+            loading:true,
+            registerError:''
+        })
+        
+        diplomaReg(dataToSubmit).then(res => {
+          if (res) {
+            this.props.history.push('/&nc-student&nc-registration');
+          }
+        }).catch( error =>{
           this.setState({
-              loading:true,
-              registerError:''
+              loading:false,
+              registerError: error.message
           })
-        //   register(dataToSubmit).then(res => {
-        //     if (res) {
-        //       this.props.history.push('/sign-in');
-        //       // window.open('/verification','_self')
-        //     }
-        //   }).catch( error =>{
-        //     this.setState({
-        //         loading:false,
-        //         registerError: error.message
-        //     })
-        // })
-       
-      }
+      })
+     
+    }
   }
 
 
@@ -850,103 +781,25 @@ showError = () => (
                     </div>
                   </div>
                   <div className="form-row mt-3">
-                  <div className="col-12">
+                  <div className="col">
                   <label for="name ">Year Admitted in</label>
-                  </div>
-                    <div className="col">
-                    
-                    <div className="form-check ">
-                      <FormField
-                       id={"partTime"}
-                       formdata={this.state.formdata.partTime}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" >
-                          Year1
-                        </label>
-                      </div>
-
-                    </div>
-                    <div className="col">
-                      
-                      <div className="form-check ">
-                      <FormField
-                       id={"fullTime"}
-                       formdata={this.state.formdata.fullTime}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" >
-                          Year2
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col">
-                      
-                      <div className="form-check ">
-                      <FormField
-                       id={"fullTime"}
-                       formdata={this.state.formdata.fullTime}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" >
-                          Year3
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col">
-                      
-                      <div className="form-check ">
-                      <FormField
-                       id={"fullTime"}
-                       formdata={this.state.formdata.fullTime}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" >
-                          Year4
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col">
-                      
-                      <div className="form-check ">
-                      <FormField
-                       id={"fullTime"}
-                       formdata={this.state.formdata.fullTime}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" >
-                          Short Courses
-                        </label>
-                      </div>
+                  <FormField
+                   id={"yearAdmittedIn"}
+                   formdata={this.state.formdata.yearAdmittedIn}
+                   change={element => this.updateForm(element)}
+                   />
                     </div>
                   </div>
                   <div className="form-row mt-3">
-                    <div className="col-md-2">
+                    <div className="col">
                       <label for="name ">Program</label>
-                    </div>
-                    <div className="col-md-10">
-                      <div className="form-check ">
+                    
                       <FormField
-                       id={"partTime"}
-                       formdata={this.state.formdata.partTime}
+                       id={"program"}
+                       formdata={this.state.formdata.program}
                        change={element => this.updateForm(element)}
                       />
-                        <label className="form-check-label" >
-                          Part time
-                        </label>
-                      </div>
-
-                      <div className="form-check ">
-                      <FormField
-                       id={"fullTime"}
-                       formdata={this.state.formdata.fullTime}
-                       change={element => this.updateForm(element)}
-                      />
-                        <label className="form-check-label" >
-                          Full time
-                        </label>
-                      </div>
-                    </div>
+                     </div>
                   </div>
                   <Row className="form-group p-5">
                   <Col md={{ size: 3,offset: 0 }}>
@@ -1050,87 +903,21 @@ showError = () => (
                   </h6>
                   <hr/>
                   <h6 className="font-weight-bold p-2">HEALTH STATE:</h6>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox1">
-                      {" "}
-                      General Case
-                    </label>
+                  <div className="form-group">
+            
                     <FormField
-                       id={"generalCase"}
-                       formdata={this.state.formdata.generalCase}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox2">
-                      Special Need
-                    </label>
-                    <FormField
-                       id={"specialNeed"}
-                       formdata={this.state.formdata.specialNeed}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      Physical Disability
-                    </label>
-                    <FormField
-                       id={"physicalDisability"}
-                       formdata={this.state.formdata.physicalDisability}
+                       id={"healthState"}
+                       formdata={this.state.formdata.healthState}
                        change={element => this.updateForm(element)}
                       />
                   </div>
                   <h6 className="font-weight-bold p-2">
-                    SCHOOL FEES : Sponsor:
+                    SCHOOL FEES Sponsor
                   </h6>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox1">
-                      parents
-                    </label>
+                  <div className="form-group">
                     <FormField
-                       id={"parent"}
-                       formdata={this.state.formdata.parent}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox2">
-                      Another person
-                    </label>
-                    <FormField
-                       id={"otherPerson"}
-                       formdata={this.state.formdata.otherPerson}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      NGO
-                    </label>
-                    <FormField
-                       id={"ngo"}
-                       formdata={this.state.formdata.ngo}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      GOV FUNDS
-                    </label>
-                    <FormField
-                       id={"gov"}
-                       formdata={this.state.formdata.gov}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      FARG
-                    </label>
-                    <FormField
-                       id={"farg"}
-                       formdata={this.state.formdata.farg}
+                       id={"schoolFeesSponsor"}
+                       formdata={this.state.formdata.schoolFeesSponsor}
                        change={element => this.updateForm(element)}
                       />
                   </div>
@@ -1147,15 +934,19 @@ showError = () => (
                   <h6 className="pt-5">
                     Candidate, agree that information given are true and correct
                   </h6>
-                  <div className="form-check form-check-inline">
+                  <div className="form-che p-2">
+                    <div className="col-10">
+                    <div class="form-check">
+                   
                   <FormField
                        id={"agree"}
                        formdata={this.state.formdata.agree}
                        change={element => this.updateForm(element)}
                       />
-                    <label className="form-check-label" >
-                      I agree
-                    </label>
+                       <label class="form-check-label">I agree</label>
+                      </div>
+                      </div>
+                    
                   </div>
                   <Row className="form-group p-5">
                   <Col md={{ size: 3,offset: 0 }}>
