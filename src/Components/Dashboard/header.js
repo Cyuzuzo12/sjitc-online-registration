@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./dashboard.css";
 import SideNavigation  from './AdminSideNav';
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
-import FontAwesome from 'react-fontawesome';
+import avatar from "../../images/avatar.jpg";
 
 const DashHeader = (props) =>{
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
         return ( 
          <React.Fragment>
         <SideNavigation  {...props}/>
@@ -33,7 +29,7 @@ const DashHeader = (props) =>{
                     </div>
                     <div className="col-4">
                     <div className=" stud-photo">
-                    <img src={avatar} alt="student-photo" />
+                    <img src={avatar} alt="student-pic" />
                     {/* <Link>Admin</Link> */}
                     {/* <UncontrolledDropdown >
               <DropdownToggle nav >

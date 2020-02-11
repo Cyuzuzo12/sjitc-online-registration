@@ -1,9 +1,8 @@
-import React,{ useState } from "react";
+import React from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { Collapse} from 'reactstrap';
 import "./dashboard.css";
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
 
 class AdminSideNavItem extends React.Component {
 

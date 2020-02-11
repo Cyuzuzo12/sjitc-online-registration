@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import FormField from "./formFild";
 import logo from '../images/logo.png';
 import { Link } from "react-router-dom";
+import {register} from "./DAO/UserFunctions";
+import {withRouter} from "react-router-dom";
 
 class SignUp extends Component {
   state = {
     registerError: "",
+    registerSuccess: "",
     loading: false,
     formdata: {
       email: {
@@ -65,7 +68,7 @@ class SignUp extends Component {
           placeholder: "Confirm password",
           className:"input",
           type: "password",
-          name: "password"
+          name: "password1"
         },
         validation: {
           required: true,
@@ -116,15 +119,6 @@ class SignUp extends Component {
         },
         valid: false,
         touched: false
-      },
-     
-      create: {
-        element: "button",
-        value: "Sign Up",
-        config: {
-          type: "submit",
-          name: "button-create"
-        }
       }
     }
   };
@@ -172,16 +166,52 @@ class SignUp extends Component {
 
     return error;
 }
-submitForm = () => {
+submitForm = (event,type) => {
+  event.preventDefault();
+
+  if(type !== null){
+
+      let dataToSubmit = {};
+      let formIsValid = true;
+
+      for(let key in this.state.formdata){
+          dataToSubmit[key] = this.state.formdata[key].value
+      }
+      for(let key in this.state.formdata){
+          formIsValid = this.state.formdata[key].valid && formIsValid;
+      }
+     
+      if(formIsValid){
+        this.setState({
+            loading:true,
+            registerError:''
+        })
+        
+        register(dataToSubmit).then(res => {
+          if (res) {
+            this.props.history.push('/verification');
+            // window.open('/verification','_self')
+          }
+        }).catch( error =>{
+          this.setState({
+              loading:false,
+              registerError: error.message
+          })
+      })
+     
+    }
+  }
+
 
 }
+
   submitButton = () => (
     this.state.loading ? 
         'loading...'
     :
     <div>
        
-       <Link to="/&nc-student&nc-registration"><button type="submit"> Sign Up </button></Link>
+       <button onClick={(event)=>this.submitForm(event,true)}> Sign Up </button>
     </div>
 )
 showError = () => (
@@ -197,7 +227,7 @@ showError = () => (
             <div className="col-md-4 logContainer">
             <span className="text-muted "><i className="fa fa-user-plus text-muted "></i>Sign Up to continue</span>
                 <form
-                //  onSubmit={()=>this.submitForm()}
+                onSubmit={(event)=>this.submitForm(event,null)}
                  >
                 <div className="row">
                    <div className="col logo-img" >
@@ -282,4 +312,4 @@ showError = () => (
   }
 }
  
-export default SignUp;
+export default withRouter(SignUp);

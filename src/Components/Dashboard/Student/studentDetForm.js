@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import FormField from "../../formFild";
 
 class StudentDetForm extends Component {
   state = {

@@ -26,7 +26,7 @@ class FilesUpload extends React.Component {
               <div>
                 <img src={this.state.image} alt="" height="120" width="120" style={{display:'none'}}/>
                 
-                <input type="file" name="myfile" onChange={this.onImageChange} />
+                <input type="file" name="myfile" onChange={this.onImageChange}  className="form-control"/>
               </div>
             </div>
           </div>

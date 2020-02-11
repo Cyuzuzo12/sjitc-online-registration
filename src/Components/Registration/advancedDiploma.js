@@ -6,8 +6,8 @@ import Address from "../help/address";
 import FilesUpload from "../help/fileUpload";
 import ImageUpload from "../help/uploadImage";
 import Country from "../help/country";
-import Province from "../help/province";
-import {diplomaDep} from "../help/data";
+// import Province from "../help/province";
+// import {diplomaDep} from "../help/data";
 class AdvancedDiplomaForm extends Component {
   state = {
     first: true,
@@ -50,6 +50,23 @@ class AdvancedDiplomaForm extends Component {
       touched: false,
       validationMessage: ""
   },
+  bankslip: {
+    element: "input",
+    value: "",
+    config: {
+      className:"form-control",
+      placeholder:"enter bank slip number",
+      type: "text",
+      name: "bankslip"
+    },
+    validation: {
+      required: true,
+      bankslip:true
+    },
+    valid: false,
+    touched: false,
+    validationMessage: ""
+},
   dob: {
     element: "input",
     value: "",
@@ -220,6 +237,7 @@ sponsor: {
   value: "",
   config: {
     className:"form-control",
+    placeholder:"Sponsor Contact",
     type: "text",
     name: "sponsor"
   },
@@ -530,6 +548,11 @@ this.setState({
         const message = `${!valid ? 'must be 16 digits or greater   ':''}`;
         error = !valid ? [valid,message] : error
     }
+    if(element.validation.bankslip){
+      const valid = !isNaN(element.value)&& element.value.length >3;
+      const message = `${!valid ? 'must be greater than 3  ':''}`;
+      error = !valid ? [valid,message] : error
+  }
 if(element.validation.name){
         const valid = element.value.length >= 3;
         const message = `${!valid ? 'must be atleast 3 letters':''}`;
@@ -557,45 +580,25 @@ submitForm = (event,type) => {
       for(let key in this.state.formdata){
           formIsValid = this.state.formdata[key].valid && formIsValid;
       }
-      alert(dataToSubmit);
-      console.log(dataToSubmit);
-      // if(formIsValid){
-      //     this.setState({
-      //         loading:true,
-      //         registerError:''
-      //     })
-          
-          // if(type){
-          //     firebase.auth()
-          //     .signInWithEmailAndPassword(
-          //         dataToSubmit.email,
-          //         dataToSubmit.password
-          //     ).then(()=>{
-          //         this.props.history.push('/home')
-          //     }).catch( error =>{
-          //         this.setState({
-          //             loading:false,
-          //             registerError: error.message
-          //         })
-          //     })
 
-          // } 
-          // else {
-          //     firebase.auth()
-          //     .createUserWithEmailAndPassword(
-          //         dataToSubmit.email,
-          //         dataToSubmit.password
-          //     ).then(()=>{
-          //         this.props.history.push('/home')
-          //     }).catch( error =>{
-          //         this.setState({
-          //             loading:false,
-          //             registerError: error.message
-          //         })
-          //     })
-          // }
-      // }
-      
+      if(formIsValid){
+          this.setState({
+              loading:true,
+              registerError:''
+          })
+        //   register(dataToSubmit).then(res => {
+        //     if (res) {
+        //       this.props.history.push('/sign-in');
+        //       // window.open('/verification','_self')
+        //     }
+        //   }).catch( error =>{
+        //     this.setState({
+        //         loading:false,
+        //         registerError: error.message
+        //     })
+        // })
+       
+      }
   }
 
 
@@ -646,9 +649,9 @@ showError = () => (
             </div>
           <div className="col-4 ">
           <ul className="list-unstyled">
-              <li className=" font ">Address: Kigali-Rwanda</li>  
-              <li className=" font ">Tel No: 0788888888/0729998766</li> 
-              <li className=" font ">Email: example@gmail</li> 
+          <li className=" font ">Address: KN 2AVE,Kigali,Rwanda</li>  
+              <li className=" font ">Tel No: (+250)782306593</li> 
+              <li className=" font ">Email: sjitc2010@yahoo.fr</li> 
               <li className=" font ">Website: sjitc.ac.rw</li> 
            </ul>
          </div>
@@ -745,14 +748,15 @@ showError = () => (
                   <i className="fa fa-home fa-lg" />
                   Residence place{" "}
                 </h6>
+                <div className="form-row">
+                    <div className="col">
                   <div className="form-group">
                     
                     <Address 
                     address={ (address)=> this.storeAddress(address) }
                     />
                   </div>
-                  <div className="form-row">
-                    <div className="col">
+                  
                       <label for="name ">Nationality</label>
                       <Country
                       nationality={ (nationality)=> this.storeAddress(nationality) }
@@ -1012,8 +1016,8 @@ showError = () => (
                     
                     <div className="form-group">
                     <FormField
-                       id={"father"}
-                       formdata={this.state.formdata.father}
+                       id={"bankslip"}
+                       formdata={this.state.formdata.bankslip}
                        change={element => this.updateForm(element)}
                       />
                   </div>

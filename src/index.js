@@ -9,7 +9,7 @@ import Auth from "./Components/Auth";
 
 import * as serviceWorker from './serviceWorker';
 
-    ReactDOM.render(<App auth={Auth. getAuth()}/>, document.getElementById('root'));  
+    ReactDOM.render(<App auth={Auth.getAuth()}/>, document.getElementById('root'));  
 
 
 // If you want your app to work offline and load faster, you can change

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Calendar from 'react-calendar';
 import StudentDetForm from "./studentDetForm";
 import avatar from "../../../images/avatar.jpg";
+
 class Student extends Component {
   state = {
     date: new Date(),
@@ -16,9 +16,6 @@ class Student extends Component {
   };
   onChange = date => this.setState({ date })
   render() {
-    const labels = ["collection", "fees", "expenses"];
-    const data = [324, 45, 672];
-    const options = { fillColor: "#cf8e34", strokeColor: "#fafafa" };
     return (
       <div>
         <section>

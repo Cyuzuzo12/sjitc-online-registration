@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FormField from "../../formFild";
 import FilesUpload from "../../help/fileUpload";
-import { Link } from "react-router-dom";
 
 class AdminFormTemplate extends Component {
   state = {

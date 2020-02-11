@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FormField from "./formFild";
 import logo from '../images/logo.png';
 import { Link } from "react-router-dom";
+import {login} from "./DAO/UserFunctions";
 import Auth from './Auth';
 class SignIn extends Component {
   state = {
@@ -41,15 +42,6 @@ class SignIn extends Component {
         valid: false,
         touched: false,
         validationMessage: ""
-      },
-     
-      login: {
-        element: "button",
-        value: "Sign In",
-        config: {
-          type: "submit",
-          name: "button-login"
-        }
       }
     }
   };
@@ -108,25 +100,41 @@ this.setState({
     return error;
 }
 submitForm = (event,type) => {
-  event.preventDefault()
+  event.preventDefault();
+
   if(type !== null){
 
-    let dataToSubmit = {};
-    // let formIsValid = true;
-    for(let key in this.state.formdata){
-dataToSubmit[key]=this.state.formdata.value;
+      let dataToSubmit = {};
+      let formIsValid = true;
+
+      for(let key in this.state.formdata){
+          dataToSubmit[key] = this.state.formdata[key].value
+      }
+      for(let key in this.state.formdata){
+          formIsValid = this.state.formdata[key].valid && formIsValid;
+      }
+     
+      if(formIsValid){
+        this.setState({
+            loading:true,
+            registerError:''
+        })
+        
+        login(dataToSubmit).then(res => {
+          if (res) {
+            this.props.history.push('/&nc-student&nc-registration');
+          }
+        }).catch( error =>{
+          this.setState({
+              loading:false,
+              registerError: error.message
+          })
+      })
+     
     }
-//     for(let key in this.state.formdata){
-//       formIsValid = this.state.formdata[key].valid && formIsValid;
-//   }
-//   if(formIsValid){
-//     this.setState({
-//         loading:true,
-//         registerError:''
-//     })
-   console.log(dataToSubmit)
-  // }
-} 
+  }
+
+
 }
   submitButton = () => (
     this.state.loading ? 
@@ -134,8 +142,8 @@ dataToSubmit[key]=this.state.formdata.value;
     :
     <div>
        
-        {/* <button  onClick={(event)=>this.submitForm(event,true)}> Sign In </button> */}
-        <Link to="&nc-student&nc-registration"><button  onClick={this.login}> Sign In </button></Link>
+        <button  onClick={(event)=>this.submitForm(event,true)}> Sign In </button>
+        {/* <Link to="&nc-student&nc-registration"><button  onClick={this.login}> Sign In </button></Link> */}
     </div>
 )
 showError = () => (
@@ -184,9 +192,8 @@ showError = () => (
                           
                 </div>
                 {this.showError()}
-                {/* <p className="link"><Link to="/sign-up" className="font-weight-bold ">Forgot password?</Link></p> */}
-                <p  className="link offset-1"><Link to="/sign-up " className="font-weight-bold ">New Applicant</Link></p>
               </form>
+              <p  className="link offset-1"><Link to="/sign-up " className="font-weight-bold ">New Applicant</Link></p>
             </div>
             </div>
        </section>

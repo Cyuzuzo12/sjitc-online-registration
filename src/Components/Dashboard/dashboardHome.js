@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Histogram from "react-chart-histogram";
 import Calendar from 'react-calendar';
-import { FormGroup, Label, Input, Col, Form, Button, Row } from "reactstrap";
-import { Link } from "react-router-dom";
 
 class DashboardHome extends Component {
   state = {

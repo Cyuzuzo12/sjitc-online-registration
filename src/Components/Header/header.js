@@ -1,9 +1,6 @@
 import React from "react";
-// import {UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
-// import logo from '../../images/logo.png';
 import "./header.css";
 import SideNav from "./sideNav";
-import FontAwesome from "react-fontawesome";
 
 const Header = props => {
   return (

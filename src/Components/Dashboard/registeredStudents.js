@@ -1,7 +1,6 @@
 import React from 'react';
 import {Table, Col, Row, Button, Form,Breadcrumb,BreadcrumbItem, Input } from 'reactstrap';
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import avatar from "../../images/avatar.jpg";
 
 const RegisteredStudents = (props) => {
   return (

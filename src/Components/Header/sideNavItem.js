@@ -86,7 +86,7 @@ class SideNavItems extends React.Component {
                     <li className="fa-options"> 
                     <Link to="">
                         <i className="fa fa-circle-o m-2"></i>
-                        Secondary Education
+                        Previous Education
                       </Link>
                     </li>
                     <li className="fa-options"> 
@@ -134,7 +134,11 @@ class SideNavItems extends React.Component {
                   </ul>
                   
                 </li>
-                <li onClick={this.logout} style={{cursor:'pointer'}}>logout</li>
+                <li onClick={this.logout} style={{cursor:'pointer'}}>
+                <FontAwesome name="sign-out"/> <span style={{cursor:'pointer'}}>logout</span>
+                  
+                  
+                  </li>
               </ul>
             
             </section>

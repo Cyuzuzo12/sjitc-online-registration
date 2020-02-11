@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import StudentDetForm from "./studentDetForm";
-import avatar from "../../../images/avatar.jpg";
 import AdminFormTemplate from "./AdminFormTemplate";
 class AdminForm extends Component {
  

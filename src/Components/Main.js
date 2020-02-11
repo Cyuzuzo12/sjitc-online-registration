@@ -20,6 +20,7 @@ import DashboardHome from "./Dashboard/dashboardHome";
 import RegisteredDiploma from "./Dashboard/regDiploma";
 import RegisteredStudents from "./Dashboard/registeredStudents";
 import HeaderDef from "./Header/headerDef";
+import Verification from "./DAO/verification";
 class Main extends Component {
   constructor(props){
     super(props);
@@ -62,13 +63,13 @@ class Main extends Component {
     console.log(this.props)
     return (
       <React.Fragment>
-        {this.props.auth == 'admin' ? 
+        {this.props.auth === 'admin' ? 
         <AdmHeader
         showNav={this.state.showNav}
         onHideNav={() => this.toggleSidenav(false)}
         onOpenNav={() => this.toggleSidenav(true)}
         />
-        : this.props.auth == 'student' ? 
+        : this.props.auth === 'student' ? 
         <StudHeader
         showNav={this.state.showNav}
         onHideNav={() => this.toggleSidenav(false)}
@@ -84,6 +85,7 @@ class Main extends Component {
        
         <Switch>
           <Route  path="/sign-up" component={() => <SignUp />} />
+          <Route  path="/verify-token" component={() => <Verification />} />
           <Route  path="/sign-in" component={()=> <SignIn/>}/>
           <PrivateRoute path="/student-page" component={()=> <StudentPage
           first={this.state.first}
@@ -103,7 +105,7 @@ class Main extends Component {
           <PrivateRoute path="/admin-form" component={() => <AdminForm/>}/>
           <PrivateRoute path="/advanced-diploma-registered-students" component={() => <RegisteredDiploma/>}/>
           <PrivateRoute path="/advanced-level-registered-students" component={() => <RegisteredStudents/>}/>
-          <Redirect to="/sign-in"/>
+          <Redirect to="/sign-up"/>
         </Switch>
         <MainFooter />
       </React.Fragment>
