@@ -28,7 +28,7 @@ class AdvancedDiplomaForm extends Component {
         },
         validation: {
           required: true,
-          name:true
+          names:true
         },
         valid: false,
         touched: false,
@@ -44,7 +44,7 @@ class AdvancedDiplomaForm extends Component {
       },
       validation: {
         required: true,
-        name:true
+        names:true
       },
       valid: false,
       touched: false,
@@ -147,10 +147,11 @@ completionYear: {
   config: {
     className:"form-control",
     type: "text",
-    name: "completion"
+    name: "completionYear"
   },
   validation: {
-    name:true
+    completionYears:true,
+    required:true
   },
   valid: false,
   touched: false,
@@ -165,7 +166,7 @@ father: {
     name: "father"
   },
   validation: {
-    name:true
+    names:true
   },
   valid: false,
   touched: false,
@@ -180,7 +181,7 @@ mother: {
     name: "mother"
   },
   validation: {
-    name:true
+    names:true
   },
   valid: false,
   touched: false,
@@ -196,7 +197,7 @@ guardian: {
     name: "guardian"
   },
   validation: {
-    name:true
+    names:true
   },
   valid: false,
   touched: false,
@@ -208,11 +209,11 @@ nationalID: {
   config: {
     className:"form-control",
     type: "text",
-    name: "id"
+    name: "nationalID"
   },
   validation: {
     required: true,
-    id:true
+    nationalID:true
   },
   valid: false,
   touched: false,
@@ -281,10 +282,14 @@ healthState: {
     { id: 2, name: 'Physical Disability' },
     { id: 3, name: 'Special Need' }
   ],
-    // type: "",
     name: "healthState"
   },
-  touched: false
+  validation: {
+    required: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
 },
 schoolFeesSponsor: {
   element: "select",
@@ -297,7 +302,6 @@ schoolFeesSponsor: {
     { id: 4, name: 'FARG' },
     { id: 5, name: 'Other' },
   ],
-    // type: "",
     name: "schoolFeesSponsor"
   },
   validation: {
@@ -394,7 +398,7 @@ report3:{
   value:'',
   valid:true
 },
-id:{
+natId:{
   element:'image',
   value:'',
   valid:true
@@ -469,11 +473,16 @@ this.setState({
     //     const message = `${!valid ? 'Must be greater than 5':''}`;
     //     error = !valid ? [valid,message] : error
     // }
-    if(element.validation.id){
+    if(element.validation.nationalID){
         const valid = !isNaN(element.value)&& element.value.length >= 16;
         const message = `${!valid ? 'must be 16 digits or greater   ':''}`;
         error = !valid ? [valid,message] : error
     }
+    if(element.validation.completionYears){
+      const valid = !isNaN(element.value)&& element.value.length === 4 ;
+      const message = `${!valid ? 'Year must be 4 digits':''}`;
+      error = !valid ? [valid,message] : error
+  }
     if(element.validation.bankslip){
       const valid = !isNaN(element.value)&& element.value.length >3;
       const message = `${!valid ? 'must be greater than 3  ':''}`;
@@ -484,7 +493,7 @@ this.setState({
     const message = `${!valid ? 'To Confirm your Registration request please agree terms and conditions':''}`;
     error = !valid ? [valid,message] : error
 }
-if(element.validation.name){
+if(element.validation.names){
         const valid = element.value.length >= 3;
         const message = `${!valid ? 'must be atleast 3 letters':''}`;
         error = !valid ? [valid,message] : error
@@ -511,24 +520,27 @@ submitForm = (event,type) => {
       for(let key in this.state.formdata){
           formIsValid = this.state.formdata[key].valid && formIsValid;
       }
-     
+      console.log(dataToSubmit)
       if(formIsValid){
         this.setState({
             loading:true,
             registerError:''
         })
-        
-        diplomaReg(dataToSubmit).then(res => {
-          if (res) {
-            this.props.history.push('/&nc-student&nc-registration');
-          }
-        }).catch( error =>{
-          this.setState({
-              loading:false,
-              registerError: error.message
-          })
-      })
+        console.log("form is valid")
+       
+      //   diplomaReg(dataToSubmit).then(res => {
+      //     if (res) {
+      //       this.props.history.push('/student-page');
+      //     }
+      //   }).catch( error =>{
+      //     this.setState({
+      //         loading:false,
+      //         registerError: error.message
+      //     })
+      // })
      
+    }else{
+      console.log("form is not valid")
     }
   }
 
@@ -540,7 +552,7 @@ submitForm = (event,type) => {
     :
     <div>
        
-        <button onClick={(event)=>this.submitForm(event,true)} className="bg-primary form-control text-white"> Send </button>
+        <button type="submit" onClick={(event)=>this.submitForm(event,true)} className="bg-primary form-control text-white"> Send </button>
     </div>
 )
 storeAddress = (address) => {
@@ -606,64 +618,48 @@ showError = () => (
                        formdata={this.state.formdata.firstname}
                        change={element => this.updateForm(element)}
                       />
-                    </div>
-                    <div className="col">
-                      <label for="name ">Last Name </label>
+                       <label for="name ">Last Name </label>
                       <FormField
                        id={"lastname"}
                        formdata={this.state.formdata.lastname}
                        change={element => this.updateForm(element)}
                       />
-                    </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="col-6 offset-3">
-                      {" "}
-                      <label for="name ">Date of Birth</label>
+                       <label for="name ">Date of Birth</label>
                       <FormField
                        id={"dob"}
                        formdata={this.state.formdata.dob}
                        change={element => this.updateForm(element)}
                       />
-                    </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="col-md-2">
-                      <label for="name ">Gender</label>
-                    </div>
-                    <div className="col-md-10">
+                       <label for="name ">Gender</label>
                    <FormField
                    id={"gender"}
                    formdata={this.state.formdata.gender}
                    change={element => this.updateForm(element)}
                    />
-                    
                     </div>
-                  </div>
-                  <div className="form-group">
+                    <div className="col">
                     <label for="name ">Father's name</label>
                     <FormField
                        id={"father"}
                        formdata={this.state.formdata.father}
                        change={element => this.updateForm(element)}
                       />
-                  </div>
-                  <div className="form-group">
-                    <label for="name ">Mother'S Name </label>
+                      <label for="name ">Mother'S Name </label>
                     <FormField
                        id={"mother"}
                        formdata={this.state.formdata.mother}
                        change={element => this.updateForm(element)}
                       />
-                  </div>
-                  <div className="form-group">
-                    <label for="name ">Guardian's Name </label>
+                       <label for="name ">Guardian's Name </label>
                     <FormField
                        id={"guardian"}
                        formdata={this.state.formdata.guardian}
                        change={element => this.updateForm(element)}
                       />
+                    </div>
                   </div>
+                  
+                  
                   <Row className="form-group p-5">
                     
       <Col md={{ size: 5,offset: 8 }}>
@@ -700,25 +696,18 @@ showError = () => (
                        formdata={this.state.formdata.nationalID}
                        change={element => this.updateForm(element)}
                       />
-                    </div>
-                    <div className="col">
-                      <label for="name ">Insurance </label>
-                      <FormField
-                       id={"insurance"}
-                       formdata={this.state.formdata.insurance}
-                       change={element => this.updateForm(element)}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="col-7 offset-2">
-                      {" "}
-                      <label for="name ">Ubudehe</label>
+                       <label for="name ">Ubudehe</label>
                       <FormField
                    id={"ubudehe"}
                    formdata={this.state.formdata.ubudehe}
                    change={element => this.updateForm(element)}
                    />
+                       <label for="name ">Insurance </label>
+                      <FormField
+                       id={"insurance"}
+                       formdata={this.state.formdata.insurance}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                   </div>
                   <Row className="form-group p-5">

@@ -57,9 +57,40 @@ export const diplomaReg = newUser =>{
 		schoolFeesSponsor:newUser.schoolFeesSponsor,
 		subject:newUser.subject,
 		previousSchool:newUser.previousSchool,
-		yearAdmittedIn:newUser.yearAdmittedIn,
 	})
 	.then(res=>{
-		console.log("Registered");
+		console.log("Successful!!!!");
+	})
+}
+
+export const advancedLevelReg = newUser =>{
+	return axios
+	.post('/',{
+		firstName:newUser.firstname,
+		lastName:newUser.lastname,
+		bankSlip:newUser.bankslip,
+		dob:newUser.dob,
+		ubudehe:newUser.ubudehe,
+		gender:newUser.gender,
+		completionYear:newUser.completionYear,
+		father:newUser.father,
+		mother:newUser.mother,
+		option:newUser.option,
+		email:newUser.email,
+		guardian:newUser.guardian,
+		nationalID:newUser.nationalID,
+		insurance:newUser.insurance,
+		sponsor:newUser.sponsor,
+		grade:newUser.grade,
+		yearAdmittedIn:newUser.yearAdmittedIn,
+		healthState:newUser.healthState,
+		schoolFeesSponsor:newUser.schoolFeesSponsor,
+		subject:newUser.subject,
+		attendedSchool:newUser.attendedSchool,
+		parentContact:newUser.parentContact,
+		results:newUser.results
+	})
+	.then(res=>{
+		console.log("Success!!!!");
 	})
 }

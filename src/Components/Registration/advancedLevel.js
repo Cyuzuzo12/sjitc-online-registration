@@ -6,7 +6,7 @@ import Address from "../help/address";
 import FilesUpload from "../help/fileUpload";
 import ImageUpload from "../help/uploadImage";
 import Country from "../help/country";
-// import Province from "../help/province";
+import {advancedLevelReg} from "../DAO/UserFunctions";
 // import {diplomaDep} from "../help/data";
 class AdvancedDiplomaForm extends Component {
   state = {
@@ -64,7 +64,8 @@ class AdvancedDiplomaForm extends Component {
     valid: false,
     touched: false,
     validationMessage: ""
-},department: {
+},
+option: {
   element: "select",
   value: "",
   config: {
@@ -75,7 +76,7 @@ class AdvancedDiplomaForm extends Component {
         { id: 4, name: 'Road Contruction' }
   ],
     // type: "",
-    name: "department"
+    name: "option"
   },
   validation: {
     required: true
@@ -147,7 +148,7 @@ completionYear: {
   config: {
     className:"form-control",
     type: "text",
-    name: "completion"
+    name: "completionYear"
   },
   validation: {
     name:true
@@ -263,36 +264,6 @@ sponsor: {
   touched: false,
   validationMessage: ""
 },
-ngo: {
-  element: "input",
-  value: "NGO",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "ngo"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-gov: {
-  element: "input",
-  value: "GOV",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "gov"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
 bankslip: {
   element: "input",
   value: "",
@@ -310,133 +281,48 @@ bankslip: {
   touched: false,
   validationMessage: ""
 },
-specialNeed: {
-  element: "input",
-  value: "Special Need",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "specialNeed"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
 agree: {
   element: "input",
-  value: "agree",
+  value: "",
   config: {
     className:"form-check-input",
     type: "checkbox",
     name: "agree"
   },
   validation: {
-    required: true
+    agree:true
   },
   valid: false,
   touched: false,
   validationMessage: ""
 },
-physicalDisability: {
-  element: "input",
-  value: "Physical Disability",
+healthState: {
+  element: "select",
+  value: "",
   config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "physicalDisability"
+    className:"form-control",
+    options:[ { id: 1, name: 'General Case' },
+    { id: 2, name: 'Physical Disability' },
+    { id: 3, name: 'Special Need' }
+  ],
+    // type: "",
+    name: "healthState"
   },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
+  touched: false
 },
-parent: {
-  element: "input",
-  value: "Parent",
+schoolFeesSponsor: {
+  element: "select",
+  value: "",
   config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "parent"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-otherPerson: {
-  element: "input",
-  value: "other person",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "otherPerson"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-farg: {
-  element: "input",
-  value: "FARG",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "farg"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-partTime: {
-  element: "input",
-  value: "Part Time",
-  config: {
-    className:"form-check-input",
-    type: "radio",
-    name: "partTime"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-fullTime: {
-  element: "input",
-  value: "Full Time",
-  config: {
-    className:"form-check-input",
-    type: "radio",
-    name: "fullTime"
-  },
-  validation: {
-    required: true
-  },
-  valid: false,
-  touched: false,
-  validationMessage: ""
-},
-generalCase: {
-  element: "input",
-  value: "General Case",
-  config: {
-    className:"form-check-input",
-    type: "checkbox",
-    name: "generalCase"
+    className:"form-control",
+    options:[ { id: 1, name: 'Parents' },
+    { id: 2, name: 'GOV Funds' },
+    { id: 3, name: 'NGO' },
+    { id: 4, name: 'FARG' },
+    { id: 5, name: 'Other' },
+  ],
+    // type: "",
+    name: "schoolFeesSponsor"
   },
   validation: {
     required: true
@@ -462,13 +348,13 @@ results: {
   touched: false,
   validationMessage: ""
 },
-attendegSchool: {
+attendedSchool: {
   element: "input",
   value: "",
   config: {
     className:"form-control",
     type: "text",
-    name: "attendegSchool"
+    name: "attendedSchool"
   },
   validation: {
     required: true
@@ -577,6 +463,11 @@ this.setState({
     //     const message = `${!valid ? 'Must be greater than 5':''}`;
     //     error = !valid ? [valid,message] : error
     // }
+    if(element.validation.agree){
+      const valid = element.value.trim() !=='';
+      const message = `${!valid ? 'To Confirm your Registration request please agree terms and conditions':''}`;
+      error = !valid ? [valid,message] : error
+  }
     if(element.validation.bankslip){
       const valid = !isNaN(element.value)&& element.value.length >3;
       const message = `${!valid ? 'must be greater than 3  ':''}`;
@@ -619,45 +510,25 @@ submitForm = (event,type) => {
       for(let key in this.state.formdata){
           formIsValid = this.state.formdata[key].valid && formIsValid;
       }
-      alert(dataToSubmit);
-      console.log(dataToSubmit);
-      // if(formIsValid){
-      //     this.setState({
-      //         loading:true,
-      //         registerError:''
-      //     })
-          
-          // if(type){
-          //     firebase.auth()
-          //     .signInWithEmailAndPassword(
-          //         dataToSubmit.email,
-          //         dataToSubmit.password
-          //     ).then(()=>{
-          //         this.props.history.push('/home')
-          //     }).catch( error =>{
-          //         this.setState({
-          //             loading:false,
-          //             registerError: error.message
-          //         })
-          //     })
-
-          // } 
-          // else {
-          //     firebase.auth()
-          //     .createUserWithEmailAndPassword(
-          //         dataToSubmit.email,
-          //         dataToSubmit.password
-          //     ).then(()=>{
-          //         this.props.history.push('/home')
-          //     }).catch( error =>{
-          //         this.setState({
-          //             loading:false,
-          //             registerError: error.message
-          //         })
-          //     })
-          // }
-      // }
-      
+     
+      if(formIsValid){
+        this.setState({
+            loading:true,
+            registerError:''
+        })
+        
+        advancedLevelReg(dataToSubmit).then(res => {
+          if (res) {
+            this.props.history.push('/student-page');
+          }
+        }).catch( error =>{
+          this.setState({
+              loading:false,
+              registerError: error.message
+          })
+      })
+     
+    }
   }
 
 
@@ -858,8 +729,8 @@ showError = () => (
                   <div className="col">
                       <label for="name ">Attended School </label>
                       <FormField
-                       id={"attendegSchool"}
-                       formdata={this.state.formdata.attendegSchool}
+                       id={"attendedSchool"}
+                       formdata={this.state.formdata.attendedSchool}
                        change={element => this.updateForm(element)}
                       />
                       <label for="name ">Year of Completion(O'Level)</label>
@@ -891,8 +762,8 @@ showError = () => (
                       {" "}
                       <label>Option to be Admitted</label>
                       <FormField
-                   id={"department"}
-                   formdata={this.state.formdata.department}
+                   id={"option"}
+                   formdata={this.state.formdata.option}
                    change={element => this.updateForm(element)}
                    />
                     </div>
@@ -992,94 +863,28 @@ showError = () => (
 
 
                {/* =======================================other information=========================== */}
-                 <div id="other-info" style={{display:this.state.fifth ? 'block' : 'none',minHeight:'900px'}}>
+               <div id="other-info" style={{display:this.state.fifth ? 'block' : 'none'}}>
                  <h6 className="text-center p-5">
                   <i className="fa fa-info fa-lg" />
                     PARTICULAR INFORMATION
                   </h6>
                   <hr/>
                   <h6 className="font-weight-bold p-2">HEALTH STATE:</h6>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox1">
-                      {" "}
-                      General Case
-                    </label>
+                  <div className="form-group">
+            
                     <FormField
-                       id={"generalCase"}
-                       formdata={this.state.formdata.generalCase}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox2">
-                      Special Need
-                    </label>
-                    <FormField
-                       id={"specialNeed"}
-                       formdata={this.state.formdata.specialNeed}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      Physical Disability
-                    </label>
-                    <FormField
-                       id={"physicalDisability"}
-                       formdata={this.state.formdata.physicalDisability}
+                       id={"healthState"}
+                       formdata={this.state.formdata.healthState}
                        change={element => this.updateForm(element)}
                       />
                   </div>
                   <h6 className="font-weight-bold p-2">
-                    SCHOOL FEES : Sponsor:
+                    SCHOOL FEES Sponsor
                   </h6>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox1">
-                      parents
-                    </label>
+                  <div className="form-group">
                     <FormField
-                       id={"parent"}
-                       formdata={this.state.formdata.parent}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox2">
-                      Another person
-                    </label>
-                    <FormField
-                       id={"otherPerson"}
-                       formdata={this.state.formdata.otherPerson}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      NGO
-                    </label>
-                    <FormField
-                       id={"ngo"}
-                       formdata={this.state.formdata.ngo}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      GOV FUNDS
-                    </label>
-                    <FormField
-                       id={"gov"}
-                       formdata={this.state.formdata.gov}
-                       change={element => this.updateForm(element)}
-                      />
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" for="inlineCheckbox3">
-                      FARG
-                    </label>
-                    <FormField
-                       id={"farg"}
-                       formdata={this.state.formdata.farg}
+                       id={"schoolFeesSponsor"}
+                       formdata={this.state.formdata.schoolFeesSponsor}
                        change={element => this.updateForm(element)}
                       />
                   </div>
@@ -1096,15 +901,19 @@ showError = () => (
                   <h6 className="pt-5">
                     Candidate, agree that information given are true and correct
                   </h6>
-                  <div className="form-check form-check-inline">
+                  <div className="form-che p-2">
+                    <div className="col-10">
+                    <div class="form-check">
+                   
                   <FormField
                        id={"agree"}
                        formdata={this.state.formdata.agree}
                        change={element => this.updateForm(element)}
                       />
-                    <label className="form-check-label" >
-                      I agree
-                    </label>
+                       <label class="form-check-label">I agree</label>
+                      </div>
+                      </div>
+                    
                   </div>
                   <Row className="form-group p-5">
                   <Col md={{ size: 3,offset: 0 }}>
