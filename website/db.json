@@ -1,0 +1,50 @@
+{
+  "leaders": [
+    {
+      "id": 0,
+      "name": "Pie SEBAKIGA",
+      "image": "avatar.jpg",
+      "designation": "Principal",
+      "title": "Rev.",
+      "featured": false
+    },
+    {
+      "id": 1,
+      "name": "Emmanuel RUZIGA",
+      "image": "avatar.jpg",
+      "designation": "DAF",
+      "title": "",
+      "featured": false
+       },
+    {
+      "id": 2,
+      "name": "Jean Rene NIYIBIZI",
+      "image": "avatar.jpg",
+      "designation": "HOD Civil Enginnering",
+      "title": "Eng.",
+      "featured": false}
+  ],
+  "news" :[
+    {
+      "id":1,
+      "title":"graduation ceremony",
+      "image":"1.jpg",
+      "body":"Sed ut perspiciatis unde omnis iste natus error sit,voluptatem, accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et",
+      "date":"10/01/2020"
+  },
+  {
+    "id":2,
+    "title":"graduation ceremony",
+    "image":"2.jpg",
+    "body":"Sed ut perspiciatis unde omnis iste natus error sit,voluptatem, accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et",
+    "date":"10/01/2020"
+},
+{
+  "id":3,
+  "title":"graduation ceremony",
+  "image":"3.jpg",
+  "body":"Sed ut perspiciatis unde omnis iste natus error sit,voluptatem, accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et",
+  "date":"10/01/2020"
+}
+  ]
+}
