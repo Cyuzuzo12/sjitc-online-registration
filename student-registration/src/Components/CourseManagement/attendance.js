@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Progress,Table } from 'reactstrap';
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
+import avatar from "../../images/avatar.jpg";
 
 const Attendance =()=> { 
         const [modal, setModal] = useState(false);

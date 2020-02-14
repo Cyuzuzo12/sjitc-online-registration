@@ -78,47 +78,23 @@ class SignUp extends Component {
         touched: false,
         validationMessage: ""
       },
-      student: {
-        element: "input",
-        value: "Student",
+      role: {
+        element: "select",
+        value: "",
         config: {
-          type: "radio",
-          className:"form-check-input",
-          name: "student"
+          className:"form-control",
+          options:[  { id: 1, name:'Student' },
+              { id: 2, name:'Staff' }
+        ],
+          // type: "",
+          name: "role"
         },
         validation: {
           required: true
         },
         valid: false,
-        touched: false
-      },
-      teacher: {
-        element: "input",
-        value: "Teacher",
-        config: {
-          type: "radio",
-          className:"form-check-input",
-          name: "teacher"
-        },
-        validation: {
-          required: true
-        },
-        valid: false,
-        touched: false
-      },
-      staff: {
-        element: "input",
-        value: "Staff",
-        config: {
-          type: "radio",
-          className:"form-check-input",
-          name: "staff"
-        },
-        validation: {
-          required: true
-        },
-        valid: false,
-        touched: false
+        touched: false,
+        validationMessage: ""
       }
     }
   };
@@ -238,33 +214,18 @@ showError = () => (
                       </div>
                    </div>
                    <div className="user-type bg-light">
-                     <h6>Sign as:</h6>
-                <div className="form-check form-check-inline">
+                     <div className="row">
+<div className="col"><h5>Sign as:</h5></div>
+<div className="col">
       
                 <FormField
-                  id={"student"}
-                  formdata={this.state.formdata.student}
+                  id={"role"}
+                  formdata={this.state.formdata.role}
                   change={element => this.updateForm(element)}
                 />
-                <label className="form-check-label">Student</label>
-                </div>
-                {/* <div className="form-check form-check-inline">
-                 <FormField
-                  id={"teacher"}
-                  formdata={this.state.formdata.teacher}
-                  change={element => this.updateForm(element)}
-                />
-                <label className="form-check-label">Teacher</label>
-                </div> */}
-                <div className=" form-check form-check-inline">
-                <FormField
-                  id={"staff"}
-                  formdata={this.state.formdata.staff}
-                  change={element => this.updateForm(element)}
-                />
-                <label className="form-check-label">Staff</label>
-                </div>
-                   </div>
+</div>
+                     </div>
+                     </div>
                  <div className="log-fa">
                  <span> <i className="fa fa-envelope fa-lg"/></span>
                 <FormField

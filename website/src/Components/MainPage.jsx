@@ -15,41 +15,27 @@ import Dashboard from './Dashboard/dashboard';
 import AdmissionAdvancedLevel from './Admission/AdvancedLevel';
 import AdmissionAdvancedDiploma from './Admission/Diploma';
 import ContactComponent from './ContactComponent';
+import PrivateRoute from './AuthRoutes/privateRoutes';
+import PublicRoute from './AuthRoutes/publicRoutes';
 
 AOS.init();
 
-const PrivateRoute =({user,component:Comp,...rest})=>{
-return(<Route {...rest} component={(props)=>(
-  user !="" ?
-  <Comp {...props} user={user}/>
-  :
-  <Redirect to="/sign-in" />
-)}
-
-/>)
-}
-const PublicRoute=({user,component:Comp,...rest})=>{
-    return( <Route {...rest} component={(props)=>(
-        rest.restricted ? 
-            ( user ? 
-                <Redirect to="/dashboard"/>
-                : 
-                <Comp {...props} user={user}/>
-            )
-        :
-         <Comp {...props} user={user}/>
-    )}/> )
-    }
 const MainPage =(props)=>{
   console.log(props)
         return ( 
             
 <React.Fragment>
-{props.user != "" ? <Header {...props}/>:<HeaderAd {...props}/>}
-
+{/* {props.user === null ? */}
+ <HeaderAd {...props}/>
+        {/* : */}
+ {/* props.user !== null ?  */}
+        {/* <HeaderAd {...props}/> */}
+        {/* : */}
+       {/* '' */}
+        {/* } */}
 <Switch>
-    <PublicRoute {...props} restricted={false} path='/home' component={() =><Home/>}/>
-    <Route path='/contact-us' component={() =><ContactComponent/>}/> 
+    <PublicRoute {...props} restricted={false} path='/home' component={() =><Home {...props}/>}/>
+    <PublicRoute {...props} restricted={false}  path='/contact-us' component={() =><ContactComponent/>}/> 
     <PublicRoute {...props} restricted={false} path="/advenced-level" component={()=> <AdvencedLevel/>}/>
     <PublicRoute {...props} restricted={false} path="/advenced-diploma" component={()=> <Diploma/>}/>
     <PublicRoute {...props} restricted={false} path="/admission-for-advenced-level" component={()=> <AdmissionAdvancedLevel/>}/>

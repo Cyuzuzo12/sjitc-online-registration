@@ -10,6 +10,7 @@ class Dashboard extends Component {
     state = { 
         editorState: EditorState.createEmpty(),
         postError:'',
+        success:'',
         loading:false,
         formdata:{
             title:{
@@ -126,6 +127,9 @@ class Dashboard extends Component {
                 firebaseNews.push(dataToSubmit)
                .then( news => {
                     this.props.history.push(`/news/${news.key}`)
+                    this.setState({
+                        success:'New Added'
+                    })
                }).catch( e =>{
                    this.setState({
                        postError: e.message
@@ -150,9 +154,14 @@ class Dashboard extends Component {
         </div>
     )
     showError = () => (
-        this.state.registerError !== '' ? 
-            <div className="error">{this.state.registerError}</div>
+        this.state.postError !== '' ? 
+            <div className="error">{this.state.postError}</div>
         : ''
+    )
+    success = () => (
+        this.state.postError !== '' ? 
+            <div className="text-success">{this.state.success}</div>
+            : ''
     )
     onEditorStateChange = (editorState) => {
 
@@ -170,7 +179,11 @@ class Dashboard extends Component {
         this.updateForm({id:'image'},filename)
     } 
     render() { 
-        return ( <section>
+        return ( <section style={{
+            minHeight:'700px',
+            maxHeight:'2700px',
+            background:'#fff'
+        }}>
             <div className="container">
 <div className="row">
     <div className="col m-4">
@@ -199,6 +212,7 @@ class Dashboard extends Component {
                     filename={ (filename)=> this.storeFilename(filename) }
                      />
                     { this.submitButton() }
+                    {this.success()}
                     {this.showError()}
             </form>
         </div>

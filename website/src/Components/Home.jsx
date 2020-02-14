@@ -2,7 +2,7 @@ import React from "react";
 import NewsSlider from "./newSlider";
 import NewsList from "./newsList";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div>
       <section className="home">
@@ -43,14 +43,19 @@ const Home = () => {
                   <h4 className="font purple font-weight-bold m-4">
                     ANNOUNCEMENTS
                   </h4>
-                  <NewsList/>
+                  <NewsList
+                  start={0}
+                  amount={3}
+                  />
                 </div>
               </div>
             </div>
             <div className="col-md-9 col-sm-12 ">
               <div className="row">
                 <div className="col-md-12 m-2">
-                  <NewsSlider
+                  <NewsSlider 
+                   start={0}
+                   amount={4}
                   />
                 </div>
               </div>

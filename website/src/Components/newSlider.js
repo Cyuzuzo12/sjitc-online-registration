@@ -7,7 +7,7 @@ class NewsSlider extends Component {
         news:[]
      }
      componentWillMount(){
-         firebaseNews.limitToFirst(17).once('value')
+         firebaseNews.limitToLast(4).once('value')
          .then((snapshot)=>{
             const news = fireBaseLooper(snapshot);
             const asyncFunction = (item,i,cb) =>{

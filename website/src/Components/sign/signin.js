@@ -113,7 +113,7 @@ class SignIn extends Component {
                         dataToSubmit.email,
                         dataToSubmit.password
                     ).then(()=>{
-                        this.props.history.push('/home')
+                        this.props.history.push('/dashboard')
                     }).catch( error =>{
                         this.setState({
                             loading:false,
@@ -144,9 +144,9 @@ class SignIn extends Component {
 
 
     submitButton = () => (
-        this.state.loading ? 
-            'loading...'
-        :
+        // this.state.loading ? 
+        //     'loading...'
+        // :
         <div>
             {/* <button onClick={(event)=>this.submitForm(event,false)}> Register now</button> */}
             <button onClick={(event)=>this.submitForm(event,true)}> Log in </button>

@@ -13,7 +13,7 @@
   }
 }
 
-div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a ,form{
+div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a ,form,input{
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
  font-size: 13px;
 }

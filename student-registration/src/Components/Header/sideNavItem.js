@@ -3,7 +3,7 @@ import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { Collapse} from 'reactstrap';
 import "./side.css";
-import avatar from "C:/Users/USER/Documents/Techenfold/saint_joseph/student-registration/src/images/avatar.jpg";
+import avatar from "../../images/avatar.jpg";
 import Auth from '../Auth';
 class SideNavItems extends React.Component {
   constructor(props){

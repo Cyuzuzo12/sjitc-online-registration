@@ -1,7 +1,6 @@
 import React from 'react';
 const NewsListTemplate = (props) => {
 
-    
   
     const news = props.data.map( (item) => {
       return (
@@ -33,9 +32,9 @@ const NewsListTemplate = (props) => {
     return(
        <div>
            
-           {/* <marquee direction="up" scrollamount="4" style={{height:'280px'}}> */}
+           <marquee direction="up" scrollamount="4" style={{height:'280px'}}>
            {news}
-           {/* </marquee> */}
+           </marquee>
        </div>
         
     )
