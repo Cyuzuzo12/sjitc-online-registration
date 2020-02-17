@@ -26,7 +26,7 @@ const MainPage =(props)=>{
             
 <React.Fragment>
 {/* {props.user === null ? */}
- <HeaderAd {...props}/>
+ <Header {...props}/>
         {/* : */}
  {/* props.user !== null ?  */}
         {/* <HeaderAd {...props}/> */}

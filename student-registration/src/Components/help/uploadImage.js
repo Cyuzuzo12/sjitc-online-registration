@@ -63,8 +63,9 @@ render(){
             }
             { this.state.fileURL ? 
                 <img style={{
-                    width:'300px'
-                }} src={this.state.fileURL} alt={this.state.fileURL}/>
+                    width:'140px',
+                    height:'140px'
+                }} src={this.state.fileURL} alt={this.state.fileURL} />
                 : null
             }
     

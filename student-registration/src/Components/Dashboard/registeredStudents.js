@@ -1,9 +1,42 @@
 import React from 'react';
-import {Table, Col, Row, Button, Form,Breadcrumb,BreadcrumbItem, Input } from 'reactstrap';
+import {Table, Col, Row, Button, Form,Breadcrumb,BreadcrumbItem, Input,Modal,ModalBody,ModalFooter,ModalHeader } from 'reactstrap';
 import avatar from "../../images/avatar.jpg";
+import {withRouter} from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-const RegisteredStudents = (props) => {
-  return (
+class RegisteredStudents extends React.Component {
+state = {
+  students: [],
+  admittedModal:false,
+  rejectedModal:false
+ }
+  componentDidMount() {
+    axios.get(`/students/all`)
+      .then(res => {
+        const students = res.data;
+        this.setState({ students });
+      })
+  } 
+    onSubmitAddmission = () => {
+  
+         this.props.history.push('/sign-in');
+
+  }
+  openAdmitModal=()=>{
+    this.setState({
+      admittedModal:!this.state.admittedModal
+    })
+  }
+  openRejectModal=()=>{
+    this.setState({
+      rejectedModal:!this.state.rejectedModal
+    })
+  }
+ render() {
+    return (
+    <div className="RegisteredStudents">
+    
     <section>
          <Breadcrumb tag="nav" >
         <BreadcrumbItem tag="a" href="#">Home</BreadcrumbItem>
@@ -26,167 +59,117 @@ const RegisteredStudents = (props) => {
       </Row>
       </Form>
        <Row>
-         <Col>
-         <Table striped style={{background:'#fff'}}>
+         <Col className="scroll">
+         <Table striped  >
       <thead>
         <tr>
           <th>#</th>
-          <th>Reg.No</th>
+          {/*<th>Reg.No</th>*/}
           <th>Photo</th>
-          <th>Name</th>
-          <th>Father's name</th>
-          <th>Mother's name</th>
-          <th>Program</th>
-          <th>Option</th>
+          <th>Names</th>
+          <th>Gender</th>
           <th>Date Of Birth</th>
-          <th>Address</th>
           <th>Phone</th>
           <th>Email</th>
+          <th>Father's names</th>
+          <th>Mother's names</th>
+          <th>Guardian's names</th>
+          <th>Parent Cont</th>
+          <th>Nationality</th>
+          <th>Address</th>
+          <th>Ubudehe</th>
+          <th>Insurance</th>
+          <th>Health State</th>
+          <th>Sponsor</th>
+          <th>Att. School</th>
+          <th>Comp. Year</th>
+          <th>Results</th>
+          <th>Option</th>
+          <th>Bank Slip Number</th>
+          <th>Passport Photo</th>
+          <th>Bank Slip </th>
+          <th>ID Image</th>
+          <th>Result Slip </th>
+          <th>Report 1</th>
+          <th>Report 2</th>
+          <th>Report 3</th>
           <th>Action</th>
         </tr>
       </thead>
+      {/* { this.state.students.map(student =>  */}
       <tbody>
+      
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
+          {/* <th scope="row">{student.id}</th> */}
           <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
           <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
           <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
           <td>@mdo</td>
-          <td>Mark</td>
           <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><a className="text-primary" href="#" onClick={()=>{window.open("")}}>@mdo </a></td>
+          <td><span className="text-success mr-1 border" onClick={this.openAdmitModal} style={{
+                 cursor:'pointer'
+          }} >Admitted</span><span className="text-danger border" onClick={this.openRejectModal} style={{
+            cursor:'pointer'
+     }}>Rejected</span></td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">4</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">5</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">6</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">7</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">8</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
-        <tr>
-        <th scope="row">9</th>
-        <td>Mark</td>
-          <td ><img src={avatar} alt="student" className="rounded-circle" width="30" height="30"/></td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-          <td><i className="fa fa-edit text-success mr-2"/><i className="fa fa-trash text-danger"/></td>
-        </tr>
+        
       </tbody>
+      {/* )} */}
     </Table></Col>
        </Row>
         </div>
+        {/* ===============================modals====================== */}
+        <Modal isOpen={this.state.admittedModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
+        openAdmitModal={this.openAdmitModal} >
+        <ModalHeader openAdmitModal={this.openAdmitModal}>Send Admission Letter</ModalHeader>
+        <ModalBody>
+          Send Admission Letter with registration Id on this email
+           </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.onSubmitAddmission}>Send</Button>{' '}
+          <Button color="secondary" onClick={this.openAdmitModal}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+      {/* =================================reject modal========== */}
+      <Modal isOpen={this.state.rejectedModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
+        openRejectModal={this.openRejectModal} >
+        <ModalHeader openRejectModal={this.openRejectModal}>Reject Registration</ModalHeader>
+        <ModalBody>
+          Send Rejection Message on this email
+           </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.onSubmitAddmission}>Send</Button>{' '}
+          <Button color="secondary" onClick={this.openRejectModal}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
     </section>
+    </div>
   );
-}
 
-export default RegisteredStudents;
+}
+}
+export default withRouter(RegisteredStudents);

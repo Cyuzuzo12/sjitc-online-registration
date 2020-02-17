@@ -62,17 +62,7 @@ const AdvancedDiploma = () => {
             <li className="font font-weight-bold purple">High Way</li>
             <p className="font text-muted" data-aos="fade-up"
               data-aos-duration="2000">
-                Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et
-                    quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                    aut fugit, sed quia consequuntur magni dolores eos qui
-                    ratione voluptatem sequi nesciunt. Neque porro quisquam est
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et
-                    quasi architecto beatae vitae dicta sunt explicabo. 
+                {/* {highway()} */}
               </p>
                     <li className="font font-weight-bold purple">Land Surveying</li>
                     <p className="font text-muted" data-aos="fade-up"

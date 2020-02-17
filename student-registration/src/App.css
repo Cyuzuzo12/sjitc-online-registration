@@ -136,3 +136,10 @@ section{
   font-size: 17px;
   font-style: normal;
 }
+.scroll { 
+  max-height:720px; 
+  /* width:600px; */
+  overflow-x: hidden; 
+  overflow-x: auto; 
+  text-align:justify; 
+} 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {withRouter} from "react-router-dom";
 import { Col,Button ,Row} from 'reactstrap';
 import FormField from "../formFild";
 import logo from '../../images/logo.png';
@@ -16,8 +17,33 @@ class AdvancedDiplomaForm extends Component {
     fourth: false,
     fifth:false,
     dataError:"",
+    nationality:"",
+    passportPhoto:"",
+    report1:"",
+    report2:"",
+    report3:"",
+    resultSlip:"",
+    bankSlipPhoto:"",
+    province:"",
+    district:"",
     formdata:{
-      
+      phoneNumber:{
+        element: "input",
+        value: "",
+        config: {
+          className:"form-control",
+          placeholder:"(+250)-788-000-000",
+          type: "text",
+          name: "phoneNumber"
+        },
+        validation: {
+          required: true,
+          name:true
+        },
+        valid: false,
+        touched: false,
+        validationMessage: ""
+      },
       firstname: {
         element: "input",
         value: "",
@@ -106,6 +132,23 @@ ubudehe: {
   touched: false,
   validationMessage: ""
 },
+email: {
+  element: "input",
+  value: "",
+  config: {
+    placeholder: "Enter email",
+    className:"input",
+    type: "email",
+    name: "email"
+  },
+  validation: {
+    required: true,
+    email: true
+  },
+  valid: false,
+  touched: false,
+  validationMessage: ""
+},
 grade: {
   element: "select",
   value: "",
@@ -151,7 +194,8 @@ completionYear: {
     name: "completionYear"
   },
   validation: {
-    name:true
+    completionYears:true,
+    required:true
   },
   valid: false,
   touched: false,
@@ -224,10 +268,10 @@ nationalID: {
   config: {
     className:"form-control",
     type: "text",
-    name: "id"
+    name: "nationalID"
   },
   validation: {
-    id:true
+    natlID:true
   },
   valid: false,
   touched: false,
@@ -274,8 +318,7 @@ bankslip: {
     name: "bankslip"
   },
   validation: {
-    required: true,
-    bankslip:true
+    required: true
   },
   valid: false,
   touched: false,
@@ -290,7 +333,8 @@ agree: {
     name: "agree"
   },
   validation: {
-    agree:true
+    agree:true,
+    required:true
   },
   valid: false,
   touched: false,
@@ -362,46 +406,6 @@ attendedSchool: {
   valid: false,
   touched: false,
   validationMessage: ""
-}, 
-image:{
-  element:'image',
-  value:'',
-  valid:true
-},
-resultSlip:{
-  element:'image',
-  value:'',
-  valid:true
-},
-report1:{
-  element:'image',
-  value:'',
-  valid:true
-},
-report2:{
-  element:'image',
-  value:'',
-  valid:true
-},
-report3:{
-  element:'image',
-  value:'',
-  valid:true
-},
-id:{
-  element:'image',
-  value:'',
-  valid:true
-},
-address:{
-  element:'address',
-  value:'',
-  valid:true
-},
-nationality:{
-  element:'nationality',
-  value:'',
-  valid:true
 }
   }
   };
@@ -451,31 +455,24 @@ this.setState({
   };
   validate = (element) => {
     let error = [true,''];
-
-    // if(element.validation.email){
-    //     const valid = /\S+@\S+\.\S+/.test(element.value);
-    //     const message = `${!valid ? 'Must be a valid email':''}`;
-    //     error = !valid ? [valid,message] : error
-    // }
-
-    // if(element.validation.password){
-    //     const valid = element.value.length >= 5;
-    //     const message = `${!valid ? 'Must be greater than 5':''}`;
-    //     error = !valid ? [valid,message] : error
-    // }
-    if(element.validation.agree){
-      const valid = element.value.trim() !=='';
-      const message = `${!valid ? 'To Confirm your Registration request please agree terms and conditions':''}`;
+    if(element.validation.email){
+      const valid = /\S+@\S+\.\S+/.test(element.value);
+      const message = `${!valid ? 'Must be a valid email':''}`;
       error = !valid ? [valid,message] : error
   }
-    if(element.validation.bankslip){
-      const valid = !isNaN(element.value)&& element.value.length >3;
-      const message = `${!valid ? 'must be greater than 3  ':''}`;
-      error = !valid ? [valid,message] : error
-  }
-    if(element.validation.id){
-        const valid = !isNaN(element.value)&& element.value.length >= 16;
-        const message = `${!valid ? 'must be 16 digits or greater   ':''}`;
+  //   if(element.validation.agree){
+  //     const valid = element.value.trim() !=='';
+  //     const message = `${!valid ? 'To Confirm your Registration request please agree terms and conditions':''}`;
+  //     error = !valid ? [valid,message] : error
+  // }
+  //   if(element.validation.bankslip){
+  //     const valid = !isNaN(element.value)&& element.value.length >3;
+  //     const message = `${!valid ? 'must be greater than 3  ':''}`;
+  //     error = !valid ? [valid,message] : error
+  // }
+    if(element.validation.natlID){
+        const valid = !isNaN(element.value)&& element.value.length >= 5;
+        const message = `${!valid ? 'must be 5 digits or greater   ':''}`;
         error = !valid ? [valid,message] : error
     }
     if(element.validation.results){
@@ -483,6 +480,11 @@ this.setState({
       const message = `${!valid ? 'must be above 30  ':''}`;
       error = !valid ? [valid,message] : error
   }
+  if(element.validation.completionYears){
+    const valid = !isNaN(element.value)&& element.value.length === 4 ;
+    const message = `${!valid ? 'Year must be 4 digits':''}`;
+    error = !valid ? [valid,message] : error
+}
 if(element.validation.name){
         const valid = element.value.length >= 3;
         const message = `${!valid ? 'must be atleast 3 letters':''}`;
@@ -496,6 +498,7 @@ if(element.validation.name){
 
     return error;
 }
+
 submitForm = (event,type) => {
   event.preventDefault();
 
@@ -510,14 +513,27 @@ submitForm = (event,type) => {
       for(let key in this.state.formdata){
           formIsValid = this.state.formdata[key].valid && formIsValid;
       }
-     
+      const dataRegi = {
+        nationality: this.state.nationality,
+        passportPhoto:this.state.passportPhoto,
+        report1:this.state.report1,
+    report2:this.state.report2,
+    report3:this.state.report3,
+    resultSlip:this.state.resultSlip,
+    bankSlipPhoto:this.state.bankSlipPhoto,
+    province:this.state.province,
+    district:this.state.district,
+        dataToSubmit
+      }
+      console.log(dataRegi)
       if(formIsValid){
         this.setState({
             loading:true,
             registerError:''
         })
-        
-        advancedLevelReg(dataToSubmit).then(res => {
+        console.log("form is valid")
+       
+        advancedLevelReg(dataRegi).then(res => {
           if (res) {
             this.props.history.push('/student-page');
           }
@@ -528,6 +544,8 @@ submitForm = (event,type) => {
           })
       })
      
+    }else{
+      console.log("form is not valid")
     }
   }
 
@@ -539,19 +557,56 @@ submitForm = (event,type) => {
     :
     <div>
        
-        <button onClick={(event)=>this.submitForm(event,true)} className="bg-primary form-control text-white"> Send </button>
+        <button type="submit" onClick={(event)=>this.submitForm(event,true)} className="bg-primary form-control text-white"> Send </button>
     </div>
 )
-storeAddress = (address) => {
-  this.updateForm({id:'address'},address)
+storeAddress = (val1) => {
+  this.setState({
+    province:this.props.provinceVal,
+    district:this.props.provinceVal
+  })
 } 
-storeNationality = (nationality) => {
-  this.updateForm({id:'nationality'},nationality)
+storeNationality = (val) => {
+  this.setState({
+    nationality:val
+  })
 } 
 storeFilename = (filename) => {
-  this.updateForm({id:'image'},filename)
+  this.setState({
+    passportPhoto:filename
+  })
 } 
 
+storeResultSlip = (filename) => {
+  this.setState({
+    resultSlip:filename
+  })
+} 
+storeBankSlip = (filename) => {
+  this.setState({
+    bankSlipPhoto:filename
+  })
+} 
+storeID = (filename) => {
+  this.setState({
+    IdPhoto:filename
+  })
+} 
+storeReport1 = (filename) => {
+  this.setState({
+    report1:filename
+  })
+} 
+storeReport2 = (filename) => {
+  this.setState({
+    report2:filename
+  })
+} 
+storeReport3 = (filename) => {
+  this.setState({
+    report3:filename
+  })
+} 
 showError = () => (
   this.state.registerError !== '' ? 
       <div className="error">{this.state.registerError}</div>
@@ -599,6 +654,9 @@ showError = () => (
                 </h6>
                   <div className="form-row">
                     <div className="col">
+
+                    
+
                       <label >First Name </label>
                       <FormField
                        id={"firstname"}
@@ -617,12 +675,24 @@ showError = () => (
                        formdata={this.state.formdata.dob}
                        change={element => this.updateForm(element)}
                       />
-                       <label for="name ">Gender</label>
+                       <label for="name">Gender</label>
                   <FormField
                   id={"gender"}
                   formdata={this.state.formdata.gender}
                   change={element => this.updateForm(element)}
                   />
+                  <label >Phone Number</label>
+                      <FormField
+                       id={"phoneNumber"}
+                       formdata={this.state.formdata.phoneNumber}
+                       change={element => this.updateForm(element)}
+                      />
+                      <label >Email</label>
+                      <FormField
+                       id={"email"}
+                       formdata={this.state.formdata.email}
+                       change={element => this.updateForm(element)}
+                      />
                     </div>
                     <div className="col">
                    
@@ -679,7 +749,7 @@ showError = () => (
                   
                       <label for="name ">Nationality</label>
                       <Country
-                      nationality={ (nationality)=> this.storeAddress(nationality) }
+                        val={ (val)=> this.storeNationality(val) }
                       />
                     </div>
                     <div className="col">
@@ -814,7 +884,7 @@ showError = () => (
                   <div className="form-row p-2">
                     <div className="col">
                     <h6 className="purple">A Level certificate</h6>
-                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeResultSlip(filename) }/>
                     <hr/>
                     </div>
 
@@ -825,14 +895,14 @@ showError = () => (
                   <div className="form-row p-2">
                   <div className="col">
                     <h6 className="purple">Progressive Reports</h6>
-                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
-                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
-                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeReport1(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeReport2(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeReport3(filename) }/>
                     <hr/>
                     </div>
                     <div className="col">
                     <h6 className="purple">Bank Slip for registration payment</h6>
-                    <FilesUpload filename={ (filename)=> this.storeFilename(filename) }/>
+                    <FilesUpload filename={ (filename)=> this.storeBankSlip(filename) }/>
                     
                     <div className="form-group">
                     <FormField
@@ -936,4 +1006,4 @@ showError = () => (
   }
 }
 
-export default AdvancedDiplomaForm;
+export default withRouter(AdvancedDiplomaForm);
