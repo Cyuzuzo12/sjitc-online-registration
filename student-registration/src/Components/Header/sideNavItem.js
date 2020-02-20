@@ -68,25 +68,25 @@ class SideNavItems extends React.Component {
                     <li className="fa-options" > 
                       <Link to="#" onClick={this.props.openFirst}>
                         <i className="fa fa-circle-o m-2"></i>
-                        Student Info
+                        Student info
                       </Link>
                     </li>
                     <li className="fa-options" > 
                       <Link to="#" onClick={this.props.openSecond}>
                         <i className="fa fa-circle-o m-2"></i>
-                        Residance Place
+                        Residance place
                       </Link>
                     </li>
                     <li className="fa-options" > 
                       <Link to="" onClick={this.props.openThird}>
                         <i className="fa fa-circle-o m-2"></i>
-                        Academic Options
+                        Academic options
                       </Link>
                     </li>
                     <li className="fa-options"> 
                     <Link to="">
                         <i className="fa fa-circle-o m-2"></i>
-                        Previous Education
+                        Previous education
                       </Link>
                     </li>
                     <li className="fa-options"> 
@@ -107,7 +107,7 @@ class SideNavItems extends React.Component {
                     <li>
                     <Link to="/">
                         <i className="fa fa-circle-o m-2"></i>
-                        TimeTable
+                        Timetable
                       </Link>
                     </li>
                     <li>
@@ -126,15 +126,21 @@ class SideNavItems extends React.Component {
                  
                     <ul className="list-unstyled" style={{display:this.state.mark ? 'block':'none'}}>
                     <li>
-                    <Link to="">
+                    <Link to="/provison-mark">
                         <i className="fa fa-circle-o m-2"></i>
-                       Transcript
+                      Provision marks
+                      </Link>
+                    </li>
+                    <li>
+                    <Link to="/transcript">
+                        <i className="fa fa-circle-o m-2"></i>
+                      Official transcript
                       </Link>
                     </li>
                   </ul>
                   
                 </li>
-                <li onClick={this.logout} style={{cursor:'pointer'}}>
+                <li onClick={this.logout} style={{cursor:'pointer'}} className="sub-option">
                 <FontAwesome name="sign-out"/> <span style={{cursor:'pointer'}}>logout</span>
                   
                   

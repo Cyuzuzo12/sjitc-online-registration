@@ -1,5 +1,6 @@
 import React from "react";
 import "./header.css";
+import logo from '../../images/logo.png';
 import SideNav from "./sideNav";
 
 const Header = props => {
@@ -20,10 +21,10 @@ const Header = props => {
               }}
             />
           </div>
-          {/* <div className="logo">
+          <div className="logos">
        <img src={logo} alt="logo" />
        </div>
-       */}
+      
           {/* <div className=" stud-photo">
                     <img src={avatar} alt="student-photo" />
                   

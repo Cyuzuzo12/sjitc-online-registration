@@ -28,38 +28,37 @@ class RegisteredStudents extends React.Component {
     Message: "",
     stId: ""
   };
-  componentWillMount(){
-    firebaseLeaders.once('value')
-    .then((snapshot)=>{
-       const leaders = fireBaseLooper(snapshot);
-       const asyncFunction = (item,i,cb) =>{
-           firebase.storage().ref('images')
-           .child(item.image).getDownloadURL()
-           .then(url => {
-               leaders[i].image = url;
-               cb();
-           })
-       }
-       let requests = leaders.map((item,i) =>{
-           return new Promise((resolve)=> {
-               asyncFunction(item,i, resolve)
-           })
-       })
-
-       Promise.all(requests).then(()=>{
-           this.setState({
-               leaders
-           })
-       })
-    })
-    
-}
+ 
   componentDidMount() {
     axios.get(`/students/all`).then(res => {
       const students = res.data;
+      const asyncFunction = (item,i,cb) =>{
+        firebase.storage().ref('registration')
+        .child(item.image).getDownloadURL()
+        .then(url => {
+            students[i].passportPhoto = url;
+            students[i].report1 = url;
+            students[i].report2 = url;
+            students[i].report3 = url;
+            students[i].IdPhoto = url;
+            students[i].bankSlipPhoto = url;
+            students[i].resultSlip = url;
+            
+            cb();
+        })
+    }
+    let requests = students.map((item,i) =>{
+      return new Promise((resolve)=> {
+          asyncFunction(item,i, resolve)
+      })
+  })
+
+  Promise.all(requests).then(()=>{
       this.setState({
-        students
-      });
+          students
+      })
+  })
+      
     });
   }
   onSubmitAddmission = e => {
@@ -199,16 +198,50 @@ class RegisteredStudents extends React.Component {
                         <td>@mdo</td>
                         <td>@mdo</td>
                         <td>@mdo</td>
-
+                        <td>@mdo</td>
+                        <td>@mdo</td>
                         <td>
                           <a
                             className="text-primary"
-                            href="#"
+                            href={student.passportPhoto}
                             onClick={() => {
-                              window.open("");
+                              window.open(student.passportPhoto);
                             }}
                           >
-                            @mdo{" "}
+                            Passport Photo{" "}
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            className="text-primary"
+                            href={student.bankSlipPhoto}
+                            onClick={() => {
+                              window.open(student.bankSlipPhoto);
+                            }}
+                          >
+                           Bank Slip  {" "}
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            className="text-primary"
+                            href={student.IdPhoto}
+                            onClick={() => {
+                              window.open(student.IdPhoto);
+                            }}
+                          >
+                            ID/Passport{" "}
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            className="text-primary"
+                            
+                            onClick={() => {
+                              window.open(student.resultSlip);
+                            }}
+                          >
+                            Result Slip{" "}
                           </a>
                         </td>
                         <td>
@@ -216,10 +249,21 @@ class RegisteredStudents extends React.Component {
                             className="text-primary"
                             href="#"
                             onClick={() => {
-                              window.open("");
+                              window.open(student.report1);
                             }}
                           >
-                            @mdo{" "}
+                            Report S1{" "}
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            className="text-primary"
+                            
+                            onClick={() => {
+                              window.open(student.report2);
+                            }}
+                          >
+                            Report S2{" "}
                           </a>
                         </td>
                         <td>
@@ -227,76 +271,10 @@ class RegisteredStudents extends React.Component {
                             className="text-primary"
                             href="#"
                             onClick={() => {
-                              window.open("");
+                              window.open(student.report3);
                             }}
                           >
-                            @mdo{" "}
-                          </a>
-                        </td>
-                        <td>
-                          <a
-                            className="text-primary"
-                            href="#"
-                            onClick={() => {
-                              window.open("");
-                            }}
-                          >
-                            @mdo{" "}
-                          </a>
-                        </td>
-                        <td>
-                          <a
-                            className="text-primary"
-                            href="#"
-                            onClick={() => {
-                              window.open("");
-                            }}
-                          >
-                            @mdo{" "}
-                          </a>
-                        </td>
-                        <td>
-                          <a
-                            className="text-primary"
-                            href="#"
-                            onClick={() => {
-                              window.open("");
-                            }}
-                          >
-                            @mdo{" "}
-                          </a>
-                        </td>
-                        <td>
-                          <a
-                            className="text-primary"
-                            href="#"
-                            onClick={() => {
-                              window.open("");
-                            }}
-                          >
-                            @mdo{" "}
-                          </a>
-                        </td>
-                        <td>
-                          <a
-                            className="text-primary"
-                            href="#"
-                            onClick={() => {
-                              window.open("");
-                            }}
-                          >
-                            @mdo{" "}
-                          </a>
-                        </td>
-                        <td>
-                          <a
-                            className="text-primary"
-                            href="#"
-                            onClick={() => {
-                              window.open("");
-                            }}
-                          >
-                            @mdo{" "}
+                            Report S3{" "}
                           </a>
                         </td>
 

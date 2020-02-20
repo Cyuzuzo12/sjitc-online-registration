@@ -69,6 +69,11 @@ div, h2, h3, h4, h5, h6, p ,section,ul,li,span,a ,form,input{
   background-color: #fff;
   margin-bottom: 10px;
 }
+.marks{
+  background-color: #fff;
+  margin-top: 10px;
+  min-height: 600px;
+}
 .header-div{
   border-color: #9348e8;
   border-bottom-style: solid;

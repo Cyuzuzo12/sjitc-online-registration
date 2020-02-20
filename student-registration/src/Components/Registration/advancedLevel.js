@@ -515,6 +515,7 @@ submitForm = (event,type) => {
     report2:this.state.report2,
     report3:this.state.report3,
     resultSlip:this.state.resultSlip,
+    IdPhoto:this.state.IdPhoto,
     bankSlipPhoto:this.state.bankSlipPhoto,
     province:this.state.province,
     district:this.state.district,

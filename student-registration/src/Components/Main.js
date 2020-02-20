@@ -21,6 +21,8 @@ import RegisteredDiploma from "./Dashboard/regDiploma";
 import RegisteredStudents from "./Dashboard/registeredStudents";
 import HeaderDef from "./Header/headerDef";
 import Verification from "./DAO/verification";
+import ProvisionMarks from "./Marks/provisionMark";
+import Transcript from "./Marks/transcript";
 class Main extends Component {
   constructor(props){
     super(props);
@@ -86,6 +88,8 @@ class Main extends Component {
         <Switch>
           <Route  path="/sign-up" component={() => <SignUp />} />
           <Route  path="/verify-token" component={() => <Verification />} />
+          <Route  path="/provison-mark" component={() => <ProvisionMarks />} />
+          <Route  path="/transcript" component={() => <Transcript />} />
           <Route  path="/sign-in" component={()=> <SignIn/>}/>
           <PrivateRoute path="/student-page" component={()=> <StudentPage
           first={this.state.first}

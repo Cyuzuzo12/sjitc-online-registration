@@ -11,7 +11,7 @@ const SideNavigation = (props) => {
                 onHideNav={props.onHideNav}
                 navStyle={{
                     background:'#1898f8',
-                    maxWidth:'260px'
+                    maxWidth:'230px'
                 }}
             >
                  <div className="bars">
@@ -24,6 +24,7 @@ const SideNavigation = (props) => {
                 fontSize:'25px'
             }}
         />
+        
     </div>
                 <SideNavItems 
                  {...props}/>
