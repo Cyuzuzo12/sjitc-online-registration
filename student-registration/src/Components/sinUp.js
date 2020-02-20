@@ -163,11 +163,10 @@ submitForm = (event,type) => {
             registerError:''
         })
         
-        register(dataToSubmit).then(res => {
-          if (res) {
-            this.props.history.push('/verification');
-            // window.open('/verification','_self')
-          }
+        register(dataToSubmit).then(() => {
+         
+            this.props.history.push('/verify-token');
+          
         }).catch( error =>{
           this.setState({
               loading:false,

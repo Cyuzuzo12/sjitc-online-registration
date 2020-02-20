@@ -96,3 +96,8 @@ export const advancedLevelReg = newUser =>{
 		console.log("Success!!!!");
 	})
 }
+export const admitted = (id)=>{
+	// return axios
+	// .post('/admitted/'+id.stId)
+	console.log(id.stId)
+}

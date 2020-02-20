@@ -365,13 +365,8 @@ schoolFeesSponsor: {
     { id: 4, name: 'FARG' },
     { id: 5, name: 'Other' },
   ],
-    // type: "",
     name: "schoolFeesSponsor"
   },
-  validation: {
-    required: true
-  },
-  valid: false,
   touched: false,
   validationMessage: ""
 },

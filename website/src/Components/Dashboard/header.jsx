@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Navbar,
   Nav,
@@ -31,7 +31,7 @@ const Header = (props)=> {
                     onClick={()=>{
                       firebase.auth().signOut()
                       .then(()=>{
-                          props.history.push("/history")
+                          props.history.push("/home")
                       })
                   }}
                     className="nav-link font-weight-bold text-white sin" to=""

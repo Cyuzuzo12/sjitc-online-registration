@@ -13,7 +13,7 @@ import {
   Modal, ModalBody,ModalHeader
 } from "reactstrap";
 import SignIn from './sign/signin';
-import { NavLink, Link, withRouter } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import { firebase } from "../firebase";
 class Header extends Component {
@@ -351,4 +351,4 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+export default Header;

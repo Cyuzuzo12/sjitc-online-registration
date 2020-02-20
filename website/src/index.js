@@ -18,6 +18,6 @@ const App= (props) =>{
          );
   
   }
-firebase.auth().onAuthStateChanged((user)=>{
-    ReactDOM.render(<App auth={user}/>, document.getElementById('root'));  
+  firebase.auth().onAuthStateChanged((user)=>{
+    ReactDOM.render(<App user={user}/>, document.getElementById('root'));
 })
